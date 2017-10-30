@@ -6,14 +6,17 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
-        "barryvdh/laravel-dompdf": "^0.8.0",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "barryvdh/laravel-dompdf": "^0.8.1",
         "caffeinated/shinobi": "^3.0.6",
         "caouecs/laravel-lang": "~3.0",
         "fideloper/proxy": "~3.3",
-        "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0",
+        "illuminate/config": "5.5.*",
+        "illuminate/database": "5.5.*",
+        "illuminate/filesystem": "5.5.*",
+        "illuminate/support": "5.5.*",        
         "laravelcollective/html": "^5.4.0"
-
     },
     "require-dev": {
         "filp/whoops": "~2.0",
