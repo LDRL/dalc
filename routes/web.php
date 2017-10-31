@@ -164,6 +164,14 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get ('requisicion/cargarbusqueda','RequisicionController@modalrequisicion');
 	Route::get ('requisicion/busqueda/{id}','RequisicionController@busqueda');
 	Route::get ('requisicion/show/{id}','RequisicionController@show');
+
+
+	Route::get ('vencimiento/index','MVencimientoController@index');
+	Route::get ('vencimiento/add','MVencimientoController@add');
+	Route::post('vencimiento/store','MVencimientoController@store');
+	Route::get ('vencimiento/cargarbusqueda','MVencimientoController@modalrequisicion');
+	Route::get ('vencimiento/busqueda/{id}','MVencimientoController@busqueda');
+	Route::get ('vencimiento/show/{id}','MVencimientoController@show');
 	
 	Route::get('/logout', 'Auth\LoginController@logout');
 });

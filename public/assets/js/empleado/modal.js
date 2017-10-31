@@ -94,6 +94,10 @@ function cargarindex(arg){
   if(arg==14){var miurl=urlraiz+"/medicamento/proveedor/inactivo";}
   if(arg==15){var miurl=urlraiz+"/seguridad/inactivo";}
   if(arg==16){var miurl=urlraiz+"/seguridad/form_nuevo_rol";}
+  if(arg==17){var miurl=urlraiz+"/medicamento/vencimiento/index";}
+  if(arg==18){var miurl=urlraiz+"/medicamento/vencimiento/add"}
+
+  //17,18
 
 	if(arg==20){var miurl=urlraiz+"/bienhechor/index";}
 	if(arg==21){var miurl=urlraiz+"/paciente/index";}
@@ -202,6 +206,7 @@ function busqueda(arg,id){
 	if(arg==6){var miurl=urlraiz+"/medicamento/proveedor/busqueda/"+id;  var form = $("#prov"); }
 	if(arg==7){var miurl=urlraiz+"/medicamento/ubicacion/busqueda/"+id;  var form = $("#ubic");}
   if(arg==8){var miurl=urlraiz+"/medicamento/principio/busqueda/"+id;  var form = $("#prin");}
+  if(arg==9){var miurl=urlraiz+"/medicamento/requisicion/busqueda/"+id;  var form = $("#rmedi");}
 
 	if(arg==20){var miurl=urlraiz+"/bienhechor/index";}
 

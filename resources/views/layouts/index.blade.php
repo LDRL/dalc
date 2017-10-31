@@ -96,6 +96,8 @@
                             <li><a href="javascript:void(0);" onclick="cargarmodalempleado(3);">Ingreso Inventario</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(7);">Listado Requisici&oacute;n</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(8);">Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(17);">Medicamento vencidos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Medicamento descargue</a></li>
  
                         </ul>
                     </li>
