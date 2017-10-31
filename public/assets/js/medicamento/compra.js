@@ -1,4 +1,4 @@
-$("#btnGuardarCompra").click(function(e){
+$(document).on('click','.btn-btnGuardarCompra',function(e){
 	var urlraiz=$("#url_raiz_proyecto").val();
     var miurl=urlraiz+"/medicamento/compra/store";
     $.ajaxSetup({

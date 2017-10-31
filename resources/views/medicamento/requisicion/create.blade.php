@@ -44,7 +44,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
                     <div class="form-group">
                         <br>
-                        <button type="button" id="bt_addm" class="btn btn-info btn-addm" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>
+                        <button type="button" id="bt_addm" class="btn btn-info btn-addmr" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>
                     </div>
                 </div>
 
@@ -96,7 +96,6 @@
 </div>
 
 
-    <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
     <script src="{{asset('assets/js/validacion.js')}}"></script>
 <!-- Sweet alert -->
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>

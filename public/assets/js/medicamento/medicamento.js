@@ -1,5 +1,5 @@
 var cont = 0;
-    function agregar(){
+    function agregarm(){
         sustancia = $("#sustancia").val();
         idsustancia = $("#idprincipio").val();
         concentracion = $('#concentracion').val();
@@ -7,21 +7,21 @@ var cont = 0;
 
 
         var item  = '<tr class="even gradeA" id="sustancia'+cont+'">';
-            item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td>';
+            item +='<td><button type="button" class="btn btn-warning" onclick="eliminarm('+cont+');">X</button></td>';
             item += '<td><input type="hidden" name="idprincipio[]" value="'+idsustancia+'">'+sustancia+'</td>';
             item += '<td>'+concentracion+'</td><tr>';
             cont++;
 
         $('#detallecompo').append(item);
-        evaluar();
+        evaluarm();
     }
 //btn-addcon
 
     $(document).on('click','.btn-addcon',function(e){
-        agregar();
+        agregarm();
     });
 
-     function evaluar(){
+     function evaluarm(){
         if (cont>0){
             $("#btnGuardarMedicamento").show();
         }
@@ -31,10 +31,10 @@ var cont = 0;
         }
     }
 
-    function eliminar(index){
+    function eliminarm(index){
        $("#sustancia" + index).remove();
        cont--;
-       evaluar();
+       evaluarm();
     }
 
 $(document).on('click','.btn-btnGuardarMedicamento',function(e){

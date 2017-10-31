@@ -72,7 +72,8 @@
                     <input type="text" id="concentracion" class="form-control" placeholder="">
                 </div>
                 <div class="col-md-4 col-sm-4">
-                    <button type="button" id="addconcentracion" class="btn btn-info btn-addcon" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>                    
+                    <button type="button" id="addconcentracion" class="btn btn-info btn-addcon" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>
+                  
                 </div>
             </div>
             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">

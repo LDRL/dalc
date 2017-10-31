@@ -434,6 +434,11 @@
     <script src="{{asset('assets/js/medicamento/medicamento.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/proveedor.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/ubicacion.js')}}"></script>
+    <script src="{{asset('assets/js/medicamento/compra.js')}}"></script>
+        <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
+
+
+
     <script src="{{asset('assets/js/empleado/persona.js')}}"></script>
     
     <script src="{{asset('assets/js/plugins/validate/jquery.validate.min.js')}}"></script>

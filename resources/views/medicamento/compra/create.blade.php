@@ -14,7 +14,7 @@
                     <div class="col-md-12">
                         <div><br></div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" id="btnGuardarCompra">Guardar</button>
+                        <button type="button" class="btn btn-primary btn-btnGuardarCompra" id="btnGuardarCompra">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,6 @@
 </div>
 
 
-    <script src="{{asset('assets/js/medicamento/compra.js')}}"></script>
 <!-- Sweet alert -->
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.js')}}"></script>

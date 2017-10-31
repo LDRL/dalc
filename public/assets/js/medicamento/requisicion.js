@@ -36,10 +36,8 @@ function agregar(){
     }
 }
 
-$(document).ready(function() {
-    $('#bt_addm').click(function() {
-        agregar();
-    });
+$(document).on('click','.btn-addmr',function(e){
+    agregar();
 });
 
 function evaluar(){
