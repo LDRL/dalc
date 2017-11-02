@@ -81,11 +81,11 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label class="control-label">Nombre</label>
-                                        <input id="nombreb" type="text" class="form-control" aria-describedby="basic-addon1">   
+                                        <input id="nombreb" type="text" maxlength="75" class="form-control" aria-describedby="basic-addon1">   
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <label class="control-label">Apellido</label>
-                                        <input id="apellidob" type="text" class="form-control" aria-describedby="basic-addon1">   
+                                        <input id="apellidob" maxlength="75" type="text" class="form-control" aria-describedby="basic-addon1">   
                                     </div>
                                 </div>
 

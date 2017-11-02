@@ -36,7 +36,6 @@ class CBienhechor extends Controller
     }
     public function indexb($dato="",Request $request)
     {
-        //dd($dato);
             $bienhechor= Persona::Personas($dato)
             ->join('status as sts','persona.idstatus','=','sts.idstatus')
             ->join('tipopersona as tp','tp.idtipopersona','=','persona.idtipopersona')
@@ -112,8 +111,6 @@ class CBienhechor extends Controller
         ->select('d.idbienhechor',(DB::raw('DATE_FORMAT(d.fechadonacion,"%d/%m/%Y") as fechadonacion')),'d.monto','d.descripcion','td.donaciontipo','p.nombre','p.apellido')
         ->where('d.idbienhechor','=',$id)
         ->first();
-
-        //(DB::raw('DATE_FORMAT(d.fechadonacion,"%d/%m/%Y") as fechadonacion'))
         return response()->json($donativo);
     }
     public function listarbienhe($id1)
@@ -134,7 +131,6 @@ class CBienhechor extends Controller
     }
     public function nuevobienhechor(Request $request)
     {
-    	//dd('prueba');
     	$this->validabienhechor($request);
 
     	$bienhe=new Persona;
@@ -148,7 +144,6 @@ class CBienhechor extends Controller
     	$bienhe-> idstatus='3';
         $bienhe-> permanente=$request->get('tipobienhechor');
         $bienhe->save();
-        //dd($bienhe);
         return response()->json($bienhe);
     }
 
@@ -211,7 +206,6 @@ class CBienhechor extends Controller
         $st-> idstatus='4';
         $st->update();
         return response()->json($st);
-        //return Redirect::to('empleado/listadoen');
     }
 
     public function recuperarb($id)
@@ -220,7 +214,6 @@ class CBienhechor extends Controller
         $st-> idstatus='3';
         $st->update();
         return response()->json($st);
-        //return Redirect::to('empleado/listadoen');
     }
 
     public function validabienhechor($request){
