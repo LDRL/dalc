@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     $("#wizard").steps({
         /*onStepChanging: function (e)
-        {
+        {///
             
         },*/
         onFinishing: function(e){
