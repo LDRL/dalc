@@ -30,6 +30,8 @@ class CPHistorialController extends Controller
             $idpaciente = $request->paciente;
 
             $historial = new HistorialMedico;
+            $historial-> peso               = $request->peso;
+            $historial-> talla              = $request->talla;
             $historial-> temperatura        = $request->temperatura;
             $historial-> respiracionminuto  = $request->respiracion_minuto;
             $historial-> pulso              = $request->pulso_radial;
@@ -92,6 +94,7 @@ class CPHistorialController extends Controller
 
     public function validateRequest($request){
         $rules=[
+            'paciente' => 'required',
             'observacion' => 'required',
         ];
 

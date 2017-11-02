@@ -51,8 +51,8 @@ $(document).on('click','.btn-btnGuardarCompra',function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error</li>';
@@ -106,8 +106,8 @@ $(document).on('click','.btn-btnGuardarCom',function(e){
         error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';

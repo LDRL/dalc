@@ -24,10 +24,11 @@ $(document).on('click','.btn-btnGuardarPro',function(e){
             dataType: 'json',
             
             success: function (data) {
-                var cursos = $("#idproveedor");
+                /*var cursos = $("#idproveedor");
                     $(data).each(function(i, v){ // indice, valor
                         cursos.append('<option value="' + v.idproveedor + '">' + v.proveedor + '</option>');
-                })
+                })*/
+
                 /*
                 swal({
                     title:"Se registro una nueva marca",
@@ -36,6 +37,9 @@ $(document).on('click','.btn-btnGuardarPro',function(e){
                 });
                 */
                 alert('Se registro un proveedor nuevo');
+                console.log(data);
+                document.getElementById("idproveedor").value = data.idproveedor;
+                document.getElementById("provee").value=data.proveedor;
 
                 $('#formAgregarProveedor').trigger("reset");
                 $('#formModal').modal('hide');
@@ -44,8 +48,8 @@ $(document).on('click','.btn-btnGuardarPro',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';
@@ -177,8 +181,8 @@ $(document).on('click','.btn-btnGuardarProveedor',function(e){
         error: function (data) {
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
                 }
                 }else{
                     errHTML+='<li>Error.</li>';

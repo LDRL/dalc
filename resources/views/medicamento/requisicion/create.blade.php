@@ -44,7 +44,7 @@
                 <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
                     <div class="form-group">
                         <br>
-                        <button type="button" id="bt_addm" class="btn btn-info btn-addmr" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>
+                        <button type="button" id="bt_addmr" class="btn btn-info btn-addmr" title="Añadir"><i class="fa fa-plus-circle"></i>&nbsp;Añadir</button>
                     </div>
                 </div>
 
@@ -107,6 +107,65 @@
 
 <script type="text/javascript">
     $('.chosen-select').chosen({width: "100%"});
+
+    var cont = 0;
+function agregarmr(){
+    idmedicamento =$("#idmedicamento").val(); 
+    medicamento =$("#medica").val();
+    cantidad = $('#cantidad').val();
+    cantexistente = $('#cantexistente').val();
+
+    if(idmedicamento != '' && cantidad != '' && medicamento != '' && cantidad > 0)
+    {
+        if(cantexistente >= cantidad)
+        {
+            var item  = '<tr class="even gradeA" id="medicamento'+cont+'">';
+            item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td>';
+            item += '<td><input type="hidden" name="idmedicamento[]" value="'+idmedicamento+'">'+medicamento+'</td>';
+            item += '<td>'+cantidad+'</td><tr>';
+            cont++;
+                
+            limpiar();
+            evaluar();
+            $('#detallerequi').append(item);
+        }
+        else
+        {
+            alert("La cantidad requerida no debe ser mayor a la cantidad existente");
+        }
+    }
+    else{
+        alert("Error al ingresar el detalle del ingreso, revise los datos del medicamento")
+    }
+
+    function limpiar(){
+        $("#idmedicamento").val("");
+        $("#medica").val("");
+        $("#cantidad").val("");
+        $("#cantexistente").val("");
+    }
+}
+$(document).ready(function() {
+
+    $('#bt_addmr').click(function() {
+        agregarmr();
+    });
+});
+
+function evaluar(){
+    if (cont>0){
+        $("#btnGuardarRequisicion").show();
+    }
+    else{
+        $("#btnGuardarRequisicion").hide();
+    }
+}
+
+function eliminar(index){
+    $("#medicamento" + index).remove();
+    cont--;
+    evaluar();
+}
 </script>
 
 

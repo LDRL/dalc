@@ -64,6 +64,10 @@ class CompraController extends Controller
     public function store(Request $request)
     {
         try {
+
+            DB::beginTransaction();
+
+
             $this->validateRequest($request);
 
             $fechacompra=$request->get('fecha_compra');
@@ -98,7 +102,7 @@ class CompraController extends Controller
 
             $almacen->save();
 
-
+            DB::commit();
 
         } catch (Exception $e) {
             DB::rollback();

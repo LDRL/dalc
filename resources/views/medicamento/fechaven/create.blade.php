@@ -177,7 +177,7 @@ function agregar(){
         }
     }
     else{
-        alert("Error al ingresar el detalle del ingreso, revise los datos del articulo")
+        alert("Error al ingresar el detalle del ingreso, revise los datos del medicamento")
     }
 
     function limpiar(){

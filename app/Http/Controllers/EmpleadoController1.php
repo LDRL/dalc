@@ -72,7 +72,7 @@ class EmpleadoController1 extends Controller
             $persona-> apellido=$request->get('apellido');
             $persona-> direccion=$request->get('direccion');
             $persona-> telefono=$request->get('telefono');
-            $persona-> idtipopersona=$request->get('idtipopersona');
+            $persona-> idtipopersona=1;
             $persona-> idcivil=$request->get('idcivil');
             $persona-> nit=$request->get('nit');
             $persona-> dpi=$request->get('dpi');
@@ -229,12 +229,39 @@ class EmpleadoController1 extends Controller
         return response()->json($st);
     }
 
+    public function storeec(Request $request){
+        $this->validateRequestO($request);
+        $infec = new EstadoCivil;
+        $infec-> nombre =$request->get('nombre');
+        $infec->save();
+
+        return response()->json($infec);
+    }
+
+    public function storepu(Request $request){
+        $this->validateRequestO($request);
+        $infec = new Puesto;
+        $infec-> nombrepuesto =$request->get('nombre');
+        $infec->save();
+        
+        return response()->json($infec);
+    }
+
+    public function storeta(Request $request){
+        $this->validateRequestO($request);
+        $infec = new TipoAntecedente;
+        $infec-> nombreantecedente =$request->get('nombre');
+        $infec->save();
+        
+        return response()->json($infec);
+    }
+
+   
 
     public function validateRequest($request){                
         $rules=[
             'nombre' => 'required',
             'apellido' => 'required',
-            'idtipopersona' => 'required',
             'correo'=>'required',
             'fecha_nacimiento'=> 'required',
             'idpuesto'=>'required',
@@ -263,6 +290,17 @@ class EmpleadoController1 extends Controller
             'max'  => 'La capacidad del campo :attribute es :max'
         ];
         $this->validate($request, $rules,$messages);         
-    }   
+    }
+
+    public function validateRequestO($request){                
+        $rules=[
+            'nombre' => 'required',
+        ];
+
+        $messages=[
+            'required' => 'Debe ingresar :attribute.',
+        ];
+        $this->validate($request, $rules,$messages);         
+    }
 
 }

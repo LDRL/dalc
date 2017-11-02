@@ -189,6 +189,15 @@ Route::group(['prefix'=>'empleado'], function(){
 	Route::put('recuperar/{id}','EmpleadoController1@recuperar');
 
 	Route::get('show/{id}','EmpleadoController1@show');
+
+
+	//Catalogos
+
+	Route::post('estadocivil/store','EmpleadoController1@storeec');
+	Route::post('puesto/store','EmpleadoController1@storepu');
+	Route::post('tipoantecedente/store','EmpleadoController1@storeta');
+
+
 	Route::get('/logout', 'Auth\LoginController@logout');
 });
 

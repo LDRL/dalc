@@ -122,16 +122,12 @@
                             </div>
                         </div>
 
+                        
+
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label>Tipo Persona</label>
-                                <select name="idtipopersona" id="idtipopersona" class="form-control select2" data-live-search="true">
-                                @if (isset($tipopersona))
-                                @foreach($tipopersona as $tip)
-                                    <option value="{{$tip->idtipopersona}}">{{$tip->tipopersona}}</option>
-                                @endforeach
-                                @endif
-                                </select>
+                                <label for="descripcion">Nit</label>
+                                <input type="text" name="nit"  id="nit" class="form-control" placeholder="..." maxlength="9">
                             </div>
                         </div>
                     </div>
@@ -229,6 +225,56 @@
     </div>
 </div>
 
+
+<div class="col-lg-12">
+                <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="inputTitle"></h4>
+                            </div>
+
+                        <form role="form" id="formAgregar">
+                            <div class="modal-header">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                        <label class="control-label">Nombre</label>
+                                        <input id="nombre_" name="nombre" type="text" class="form-control" aria-describedby="basic-addon1">   
+                                    </div>
+                                </div>
+                            </div> 
+                        </form>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-primary" id="btnGuardarO">Guardar</button>
+                            <input type="hidden" id="idb" name="idb" value="0"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+<div class="modal fade" id="erroresModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">Errores</h4>
+          </div>
+
+          <div class="modal-body">
+            <ul style="list-style-type:circle" id="erroresContent"></ul>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+</div>
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/plugins/footable/footable.all.min.js')}}"></script>
 <script src="{{asset('assets/js/validacion.js')}}"></script>
@@ -265,6 +311,34 @@
 
 
 <script type="text/javascript">
+
+    $("#btn-addec").click(function(){
+        //$(document).on('click','.btn-addB',function(){
+                $('#inputTitle').html("Nuevo Estado Civil");
+                $('#formAgregar').trigger("reset");
+                $('#btnGuardarO').val('addec');
+                $('#formModal').modal('show');
+            //});
+    });
+
+    $("#btn-addp").click(function(){
+        //$(document).on('click','.btn-addB',function(){
+                $('#inputTitle').html("Nuevo Puesto");
+                $('#formAgregar').trigger("reset");
+                $('#btnGuardarO').val('addp');
+                $('#formModal').modal('show');
+            //});
+    });
+
+    $("#btn-addta").click(function(){
+        //$(document).on('click','.btn-addB',function(){
+                $('#inputTitle').html("Nuevo Tipo Antecedente");
+                $('#formAgregar').trigger("reset");
+                $('#btnGuardarO').val('addt');
+                $('#formModal').modal('show');
+            //});
+    });
+
     var cont = 0;
     function agregar(){
 
@@ -302,4 +376,78 @@
        cont--;
        evaluar();
     }
+
+
+
+    $("#btnGuardarO").click(function(e){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+    var miurl;
+    var urlraiz=$("#url_raiz_proyecto").val();  
+
+    var status = $("#btnGuardarO").val();
+    var formData = {
+            nombre:$("#nombre_").val(),
+        };
+
+
+
+    if (status == "addec") {
+        miurl = urlraiz+"/empleado/estadocivil/store";
+        console.log(miurl);
+    }
+    if (status == "addp") {
+        miurl = urlraiz+'/empleado/puesto/store';
+    }
+    if (status == "addt") {
+        miurl = urlraiz+'/empleado/tipoantecedente/store';
+    }
+
+    $.ajax({
+        type: "POST",
+        url: miurl,
+        data: formData,
+        dataType: 'json',
+
+        success: function (data) {
+            if (status == "addec") {
+                $(data).each(function(i,v){
+                    $("#idcivil").append('<option selected value='+v.idcivil+'">'+v.nombre+'</option>');
+                    
+                });
+            }
+            if (status == "addp") {
+                $(data).each(function(i,v){
+                    $("#idpuesto").append('<option selected value='+v.idpuesto+'">'+v.nombrepuesto+'</option>');
+                    
+                });
+            }
+            if (status == "addt") {
+                $(data).each(function(i,v){
+                    $("#idtipoantecedente").append('<option selected value='+v.idtipoantecedente+'">'+v.nombreantecedente+'</option>');
+                    ;
+                });
+            }
+            
+            
+            $('#formModal').modal('hide');            
+        },
+        error: function (data) {
+            $('#loading').modal('hide');
+            var errHTML="";
+            if((typeof data.responseJSON != 'undefined')){
+                for( var er in data.responseJSON.errors){
+                                errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+                }
+            }else{
+                errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
+            }
+            $("#erroresContent").html(errHTML); 
+            $('#erroresModal').modal('show');
+        }
+    });
+});
 </script>

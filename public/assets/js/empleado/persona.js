@@ -85,11 +85,12 @@
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
-                        errHTML+='<li>Error al borrar el &aacute;rea de atenci&oacute;n.</li>';
+                        errHTML+='<li>Error</li>';
                     }
                 $("#erroresContentEmpleado").html(errHTML); 
                 $('#erroresModalEmpleado').modal('show');
@@ -114,7 +115,6 @@
             nit: $('#nit').val(),
             correo: $('#correo').val(),
             fecha_nacimiento: $('#birth_date').val(),
-            idtipopersona: $('#idtipopersona').val(),
             fecha_inicio: $('#date_work_start').val(),
             salario: $('#salario').val(),
             idpuesto: $('#idpuesto').val(),
@@ -157,8 +157,8 @@
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error al guardar el registro</li>';
