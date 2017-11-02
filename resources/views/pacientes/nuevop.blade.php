@@ -1,6 +1,7 @@
 <link href="{{asset('assets/css/plugins/steps/jquery.steps.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -22,7 +23,7 @@
                                     <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
                                         <label>Nombres y apellidos</label>
                                         <div class="form-group">
-                                            <input id="nombrep" name="nino" type="text" class="form-control required">
+                                            <input id="nombrep" maxlength="45" name="nino" type="text" class="form-control required">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
@@ -32,14 +33,14 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <input id="fechanacp" type="text" class="form-control" maxlength="10" onkeypress="return valida(event);">
+                                                <input id="fechanacp" type="text" class="form-control" maxlength="10" onkeypress="mascaraData( this)" >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
                                         <label>Talla </label>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="tallap">
+                                            <input type="text" maxlength="5" class="form-control" id="tallap" onkeypress="return valida(event);">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
@@ -55,7 +56,7 @@
                                     <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                         <div class="form-group">
                                             <label>Procedencia</label>
-                                            <input id="procedenciap" type="text" class="form-control">
+                                            <input id="procedenciap" type="text" maxlength="45" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -94,21 +95,21 @@
                                     <div class="col-lg-3 col-md-4">
                                         <div class="form-group">
                                             <label>Nombres *</label>
-                                            <input id="nombrefam" type="text" class="form-control">
+                                            <input id="nombrefam" type="text" maxlength="60" class="form-control">
                                         </div>
                                     </div>    
                                     <div class="col-lg-1 col-md-2">
                                         <div class="form-group">
                                             <label>Edad</label>
                                             <div class="input-group">
-                                                <input id="fenacfam" type="text" class="form-control" maxlength="2" onkeypress="return valida(event);">
+                                                <input id="fenacfam" type="text" class="form-control" maxlength="3" onkeypress="return valida(event);">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-1 col-md-2">
                                         <div class="form-group">
                                             <label>Talla </label>
-                                            <input type="text" class="form-control" id="tallafam">
+                                            <input type="text" class="form-control" maxlength="5" id="tallafam">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-4">
@@ -123,7 +124,7 @@
                                     <div class="col-lg-3 col-md-4">
                                         <div class="form-group">
                                             <label>Ocupación</label>
-                                            <input id="ocupacionfam" type="text" class="form-control">
+                                            <input id="ocupacionfam" maxlength="50" type="text" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -358,7 +359,7 @@
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>¿Cuánto tiempo duro el trabajo del parto?</label>
-                                        <input id="tparto" type="text" class="form-control">
+                                        <input id="tparto" maxlength="10" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
@@ -426,19 +427,19 @@
                                 <div class="col-lg-4" >
                                     <div class="form-group">
                                         <label>¿Con quien?</label>
-                                        <input id="conquien" type="text" class="form-control">
+                                        <input id="conquien" maxlength="50" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <div class="form-group">
                                         <label>¿Cuántas veces?</label>
-                                        <input id="veces" type="text" class="form-control">
+                                        <input id="veces" type="text" class="form-control" onkeypress="return valida(event);">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label>Algún comentario que le hicieron de su embarazo durante su control</label>
-                                        <input id="comentario" type="text" class="form-control">
+                                        <input id="comentario" maxlength="100" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -670,7 +671,7 @@
                                 <div class="col-lg-4">
                                     <label>Persona Responsable *</label>
                                     <div class="form-group">
-                                        <input id="nombreres" name="responsable" type="text" class="form-control required">
+                                        <input id="nombreres" name="responsable" maxlength="45" type="text" class="form-control required">
                                     </div>
                                 </div>   
                                 <div class="col-lg-2">
@@ -682,7 +683,7 @@
                                 <div class="col-lg-4">
                                     <label>Dirección</label>
                                     <div class="form-group">
-                                        <input id="direccionres" name="confirm" type="text" class="form-control">
+                                        <input id="direccionres" maxlength="50" name="confirm" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -753,6 +754,7 @@
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/pacientes/paciente.js')}}"></script>
+<script src="{{asset('assets/js/plugins/chosen/chosen.jquery.js')}}"></script>
 
 
 
