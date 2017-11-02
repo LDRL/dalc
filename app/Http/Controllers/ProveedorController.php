@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Proveedor;
 use DB;
 use PDF;
 
-
 class ProveedorController extends Controller
 {
-    //
-        public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -143,4 +142,5 @@ class ProveedorController extends Controller
         ];
         $this->validate($request, $rules,$messages);         
     }
+    
 }

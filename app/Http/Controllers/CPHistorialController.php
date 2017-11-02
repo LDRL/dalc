@@ -28,17 +28,6 @@ class CPHistorialController extends Controller
 
             $mytime = Carbon::now('America/Guatemala');
             $idpaciente = $request->paciente;
-            $rec = 0;
-
-            if($request->reconoce == '0')
-            {
-                $rec = 0;
-            }
-            if($request->reconoce == '1')
-            {
-                $rec = 1;
-            }
-
 
             $historial = new HistorialMedico;
             $historial-> temperatura        = $request->temperatura;
@@ -65,7 +54,7 @@ class CPHistorialController extends Controller
             $historial-> motor 				= $request->motor;
             $historial-> reflejos 			= $request->reflejos;
             $historial-> estadomental 		= $request->estado_mental;
-            $historial-> reqconoce 			= $rec;
+            $historial-> reqconoce 			= $request->reconoce;
             $historial-> fecha              = $mytime->toDateTimeString();   
             $historial-> idpaciente         = $idpaciente;
 

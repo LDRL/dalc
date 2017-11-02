@@ -134,6 +134,8 @@
                             <!--<li><a href="{{url('/empleado/index')}}">Ingreso antecedentes</a></li>-->
                         </ul>
                     </li>
+                                        @role('medicamento') 
+
 
                     <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Usuario</span>  <span class="fa arrow"></span></a>
@@ -147,6 +149,7 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(16);">Ingreso Rol</a></li>
                         </ul>
                     </li>
+                    @endrole
                 </ul>
             </div>
         </nav>
@@ -435,8 +438,8 @@
     <script src="{{asset('assets/js/medicamento/proveedor.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/ubicacion.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/compra.js')}}"></script>
-        <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
-
+    <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
+    <script src="{{asset('assets/js/pacientes/pacienteexamen.js')}}"></script>
 
 
     <script src="{{asset('assets/js/empleado/persona.js')}}"></script>

@@ -61,6 +61,7 @@ Route::group(['prefix'=>'paciente'], function(){
 	Route::post('addidioma','CPaciente@addidioma');
 	Route::post('addanomalia','CPaciente@addanomalia');
 	Route::post('addlugar','CPaciente@addlugar');
+	Route::post('addrel','CPaciente@addrel');
 	Route::get('detallespaciente/{id}','CPaciente@detallespaciente');
 	Route::get('pdf/{id}','CPaciente@pdf');
 	Route::put('baja/{id}','CPaciente@baja');
@@ -226,3 +227,7 @@ Route::get('paciente/historial/show/{id}','CPHistorialController@show');
 Route::get('paciente/historial/examen/show/{id}','CPHistorialController@showe');
 
 Route::get('/{slug?}','HomeController@index');
+
+
+
+

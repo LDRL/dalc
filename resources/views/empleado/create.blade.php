@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label for="puesto">Estado Civil</label>
                                 <select id="idcivil" class="form-control select2" data-live-search="true">
@@ -65,6 +65,11 @@
                                 @endif
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                            <br>
+                            <button id="btn-addec" class="btn btn-success btn-md btn-addec" title="Agregar estado civil"><i class="fa fa-window-restore"></i></button>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -83,7 +88,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label for="puesto">Puesto</label>
                                 <select name="idpuesto" id="idpuesto" class="form-control select2" data-live-search="true">
@@ -94,6 +99,11 @@
                                 @endif
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                            <br>
+                            <button id="btn-addp" class="btn btn-success btn-md btn-addp" title="Agregar puesto"><i class="fa fa-window-restore"></i></button>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -127,7 +137,7 @@
                     </div>
                     <div class="row">
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
                                 <label>Tipo Antecedente</label>
                                 <select name="idtipoantecedente" id="idtipoantecedente" class="form-control select2" data-live-search="true">
@@ -138,6 +148,11 @@
                                 @endif
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="col-lg-1 col-md-2 col-sm-2 col-xs-2">
+                            <br>
+                            <button id="btn-addta" class="btn btn-success btn-md btn-addta" title="Agregar tipo antecedente"><i class="fa fa-window-restore"></i></button>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
