@@ -67,19 +67,8 @@ $(document).ready(function(){
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
             });
+            
 
-
-            var resultado="ninguno";
-            var porNombre=document.getElementsByName("reconoce");
-
-            for(var i=0;i<porNombre.length;i++)
-            {
-                if(porNombre[i].checked)
-                    resultado=porNombre[i].value;
-            }
-
-            console.log(resultado);
-           
             var formData = {
                 temperatura:$("#temperatura").val(),
                 presion_arterial:$("#parterial").val(),
@@ -106,7 +95,7 @@ $(document).ready(function(){
                 motor: $("#motor").val(),
                 reflejos :$("#reflejos").val(),
                 estado_mental :$("#estadomental").val(),
-                reconoce :resultado,
+                reconoce :$("#reconoce").val(),
                 observacion: itemsData,
                 paciente: $("#idpaciente").val(),
             }
