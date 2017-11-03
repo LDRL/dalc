@@ -187,8 +187,8 @@ $(document).ready(function(){
                     $('#loading').modal('hide');
                     var errHTML="";
                     if((typeof data.responseJSON != 'undefined')){
-                        for( var er in data.responseJSON){
-                            errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                        for( var er in data.responseJSON.errors){
+                            errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                         }
                     }else{
                         errHTML+='<li>Error, intente mas tarde gracias.</li>';
@@ -399,43 +399,43 @@ $("#btnGuardar").click(function(e){
         success: function (data) {
             if (status == "addbi") {
                 $(data).each(function(i,v){
-                    $("#infecciontipo").append('<option selected value='+v.idtipoinfeccion+'">'+v.nombre+'</option>');
+                    $("#infecciontipo").append('<option selected value='+v.idtipoinfeccion+'>'+v.nombre+'</option>');
                     agregarinfeccion();
                 });
             }
             if (status == "addbe") {
                 $(data).each(function(i,v){
-                    $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'">'+v.nombre+'</option>');
+                    $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
                     agregarenfermedad();
                 });
             }
             if (status == "addba") {
                 $(data).each(function(i,v){
-                    $("#animaltipo").append('<option selected value='+v.idanimal+'">'+v.nombreanimal+'</option>');
+                    $("#animaltipo").append('<option selected value='+v.idanimal+'>'+v.nombreanimal+'</option>');
                     agregaranimal();
                 });
             }
             if (status == "addbp") {
                 $(data).each(function(i,v){
-                    $("#personalati").append('<option selected value='+v.idpersonalatiende+'">'+v.nombre+'</option>');
+                    $("#personalati").append('<option selected value='+v.idpersonalatiende+'>'+v.nombre+'</option>');
                     agregarpersonal();
                 });
             }
             if (status == "addbm") {
                 $(data).each(function(i,v){
-                    $("#medicamento").append('<option selected value='+v.idmedicina+'">'+v.nombre+'</option>');
+                    $("#medicamento").append('<option selected value='+v.idmedicina+'>'+v.nombre+'</option>');
                     agregarmedicina();
                 });
             }
             if (status == "addpv") {
                 $(data).each(function(i,v){
-                    $("#vacunass").append('<option selected value='+v.idvacuna+'">'+v.vacuna+'</option>');
+                    $("#vacunass").append('<option selected value='+v.idvacuna+'>'+v.vacuna+'</option>');
                     agregarvacuna();
                 });
             }
             if (status == "addbep") {
                 $(data).each(function(i,v){
-                    $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'">'+v.nombre+'</option>');
+                    $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
                     agregarpadecidos();
                 });
             }
@@ -469,12 +469,12 @@ $("#btnGuardar").click(function(e){
             }
             if (status == "addblug") {
                 $(data).each(function(i,v){
-                    $("#origenp").append('<option selected value='+v.idmunicipio+'">'+v.municipio+'</option>');
+                    $("#origenp").append('<option selected value='+v.idmunicipio+'>'+v.municipio+'</option>');
                 });
             }
             if (status == "addbrel") {
                 $(data).each(function(i,v){
-                    $("#religionfam").append('<option selected value='+v.idreligion+'">'+v.religion+'</option>');
+                    $("#religionfam").append('<option selected value='+v.idreligion+'>'+v.religion+'</option>');
                 });
             }
             $('#formModal').modal('hide');            
@@ -483,8 +483,8 @@ $("#btnGuardar").click(function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                                errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                                errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';

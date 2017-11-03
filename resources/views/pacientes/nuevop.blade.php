@@ -1,7 +1,6 @@
 <link href="{{asset('assets/css/plugins/steps/jquery.steps.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet" />
-<link href="{{asset('assets/css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -33,7 +32,7 @@
                                                 <span class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <input id="fechanacp" type="text" class="form-control" maxlength="10" onkeypress="mascaraData( this)" >
+                                                <input id="fechanacp" type="text" class="form-control" maxlength="10" onkeypress="mascaraData(this)" >
                                             </div>
                                         </div>
                                     </div>
@@ -754,7 +753,6 @@
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/pacientes/paciente.js')}}"></script>
-<script src="{{asset('assets/js/plugins/chosen/chosen.jquery.js')}}"></script>
 
 
 
