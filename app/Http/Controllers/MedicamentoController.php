@@ -93,11 +93,6 @@ class MedicamentoController extends Controller
 
             $medicamento->save();
 
-            $medicamentos = DB::table('medicamento as med')
-            ->join('marca as mar','med.idmarca','=','mar.idmarca')
-            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-            ->select('med.idmedicamento','med.medicamento','pre.nombre as presentacion','mar.marca')
-            ->get();
 
             foreach ($miArray as $key => $value) {
                 $composicion = new Composicion;
@@ -107,6 +102,14 @@ class MedicamentoController extends Controller
 
                 $composicion->save();
             }
+
+            $medicamentos = DB::table('medicamento as med')
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->select('med.idmedicamento','med.medicamento','pre.nombre as presentacion','mar.marca')
+            ->where('med.idmedicamento','=',$medicamento->idmedicamento)
+            ->first();
+
             DB::commit();
         } catch (Exception $e) {
             DB::rollback();

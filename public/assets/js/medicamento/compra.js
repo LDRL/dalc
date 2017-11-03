@@ -74,11 +74,13 @@ $(document).on('click','.btn-btnGuardarCom',function(e){
     });
 
     var formData = {
-        idproveedor: $("#idproveedor").val(),
-        idmedicamento: $("#idmedicamento").val(),
+        proveedor: $("#idproveedor").val(),
+        medicamento: $("#idmedicamento").val(),
         fecha_compra: $("#buy_date").val(),
         fecha_vencimiento: $("#expiration_date").val(),
         precio: $("#precio").val(),
+        cantidad: $("#cantidad").val(),
+        ubicacion: $("#idubicacion").val(),
     };
         
     $.ajax({
@@ -88,32 +90,26 @@ $(document).on('click','.btn-btnGuardarCom',function(e){
         dataType: 'json',
             
         success: function (data) {
-                var cursos = $("#idmarca");
-                    $(data).each(function(i, v){ // indice, valor
-                        cursos.append('<option value="' + v.idmarca + '">' + v.marca + '</option>');
-                })
-                /*
-                swal({
-                    title:"Se registro una nueva marca",
-                    text: "Gracias",
-                    type: "success"
-                });
-                */
-                alert('Se registro una nueva compra');
-                $('#formAgregarCompra').trigger("reset");
-                $('#formModal').modal('hide');
+            wal({
+                title:"Se registro una nueva compra",
+                text: "Gracias",
+                type: "success"
+            });
+
+            $('#formAgregarCompra').trigger("reset");
+            $('#formModalUsuario').modal('hide');
         },
         error: function (data) {
-                var errHTML="";
-                if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON.errors){
-                        errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
-                    }
-                    }else{
-                        errHTML+='<li>Error.</li>';
-                    }
-                $("#erroresContentMarca").html(errHTML); 
-                $('#erroresModalMarca').modal('show');
-        },
+            var errHTML="";
+            if((typeof data.responseJSON != 'undefined')){
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
+                }
+            }else{
+                errHTML+='<li>Error.</li>';
+            }
+            $("#erroresContentCM").html(errHTML); 
+            $('#erroresModalCM').modal('show');
+       }
     });
 });

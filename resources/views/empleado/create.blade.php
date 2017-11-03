@@ -415,13 +415,13 @@
         success: function (data) {
             if (status == "addec") {
                 $(data).each(function(i,v){
-                    $("#idcivil").append('<option selected value='+v.idcivil+'">'+v.nombre+'</option>');
+                    $("#idcivil").append('<option selected value='+v.idcivil+'>'+v.nombre+'</option>');
                     
                 });
             }
             if (status == "addp") {
                 $(data).each(function(i,v){
-                    $("#idpuesto").append('<option selected value='+v.idpuesto+'">'+v.nombrepuesto+'</option>');
+                    $("#idpuesto").append('<option selected value='+v.idpuesto+'>'+v.nombrepuesto+'</option>');
                     
                 });
             }

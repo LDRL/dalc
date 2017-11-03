@@ -88,16 +88,16 @@
                     
                     @role('medicamento') 
                     <li>
-                        <a href="#"><i class="fa fa-medkit"></i> <span class="nav-label">Medicamentos</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-medkit"></i> <span class="nav-label">Farmacia</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(4);">Listado medicamento</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(4);">Medicamento</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(10);">Ingreso medicamento</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(5);">Listado Compra</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(5);">Compra</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarmodalempleado(3);">Ingreso Inventario</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(7);">Listado Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(17);">Medicamento vencidos</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Medicamento descargue</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(7);">Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreseo Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso x vencimiento</a></li>
  
                         </ul>
                     </li>
@@ -171,9 +171,6 @@
                     <!-- COLOCAR COLOR AL NAV -->
                     <ul class="nav navbar-top-links navbar-right ">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bienvenido a HNMHP.</span>
-                        </li>
-                        <li>
                             <a href="{{ url('/logout') }}">
                                 <i class="fa fa-sign-out"></i> Cerrar Sesion
                             </a>
@@ -197,10 +194,12 @@
                     <div id="capa_formularios" class="div_modal"></div>
                     <div id="capa_busqueda" class="div_modal"></div>
 
+
                     <div id="modales" class="div_modal"></div>
                     <div id="modales1"></div>
                     <div id="modales2" class="div_modal"></div>
                     <div id="modales3" class="div_modal"></div>
+
 
                     
                 </div>

@@ -51,6 +51,7 @@ class EmpleadoController1 extends Controller
     {
         try {
             $this->validateRequest($request);
+            DB::beginTransaction();
 
             $miArray = $request->items;
 
@@ -110,7 +111,7 @@ class EmpleadoController1 extends Controller
                 $tramite-> fechavencimiento=$fechavencimiento;
                 $tramite->save();
             }
-
+        DB::commit();
 
         } catch (Exception $e) {
             DB::rollback();
@@ -199,18 +200,20 @@ class EmpleadoController1 extends Controller
         ->join('empleado as emp','per.idpersona','=','emp.idpersona')
         ->join('estadocivil as est','per.idcivil','=','est.idcivil')
         ->select('emp.idempleado','per.nombre','per.apellido','per.dpi','per.nit',
-                'per.direccion','per.telefono','per.correo','est.nombre as estadocivil','per.fechanacimiento')
+                'per.direccion','per.telefono','per.correo','est.nombre as estadocivil',(DB::raw('DATE_FORMAT(per.fechanacimiento,"%d/%m/%Y") as fechanacimiento')))
         ->where('per.idpersona','=',$id)
         ->first();
 
         $tramite = DB::table('tramite as tra')
         ->join('empleado as emp','tra.idempleado','=','emp.idempleado')
         ->join('tipoantecedente as tip','tra.idtipoantecedente','=','tip.idtipoantecedente')
-        ->select('tra.idtramite','tip.nombreantecedente','tra.fechavencimiento')
+        ->select('tra.idtramite','tip.nombreantecedente',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')))
         ->where('tra.idempleado','=',$detalle->idempleado)
         ->get();
 
-        return view('empleado.detalle',["detalle"=>$detalle,"tramite"=>$tramite]);        
+        $tipoantecedente = TipoAntecedente::all();
+
+        return view('empleado.detalle',["detalle"=>$detalle,"tramite"=>$tramite,"tipoantecedente"=>$tipoantecedente]);        
     }
 
     public function delete(Request $request)

@@ -87,18 +87,18 @@ $(document).on('click','.btn-btnGuardarMedicamento',function(e){
                     cancelButtonClass: 'btn btn-danger',
                     buttonsStyling: false
                     }).then(function () {
-                        var miurl=urlraiz+"/medicamento/compra/add";
+                        var miurl=urlraiz+"/medicamento/compra/addc/"+data.idmedicamento;
                         var errHTML="";
                         $.ajax({
                             url: miurl
                         }).done( function(resul) 
                         {
-                            $("#modales").html(resul);
+                            $("#capa_modal").html(resul);
                             $('#inputTitleUsuario').html("Nuevo ingreso medicamento al invetario");
-                            $('#formModalUsuario').modal('show');
+                            $('#formModalUsuario').modal('show'); 
                         }).fail(function() 
                         {
-                            $("#modales").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                            $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
                         });
                     }, function (dismiss) {
                         // dismiss can be 'cancel', 'overlay',
