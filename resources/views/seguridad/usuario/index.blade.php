@@ -29,7 +29,7 @@
 				        
 				            <div class="ibox-content">
                     			<div class="table-responsive">
-                        			<table class="table table-striped table-bordered table-condensed table-hover">
+                        			<table class="table table-striped table-bordered table-condensed table-hover dataTables-index-Uactivo">
 				                        <thead>
 				                            <th  style="width: 5%">Id</th>
 				                            <th  style="width: 20%">Nombre</th>
@@ -67,6 +67,49 @@
 	</div>
 </div>
 
+<script src="{{asset('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
+<script>
+    $('.dataTables-index-Uactivo').DataTable({
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "No hay datos disponibles en la tabla",
+                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
+                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Mostrar _MENU_ registros",
+                    "loadingRecords": "cargando...",
+                    "processing":     "Processing...",
+                    "search":         "Buscar:",
+                    "total":          "total",          
+                    "zeroRecords":    "No se encontraron registros coincidentes",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                },
+                columns: [
+                null,
+                null,
+                null,
+                null,
+                null
+                ],
+
+                aLengthMenu:[
+                10,15,20],
+
+                buttons: [
+                    
+                ]
+    });
+</script>
+<!--
 <script type="text/javascript">
         document.getElementById('dato_buscado').focus();
 
@@ -84,4 +127,4 @@
         });
 
     </script>
-
+-->

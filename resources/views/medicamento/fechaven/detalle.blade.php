@@ -5,16 +5,16 @@
 <div class="tabs-container" id="contentsecundario">
 	<div class="row">
 	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3 class="box-title" align="center">Datos del encabezado de una descarga de medicamento</h3>
+            <h3 class="box-title" align="center">Datos del encabezado de una descarga de medicamento por vencimiento</h3>
             <hr style="border-color:black;"/>
-	        <h4><strong>Nombre Paciente:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->nombrepa}}</h4>
+
 	        <h4><strong>Usuario:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->name}}</h4>
 	        <h4><strong>Tipo Requisición:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->tiporequisicion}}</h4>
 	    </div>
 	</div>
 
     <div>
-        <a href="javascript:void(0);" onclick="cargarindex(7);">
+        <a href="javascript:void(0);" onclick="cargarindex(17);">
             <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado Empleado"><i class="fa fa-arrow-circle-left"></i></button>
         </a>
 

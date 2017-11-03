@@ -2,7 +2,7 @@
     <div class="ibox-content m-b-sm border-bottom">
         <h4 class="box-title" align="center">Agregar medicamento a un paciente</h4> 
         <a href="javascript:void(0);" onclick="cargarindex(7);">
-            <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado Empleado"><i class="fa fa-arrow-circle-left"></i></button>
+            <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado medicamento por requisición"><i class="fa fa-arrow-circle-left"></i></button>
         </a>
         <hr style="border-color:black;"/>
         <div class="panel-body">

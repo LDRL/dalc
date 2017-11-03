@@ -90,10 +90,12 @@ $(document).on('click','.btn-btnGuardarCom',function(e){
         dataType: 'json',
             
         success: function (data) {
-            wal({
-                title:"Se registro una nueva compra",
+            swal({
+                title:"Envio correcto",
                 text: "Gracias",
                 type: "success"
+            }).then(function () {
+                cargarindex(5);
             });
 
             $('#formAgregarCompra').trigger("reset");

@@ -70,18 +70,18 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 "language": {
                     "decimal":        "",
-                    "emptyTable":     "No data available in table",
+                    "emptyTable":     "No hay datos disponibles en la tabla",
                     "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
                     "infoEmpty":      "Showing 0 to 0 of 0 entries",
                     "infoFiltered":   "(filtered from _MAX_ total entries)",
                     "infoPostFix":    "",
                     "thousands":      ",",
                     "lengthMenu":     "Mostrar _MENU_ registros",
-                    "loadingRecords": "Loading...",
+                    "loadingRecords": "cargando...",
                     "processing":     "Processing...",
                     "search":         "Buscar:",
                     "total":          "total",          
-                    "zeroRecords":    "No matching records found",
+                    "zeroRecords":    "No se encontraron registros coincidentes",
                     "paginate": {
                         "first":      "First",
                         "last":       "Last",
@@ -101,7 +101,7 @@
                 ],
 
                 aLengthMenu:[
-                5,10,15],
+                10,15,25],
 
                 buttons: [
                     

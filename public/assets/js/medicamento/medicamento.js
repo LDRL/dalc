@@ -94,7 +94,7 @@ $(document).on('click','.btn-btnGuardarMedicamento',function(e){
                         }).done( function(resul) 
                         {
                             $("#capa_modal").html(resul);
-                            $('#inputTitleUsuario').html("Nuevo ingreso medicamento al invetario");
+                            $('#inputTitleUsuario').html("Nuevo ingreso medicamento al inventario");
                             $('#formModalUsuario').modal('show'); 
                         }).fail(function() 
                         {

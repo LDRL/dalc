@@ -24,6 +24,26 @@ function cargarmodalempleado(arg){
 	}) ;
 }
 
+function cargarmedi(arg){
+  var urlraiz=$("#url_raiz_proyecto").val();
+  if(arg==3){var miurl=urlraiz+"/medicamento/compra/add"; var titulo="Nueva compra de un medicamento" ; }
+
+
+   $.ajax({
+    url: miurl
+    }).done( function(resul) 
+    {
+     $("#capa_modal").html(resul);
+     $('#inputTitleUsuario').html(titulo);
+    $('#formModalUsuario').modal('show');
+   
+    }).fail( function() 
+   {
+    $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+   }) ;
+}
+
+
 
 function cargarmodal(arg){
 	var urlraiz=$("#url_raiz_proyecto").val();
@@ -149,7 +169,7 @@ function detalle(arg,id)
   if(arg==7){var miurl =urlraiz+"/medicamento/requisicion/show/"+id;}
   if(arg==9){var miurl =urlraiz+"/paciente/historial/show/"+id;}
   if(arg==10){var miurl =urlraiz+"/paciente/historial/examen/show/"+id;}
-
+  if(arg==17){var miurl =urlraiz+"/medicamento/vencimiento/show/"+id;}
 
 
 
@@ -234,36 +254,19 @@ function busqueda(arg,id){
     }) ;
 }
 
-
-
-$(document).on('click','.btn-vacaciones',function(){
-            var errHTML="";
-            idempleado=$(this).val();
-            $.get('empleados/calculardias/'+idempleado,function(data){
-               
-                var horas = '';
-                var dias = '';
-                var tdh;
-
-                $.each(data,function(){
-                    horas = data[0];
-                    dias = data[1];
-                    autorizacion = data[2];
-                })
-
-                $('#inputTitle').html("Saldo de vacaciones");
-                $('#formAgregar').trigger("reset");
-                $('#formModal').modal('show');
-                $('#datomar').attr('disabled', 'disabled');
-                $('#hhoras').attr('disabled', 'disabled');
-                $('#dacumulado').attr('disabled', 'disabled');
-                $('#btnguardarV').attr('disabled', 'disabled'); 
-
-                tdh = (dias + ' ' + 'dias' + ' ' + 'con' +' '+ horas +' '+ 'horas');
-                document.getElementById('dacumulado').value = tdh;
-                document.getElementById('tdias').value = dias;
-                document.getElementById('thoras').value = horas;
-                
-            });
-        });
-
+function cargardetalle(arg,id) 
+{ 
+      var urlraiz=$("#url_raiz_proyecto").val(); 
+        if(arg==10){var miurl =urlraiz+"/paciente/historial/examen/show/"+id;} 
+        $.ajax({ 
+          url: miurl 
+        }).done( function(resul)  
+        { 
+            $("#cargardetalle").html(resul); 
+        }).fail( function()  
+        { 
+            $("#cargardetalle").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>'); 
+        }); 
+      //$("#capa_modal").html($("#cargador_empresa").html()); 
+ 
+} 
