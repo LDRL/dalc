@@ -21,7 +21,7 @@
                 <div class="modal-footer">
                     <div class="col-md-12">
                         <div><br></div>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>-->
                         <button type="button" class="btn btn-primary btn-btnGuardarMedicamento" id="btnGuardarMedicamento" style="display:none;">Guardar</button>
                     </div>
                 </div>

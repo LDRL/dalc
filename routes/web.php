@@ -94,6 +94,7 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::post('compra/store','CompraController@store');
 	//Proveedor
 	Route::get ('proveedor/index','ProveedorController@index');
+	Route::get ('proveedor/inactivo','ProveedorController@inactivo');
 	Route::get ('proveedor/add','ProveedorController@add');
 	Route::get ('proveedor/addp','ProveedorController@addp');
 	Route::post('proveedor/store','ProveedorController@store');
@@ -101,6 +102,7 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get('proveedor/busqueda/{id}','ProveedorController@busqueda');
 	Route::get('proveedor/listaredit/{id}','ProveedorController@listaredit');
 	Route::put('proveedor/update/{id}','ProveedorController@update');
+	Route::put('proveedor/recuperar/{id}','ProveedorController@recuperar');
 	//Route::put('updateAca/{id}','UController@updateAca');
 
 	//Marca

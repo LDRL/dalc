@@ -66,7 +66,7 @@
                     <div><br></div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-btnGuardarRequisicion"  type="button" id="btnGuardarRequisicion" style="display:none;">Guardar</button>
-                        <button class="btn btn-danger" type="reset">Cancelar</button>
+                        <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                     </div>
                 </div>
             </div>
@@ -135,7 +135,7 @@ function agregarmr(){
         }
     }
     else{
-        alert("Error al ingresar el detalle del ingreso, revise los datos del medicamento")
+        alert("Error al ingresar el detalle, revise los datos del medicamento")
     }
 
     function limpiar(){

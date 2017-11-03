@@ -95,9 +95,9 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(5);">Compra</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarmedi(3);">Ingreso Inventario</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(7);">Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreseo Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreso Requisici&oacute;n</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso x vencimiento</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso por vencimiento</a></li>
  
                         </ul>
                     </li>

@@ -195,7 +195,7 @@
                             <div><br></div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-btnGuardarEmpleado"  type="button" id="btnGuardarEmpleado" style="display:none;" >Guardar</button>
-                                <button class="btn btn-danger" type="reset">Cancelar</button>
+                                <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                             </div>
                         </div>
                     </div>
