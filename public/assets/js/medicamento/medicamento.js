@@ -87,18 +87,18 @@ $(document).on('click','.btn-btnGuardarMedicamento',function(e){
                     cancelButtonClass: 'btn btn-danger',
                     buttonsStyling: false
                     }).then(function () {
-                        var miurl=urlraiz+"/medicamento/compra/add";
+                        var miurl=urlraiz+"/medicamento/compra/addc/"+data.idmedicamento;
                         var errHTML="";
                         $.ajax({
                             url: miurl
                         }).done( function(resul) 
                         {
-                            $("#modales").html(resul);
-                            $('#inputTitleUsuario').html("Nuevo ingreso medicamento al invetario");
-                            $('#formModalUsuario').modal('show');
+                            $("#capa_modal").html(resul);
+                            $('#inputTitleUsuario').html("Nuevo ingreso medicamento al inventario");
+                            $('#formModalUsuario').modal('show'); 
                         }).fail(function() 
                         {
-                            $("#modales").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                            $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
                         });
                     }, function (dismiss) {
                         // dismiss can be 'cancel', 'overlay',
@@ -119,8 +119,8 @@ $(document).on('click','.btn-btnGuardarMedicamento',function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error</li>';
@@ -179,8 +179,8 @@ $(document).on('click','.btn-btnGuardarMed',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';

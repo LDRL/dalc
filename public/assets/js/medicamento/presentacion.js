@@ -50,8 +50,8 @@ $(document).on('click','.btn-btnGuardarPresentacion',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';
@@ -104,8 +104,8 @@ $(document).on('click','.btn-btnGuardarPre',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';

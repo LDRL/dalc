@@ -41,7 +41,7 @@
                                         <td>{{$pro->cuenta}}</td>
                                         <td>
                                         <a href="javascript:void(0);" onclick="busqueda(6,{{$pro->idproveedor}});">
-                                        <button class="btn btn-outline btn-primary btn-buscar-ubicacion" type="button" title="Agregar" value="{{$pro->idproveedor}}"><i class="fa fa-check"></i></button>
+                                        <button class="btn btn-outline btn-xs btn-primary btn-buscar-ubicacion" type="button" title="Agregar" value="{{$pro->idproveedor}}"><i class="fa fa-check"></i></button>
                                             </a>
                                         </td>
                                     </tr>
@@ -103,6 +103,27 @@
             $('.dataTables-proveedor').DataTable({
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "No hay datos disponibles en la tabla",
+                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
+                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Mostrar _MENU_ registros",
+                    "loadingRecords": "cargando...",
+                    "processing":     "Processing...",
+                    "search":         "Buscar:",
+                    "total":          "total",          
+                    "zeroRecords":    "No se encontraron registros coincidentes",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                },
                 columns: [
                 null,
                 null,

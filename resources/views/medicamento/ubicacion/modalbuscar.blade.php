@@ -83,6 +83,27 @@
             $('.dataTables-ubicacion').DataTable({
                 responsive: true,
                 dom: '<"html5buttons"B>lTfgitp',
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "No hay datos disponibles en la tabla",
+                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
+                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
+                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Mostrar _MENU_ registros",
+                    "loadingRecords": "cargando...",
+                    "processing":     "Processing...",
+                    "search":         "Buscar:",
+                    "total":          "total",          
+                    "zeroRecords":    "No se encontraron registros coincidentes",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                },
                 columns: [
                 null,
                 null,

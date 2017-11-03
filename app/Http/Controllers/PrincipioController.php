@@ -30,7 +30,7 @@ class PrincipioController extends Controller
 
             $principioactivo = DB::table('principioactivo as pri')
             ->join('tipo as tip','pri.idtipo','=','tip.idtipo')
-            ->select('pri.idtipo','pri.nombre','tip.tipomedic as familia')
+            ->select('pri.idtipo','pri.nombre','tip.tipomedic as familia','pri.idprincipio')
             ->orderby('pri.idprincipio','desc')
             ->first();
 

@@ -56,8 +56,8 @@ $(document).on('click','.btn-GuardarUsuario',function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error</li>';
@@ -103,11 +103,11 @@ $(document).on('click','.btn-GuardarUsuario',function(e){
                     error: function (data) {
                         var errHTML="";
                         if((typeof data.responseJSON != 'undefined')){
-                            for( var er in data.responseJSON){
-                                errHTML+="<li>"+data.responseJSON[er]+"</li>";
-                            }
+                        for( var er in data.responseJSON.errors){
+                            errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+                        }
                         }else{
-                            errHTML+='<li>Error</li>';
+                          errHTML+='<li>Error</li>';
                         }
 
                         $("#erroresContentEmpleado").html(errHTML); 
@@ -389,11 +389,11 @@ $(document).on('click','.btn-btnGuardarRol',function(e){
         error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
-                        errHTML+='<li>Error.</li>';
+                        errHTML+='<li>Error</li>';
                     }
                 $("#erroresContentRol").html(errHTML); 
                 $('#erroresModalRol').modal('show');

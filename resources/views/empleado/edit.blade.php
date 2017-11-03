@@ -143,7 +143,7 @@
                             <div><br></div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-btnUpdateEmpleado"  type="button" id="btnGuardarEmpleado" value="{{$empleado->idpersona}}">Guardar</button>
-                                <button class="btn btn-danger" type="reset">Cancelar</button>
+                                <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                             </div>
                         </div>
                     </div>

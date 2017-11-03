@@ -90,9 +90,11 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get('compra/index','CompraController@index');
 	Route::get('compra/compraindex','CompraController@compra');
 	Route::get('compra/add','CompraController@add');
+	Route::get('compra/addc/{id}','CompraController@addc');
 	Route::post('compra/store','CompraController@store');
 	//Proveedor
 	Route::get ('proveedor/index','ProveedorController@index');
+	Route::get ('proveedor/inactivo','ProveedorController@inactivo');
 	Route::get ('proveedor/add','ProveedorController@add');
 	Route::get ('proveedor/addp','ProveedorController@addp');
 	Route::post('proveedor/store','ProveedorController@store');
@@ -100,6 +102,7 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get('proveedor/busqueda/{id}','ProveedorController@busqueda');
 	Route::get('proveedor/listaredit/{id}','ProveedorController@listaredit');
 	Route::put('proveedor/update/{id}','ProveedorController@update');
+	Route::put('proveedor/recuperar/{id}','ProveedorController@recuperar');
 	//Route::put('updateAca/{id}','UController@updateAca');
 
 	//Marca
@@ -162,6 +165,14 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get ('requisicion/cargarbusqueda','RequisicionController@modalrequisicion');
 	Route::get ('requisicion/busqueda/{id}','RequisicionController@busqueda');
 	Route::get ('requisicion/show/{id}','RequisicionController@show');
+
+	Route::get ('vencimiento/index','MVencimientoController@index');
+	Route::get ('vencimiento/add','MVencimientoController@add');
+	Route::post('vencimiento/store','MVencimientoController@store');
+	Route::get ('vencimiento/cargarbusqueda','MVencimientoController@modalrequisicion');
+	Route::get ('vencimiento/busqueda/{id}','MVencimientoController@busqueda');
+	Route::get ('vencimiento/show/{id}','MVencimientoController@show');
+
 	
 	Route::get('/logout', 'Auth\LoginController@logout');
 });
@@ -170,13 +181,29 @@ Route::group(['prefix'=>'medicamento'], function(){
 Route::group(['prefix'=>'empleado'], function(){
 	Route::get('index','EmpleadoController1@index');
 	Route::get('add','EmpleadoController1@add');
-
+	Route::get('inactivo','EmpleadoController1@inactivo');
 	Route::post('store','EmpleadoController1@store');
 	Route::get('edit/{id}','EmpleadoController1@edit');
 	Route::post('update/{id}','EmpleadoController1@update');
 	Route::post('delete','EmpleadoController1@delete');
+	Route::put('recuperar/{id}','EmpleadoController1@recuperar');
 
 	Route::get('show/{id}','EmpleadoController1@show');
+
+	//Tramite
+
+	Route::get('tramite/edit/{id}','ETramiteController@edit');
+	Route::put('tramite/update/{id}','ETramiteController@update');
+	Route::post('tramite/store','ETramiteController@store');
+	Route::delete('tramite/delete/{id}','ETramiteController@delete');
+
+	//Catalogos
+
+	Route::post('estadocivil/store','EmpleadoController1@storeec');
+	Route::post('puesto/store','EmpleadoController1@storepu');
+	Route::post('tipoantecedente/store','EmpleadoController1@storeta');
+
+
 	Route::get('/logout', 'Auth\LoginController@logout');
 });
 
@@ -184,8 +211,12 @@ Route::group(['prefix'=>'empleado'], function(){
 Route::group(['prefix'=>'seguridad'], function(){
 
 	Route::get('index','UController@index');
+	Route::get('inactivo','UController@inactivo');
 	Route::get('add','UController@add');
+	Route::get('addu/{id}','UController@addu');
 	Route::post('store','UController@store');
+	Route::put('delete/{id}','UController@delete');
+	Route::put('recuperar/{id}','UController@recuperar');
 	Route::get('editar_usuario/{id}', 'UController@editar_usuario');
 	Route::get('cambiarclave/{id}/{clave}','UController@cambiarclave');
 	Route::get('cambiarnombre/{id}/{name}','UController@cambiarname');

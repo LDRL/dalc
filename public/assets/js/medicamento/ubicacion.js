@@ -1,4 +1,4 @@
-$("#btnGuardarCompra").click(function(e){
+/*$("#btnGuardarCompra").click(function(e){
 	var urlraiz=$("#url_raiz_proyecto").val();
     var miurl=urlraiz+"/medicamento/ubicacion/store";
     
@@ -38,8 +38,8 @@ $("#btnGuardarCompra").click(function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error</li>';
@@ -49,7 +49,7 @@ $("#btnGuardarCompra").click(function(e){
             $('#erroresModalMedicamento').modal('show');
         }
     });
-});
+});*/
 
 $(document).on('click','.btn-btnGuardarUbi',function(e){
     var urlraiz=$("#url_raiz_proyecto").val();
@@ -88,14 +88,15 @@ $(document).on('click','.btn-btnGuardarUbi',function(e){
                 console.log(data.habitacion);
 
                 document.getElementById("ubicacion").value=data.habitacion+' '+data.estanteria+' '+data.coordenada;
+                document.getElementById("idubicacion").value=data.idubicacion;
                 $('#formAgregarUbicacion').trigger("reset");
                 $('#formModal').modal('hide');
             },
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';
@@ -148,8 +149,8 @@ $(document).on('click','.btn-btnGuardarPri',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';

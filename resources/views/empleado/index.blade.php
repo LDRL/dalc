@@ -54,6 +54,9 @@
     </div>
 </div>
 <script src="{{asset('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
+<script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.js')}}"></script>
+
 <script>
     $('.dataTables-index-empleado').DataTable({
                 responsive: true,

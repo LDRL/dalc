@@ -25,9 +25,9 @@
                             <div class="col-12">
                                 <div class="form-group">
                                     <label for="Nombre">Paciente</label>
-                                    <select class="form-control" class="chosen-select" data-live-search="true" onchange="pacientepe();" id="idpaciente">
+                                    <select class="form-control" class="chosen-select" data-live-search="true" id="idpaciente">
                                     @if (isset($paciente))
-                                    <option value="0">Seleccione</option>
+                                    <option value=" ">Seleccione</option>
                                     @foreach($paciente as $pac)
                                     <option value="{{$pac->idpaciente}}">{{$pac->nombrepa}}</option>
 
@@ -37,18 +37,23 @@
                                 </div>
                             </div>
 
+                       
+
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label for="Nombre">Peso</label>
-                                    <input class="form-control" type="text" name="" id="peso" disabled>
-                                </div>
+                                        <label>Altura</label>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="talla">
+                                        </div>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <label for="Nombre">Talla</label>
-                                    <input class="form-control" type="text" name="" id="talla" disabled>
-                                </div>
+                                        <div class="form-group">
+                                            <label>Peso </label>
+                                            <div class="input-group">
+                                                <input id="peso" type="text" class="form-control" maxlength="6" onkeypress="return valida(event);">
+                                                <span class="input-group-addon">Lbs.</span>
+                                            </div>
+                                        </div>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -274,9 +279,134 @@
     </div>
 </div>
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/js/validacion.js')}}"></script>
 
-<script src="{{asset('assets/js/pacientes/pacienteexamen.js')}}"></script>
+
 <script src="{{asset('assets/js/pacientes/step.js')}}"></script>
 <!-- Sweet alert -->
 <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#hmedico").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true,
+        onFinishing: function(e){
+            var form = $(this);
+            var itemsData=[];
+            var urlraiz=$("#url_raiz_proyecto").val();
+            var miurl = urlraiz+"/paciente/historial/store";
+
+            $('#examen tr').each(function(){
+                //var id = $(this).closest('tr').find('input[type="hidden"]').val();
+                var observacion = $(this).find('td').eq(1).html();
+                valor = new Array(observacion);
+                itemsData.push(valor);
+            });
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            
+
+            var formData = {
+                peso:$("#peso").val(),
+                talla:$("#talla").val(),
+                temperatura:$("#temperatura").val(),
+                presion_arterial:$("#parterial").val(),
+                respiracion_minuto:$("#respiracion").val(),
+                pulso_radial:$("#pulso").val(),
+                circunferencia_cefalica:$("#circuferencia").val(),
+                piel:$("#piel").val(),
+                cabeza:$("#cabeza").val(),
+                ojos:$("#ojos").val(),
+                oidos:$("#oidos").val(),
+                nariz:$("#nariz").val(),
+                boca_y_faringe:$("#boca").val(),
+                cuello:$("#cuello").val(),
+                corazon:$("#corazon").val(),
+                pulmones:$("#pulmones").val(),
+                torax:$("#torax").val(),
+                manos_axilas:$("#manos").val(),
+                columna:$("#columna").val(),
+                abdomen:$("#abdomen").val(),
+                extremidades_superiores:$("#extremidades").val(),
+                extremidades_inferiores:$("#extremidadesi").val(),
+                sistema_musco_esqueletico:$("#sistemamus").val(),
+                genitales:$("#genitales").val(),
+                motor: $("#motor").val(),
+                reflejos :$("#reflejos").val(),
+                estado_mental :$("#estadomental").val(),
+                reconoce :$("#reconoce").val(),
+                observacion: itemsData,
+                paciente: $("#idpaciente").val(),
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: miurl,
+                data: formData,
+                dataType: 'json',
+
+                success: function (data) {
+                    swal({ 
+                        title:"Envio correcto",
+                        text: "Información guardada correctamente",
+                        type: "success"
+                    }).then(function () {
+                        cargarindex(21);
+                        /*
+                            var urlraiz=$("#url_raiz_proyecto").val();
+                            $("#capa_modal").html($("#cargador_empresa").html());
+                            var miurl=urlraiz+"/medicamento/proveedor/index";
+                            $.ajax({
+                            url: miurl
+                            }).done( function(resul) 
+                            {
+                             $("#capa_modal").html(resul);
+                           
+                            }).fail( function() 
+                            {
+                                $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                            });*/
+                    });                  
+                },
+                error: function (data) {
+                    $('#loading').modal('hide');
+                    var errHTML="";
+                    if((typeof data.responseJSON != 'undefined')){
+                        for( var er in data.responseJSON.errors){
+                            errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+                        }
+                    }else{
+                        errHTML+='<li>Error, intente mas tarde gracias.</li>';
+                    }
+                    $("#erroresContentExamen").html(errHTML); 
+                    $('#erroresModalExamen').modal('show');
+                }
+            });
+        }
+    });
+
+    $('#fechanacp').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+    $('#fenacfam').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
+});
+</script>

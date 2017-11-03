@@ -106,10 +106,9 @@ class MVencimientoController extends Controller
     {
         $detalle = DB::table('requisicion as req')
         //->join('requisiciondetalle as rde','req.idrequisicion','=','rde.idrequisicion')
-        ->join('paciente as p','req.idpaciente','=','p.idpaciente')
         ->join('usuario as U','req.idusuario','=','U.id')
         ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
-        ->select('req.idrequisicion','p.nombrepa','U.name','tre.nombre as tiporequisicion')
+        ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
         ->where('req.idrequisicion','=',$id)
         ->first();
 
@@ -122,7 +121,7 @@ class MVencimientoController extends Controller
         ->where('rde.idrequisicion','=',$id)
         ->get();
 
-        return view('medicamento.requisicion.detalle',["detalle"=>$detalle,"requisiciondetalle"=>$requisiciondetalle]);
+        return view('medicamento.fechaven.detalle',["detalle"=>$detalle,"requisiciondetalle"=>$requisiciondetalle]);
     }
 
 

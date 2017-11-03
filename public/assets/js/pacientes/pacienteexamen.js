@@ -2,12 +2,20 @@ var cont = 0;
     function agregar(){
         observacion = $("#observacion").val();
 
-        var item  = '<tr class="even gradeA" id="examen'+cont+'">';
+        if(observacion != '')
+        {
+            var item  = '<tr class="even gradeA" id="examen'+cont+'">';
             item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td>';
             item += '<td>'+observacion+'</td><tr>';
             cont++;
 
-        $('#examen').append(item);
+            limpiarpe();
+            $('#examen').append(item);
+        }
+        else{
+            alert('debe ingresar una observacion');
+        }
+
         //evaluar();
     }
     
@@ -30,6 +38,11 @@ var cont = 0;
        //evaluar();
     }
 
+    function limpiarpe(){
+        $("#observacion").val("");
+    }
+
+/*
 $(document).ready(function(){
     $("#hmedico").steps({
         headerTag: "h3",
@@ -100,28 +113,15 @@ $(document).ready(function(){
                         type: "success"
                     }).then(function () {
                         cargarindex(21);
-                        /*
-                            var urlraiz=$("#url_raiz_proyecto").val();
-                            $("#capa_modal").html($("#cargador_empresa").html());
-                            var miurl=urlraiz+"/medicamento/proveedor/index";
-                            $.ajax({
-                            url: miurl
-                            }).done( function(resul) 
-                            {
-                             $("#capa_modal").html(resul);
-                           
-                            }).fail( function() 
-                            {
-                                $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                            });*/
+                  
                     });                  
                 },
                 error: function (data) {
                     $('#loading').modal('hide');
                     var errHTML="";
-                    if((typeof data.responseJSON != 'undefined')){
-                        for( var er in data.responseJSON){
-                            errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    if((typeof data.responseJSON.errors != 'undefined')){
+                        for( var er in data.responseJSON.errors){
+                            errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
                         }
                     }else{
                         errHTML+='<li>Error, intente mas tarde gracias.</li>';
@@ -149,8 +149,8 @@ $(document).ready(function(){
     });
 
 });
-
-
+*/
+/*
 function pacientepe(){
     var urlraiz=$("#url_raiz_proyecto").val();
     var id=$("#idpaciente").val();
@@ -166,4 +166,4 @@ function pacientepe(){
         });
     })
 }
-
+*/

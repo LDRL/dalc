@@ -44,7 +44,7 @@ class CPaciente extends Controller
 		$dato=trim($request->get('dato_buscado'));
 		$paciente= DB::table('paciente as p')
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
-		->select('p.idpaciente','p.nombrepa','p.fechaingreso','r.nombre','r.telefono')
+		->select('p.idpaciente','p.nombrepa',(DB::raw('DATE_FORMAT(p.fechaingreso,"%d/%m/%Y") as fechaingreso')),'r.nombre','r.telefono')
 		->where('p.idstatus','=','5')
 		->get();
 		$origen = DB::table('municipio')->get();
@@ -65,7 +65,7 @@ class CPaciente extends Controller
 	{
 		$paciente= DB::table('paciente as p')
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
-		->select('p.idpaciente','p.nombrepa','p.fechaingreso','r.nombre','r.telefono')
+		->select('p.idpaciente','p.nombrepa',(DB::raw('DATE_FORMAT(p.fechaingreso,"%d/%m/%Y") as fechaingreso')),'r.nombre','r.telefono')
 		->where('p.idstatus','=','6')
 		->get();
 		
@@ -101,7 +101,7 @@ class CPaciente extends Controller
 		$paciente= DB::table('paciente as p')
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
 		->join('municipio as mun','mun.idmunicipio','=','p.idmunicipio')
-		->select('p.idpaciente','p.nombrepa','p.fechanac','mun.municipio as lorigen','p.procedencia','p.fechaingreso','r.nombre','r.telefono','r.identificacion','r.direccion')
+		->select('p.idpaciente','p.nombrepa',(DB::raw('DATE_FORMAT(p.fechanac,"%d/%m/%Y") as fechanac')),'mun.municipio as lorigen','p.procedencia','p.fechaingreso','r.nombre','r.telefono','r.identificacion','r.direccion')
 		->where('p.idpaciente','=',$id)
 		->first();
 		$familiar = DB::table('paciente as p')
@@ -188,7 +188,7 @@ class CPaciente extends Controller
 		$paciente= DB::table('paciente as p')
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
 		->join('municipio as mun','mun.idmunicipio','=','p.idmunicipio')
-		->select('p.idpaciente','p.nombrepa','p.fechanac','mun.municipio as lorigen','p.procedencia','p.fechaingreso','r.nombre','r.telefono','r.identificacion','r.direccion')
+		->select('p.idpaciente','p.nombrepa',(DB::raw('DATE_FORMAT(p.fechanac,"%d/%m/%Y") as fechanac')),'mun.municipio as lorigen','p.procedencia','p.fechaingreso','r.nombre','r.telefono','r.identificacion','r.direccion')
 		->where('p.idpaciente','=',$id)
 		->first();
 		$papa = DB::table('paciente as p')
@@ -641,7 +641,7 @@ class CPaciente extends Controller
 
         $messages=[
             //'required' => 'Debe ingresar datos del :attribute.',
-        	'nino.required' => 'Debe ingresar almenos el nombre del Niño.',
+        	'nino.required' => 'Debe ingresar al menos el nombre del Niño.',
         	'responsable.required' => 'Debe ingresar datos del Responsable.',
         ];
         $this->validate($request, $rules,$messages);         
@@ -655,7 +655,7 @@ class CPaciente extends Controller
 
         $messages=[
             //'required' => 'Debe ingresar datos del :attribute.',
-        	'nombrep.required' => 'Debe ingresar almenos el nombre del Niño.',
+        	'nombrep.required' => 'Debe ingresar al menos el nombre del Niño.',
         	'fechanac.required' => 'Debe ingresar la fecha de nacimiento del niño en formato DD/MM/YYYY.',
         	'procedencia.required' => 'Debe ingresar la procedencia del Niño.',
         ];

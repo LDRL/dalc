@@ -61,9 +61,25 @@ class CompraController extends Controller
         return view('medicamento.compra.create',["medicamento"=>$medicamento,"proveedor"=>$proveedor]);
     }
 
+    public function addc(Request $request, $id)
+    {
+        $medicamento = DB::table('medicamento as med')
+        ->join('marca as mar','med.idmarca','=','mar.idmarca')
+        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+        ->select('med.idmedicamento','mar.marca','pre.nombre as presentacion','med.medicamento')
+        ->where('med.idmedicamento','=',$id)
+        ->first();
+
+        return view('medicamento.compra.createc',["medicamento"=>$medicamento]);
+    }
+
     public function store(Request $request)
     {
         try {
+
+            DB::beginTransaction();
+
+
             $this->validateRequest($request);
 
             $fechacompra=$request->get('fecha_compra');
@@ -98,7 +114,7 @@ class CompraController extends Controller
 
             $almacen->save();
 
-
+            DB::commit();
 
         } catch (Exception $e) {
             DB::rollback();

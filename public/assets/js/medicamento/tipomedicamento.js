@@ -56,8 +56,8 @@ $(document).on('click','.btn-btnGuardarTMedicamento',function(e){
             error: function (data) {
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                     }else{
                         errHTML+='<li>Error.</li>';

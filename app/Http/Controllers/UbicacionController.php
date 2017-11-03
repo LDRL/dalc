@@ -52,7 +52,7 @@ class UbicacionController extends Controller
             $ubicacion->save();
 
             $ubicacion = DB::table('ubicacion as ubi')
-            ->select('ubi.habitacion','ubi.estanteria','ubi.coordenada')
+            ->select('ubi.habitacion','ubi.estanteria','ubi.coordenada','ubi.idubicacion')
             ->orderby('ubi.idubicacion','desc')
             ->first();
 

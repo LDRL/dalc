@@ -7,6 +7,7 @@
         <div class="navbar-form navbar-left pull-left">
             <button class="btn btn-primary btn-addB" title="Nuevo usuario" onclick="cargarindex(11);">Nuevo</button>
         </div>
+        <!--
 
         <div class="navbar-form navbar-right pull-rigth">                    
             <div class="input-group">
@@ -33,15 +34,15 @@
                     <button class="btn btn-info btn-flat" type="button" onclick="buscarusuario();" >Buscar!</button>
                 </span>
             </div>
-        </div>           
+        </div>-->           
     </div>
 </div>
 
 
 <script type="text/javascript">
     $('.chosen-select').chosen({width: "100%"});
-    document.getElementById('dato_buscado').focus();
-    
+    //document.getElementById('dato_buscado').focus();
+    /*
     $(document).ready(function() {
         $('#dato_buscado').keypress(function(e){   
             if(e.which == 13){      
@@ -49,5 +50,5 @@
                 document.getElementById('dato_buscado').focus();
             }   
         });
-    });
+    });*/
 </script>

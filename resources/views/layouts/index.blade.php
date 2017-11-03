@@ -57,10 +57,10 @@
                             <img alt="image" class="img-circle" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Grupo # 12</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">DALC</strong>
+                             </span> <span class="text-muted text-xs block">{{ Auth::user()->name }}<b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Perfil</a></li>
+                                <!--<li><a href="profile.html">Perfil</a></li>-->
                                 <li class="divider"></li>
                                 <li><a href="{{ url('/logout') }}">Cerrar Sesion</a></li>
                             </ul>
@@ -86,18 +86,18 @@
                     </li>
                     @endrole
                     
-                    @role('medicamento') 
+                    @role('farmacia') 
                     <li>
-                        <a href="#"><i class="fa fa-medkit"></i> <span class="nav-label">Medicamentos</span><span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-medkit"></i> <span class="nav-label">Farmacia</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(4);">Listado medicamento</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(4);">Medicamento</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(10);">Ingreso medicamento</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(5);">Listado Compra</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarmodalempleado(3);">Ingreso Inventario</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(7);">Listado Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(17);">Medicamento vencidos</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Medicamento descargue</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(5);">Compra</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarmedi(3);">Ingreso Inventario</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(7);">Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreso Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso por vencimiento</a></li>
  
                         </ul>
                     </li>
@@ -116,6 +116,7 @@
                     </li>
                     @endrole
                     
+                    @role('bienhechor')
                     <li>
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Bienhechores</span>  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -123,6 +124,9 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(23);">Bienhechor inactivos</a></li>
                         </ul>
                     </li>
+                    @endrole
+
+                    @role('empleado')
 
                     <li>
                         <a href="#"><i class="fa fa-group"></i> <span class="nav-label">Empleado</span>  <span class="fa arrow"></span></a>
@@ -135,6 +139,10 @@
                         </ul>
                     </li>
 
+                    @endrole
+                    
+                    @role('usuario')
+
                     <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Usuario</span>  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -143,10 +151,13 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(15);">Usuario inactivos</a></li>
                             <!--
                             <li><a href="javascript:void(0);" onclick="cargarmodalempleado(4);">Ingreso Marca</a></li>-->
+                            @role('rol')
                             <li><a href="javascript:void(0);" onclick="cargarindex(12);">Listado Rol</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(16);">Ingreso Rol</a></li>
+                            @endrole
                         </ul>
                     </li>
+                    @endrole
                 </ul>
             </div>
         </nav>
@@ -167,9 +178,6 @@
 
                     <!-- COLOCAR COLOR AL NAV -->
                     <ul class="nav navbar-top-links navbar-right ">
-                        <li>
-                            <span class="m-r-sm text-muted welcome-message">Bienvenido a HNMHP.</span>
-                        </li>
                         <li>
                             <a href="{{ url('/logout') }}">
                                 <i class="fa fa-sign-out"></i> Cerrar Sesion
@@ -194,10 +202,12 @@
                     <div id="capa_formularios" class="div_modal"></div>
                     <div id="capa_busqueda" class="div_modal"></div>
 
+
                     <div id="modales" class="div_modal"></div>
                     <div id="modales1"></div>
                     <div id="modales2" class="div_modal"></div>
                     <div id="modales3" class="div_modal"></div>
+
 
                     
                 </div>
@@ -207,13 +217,16 @@
                         <strong>AC.LL.LR.CR.</strong>
                     </div>
                     <div>
-                        <strong>Copyright</strong> Grupo # 12 &copy; Control y Gestión Hermano Pedro
+                        <strong>Copyright</strong> DALC &copy; Control y Gestión Hermano Pedro
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!--  ______Moduilo de cambiar color __________ -->
+
+    <!--
     <div class="theme-config">
         <div class="theme-config-box">
             <div class="spin-icon">
@@ -349,13 +362,8 @@
             </div>
         </div>
     </div>
+    -->
 
-<!--
-    <div id="modales"></div>
-
-    <div id="modales1"></div>
-    <div id="modales2"></div>
--->
 
     <input type="hidden"  id="url_raiz_proyecto" value="{{ url("/") }}" />
 
@@ -435,8 +443,8 @@
     <script src="{{asset('assets/js/medicamento/proveedor.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/ubicacion.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/compra.js')}}"></script>
-        <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
-
+    <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
+    <script src="{{asset('assets/js/pacientes/pacienteexamen.js')}}"></script>
 
 
     <script src="{{asset('assets/js/empleado/persona.js')}}"></script>
