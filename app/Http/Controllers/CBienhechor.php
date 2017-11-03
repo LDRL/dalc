@@ -76,7 +76,7 @@ class CBienhechor extends Controller
         $donaciones=DB::table('donacion as d')
         ->join('persona as p','p.idpersona','=','d.idpersona')
         ->join('tipodonacion as td','td.idtipodonacion','=','d.idtipodonacion')
-        ->select('d.idbienhechor','td.donaciontipo','d.monto','d.fechadonacion','d.descripcion')
+        ->select('d.idbienhechor','td.donaciontipo','d.monto',(DB::raw('DATE_FORMAT(d.fechadonacion,"%d/%m/%Y") as fechadonacion')),'d.descripcion')
         ->where('p.idpersona','=',$id)
         ->get();
 
