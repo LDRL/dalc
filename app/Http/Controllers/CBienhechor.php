@@ -26,7 +26,7 @@ class CBienhechor extends Controller
         	->join('tipopersona as tp','tp.idtipopersona','=','p.idtipopersona')
         	->select('p.idpersona','p.nombre','p.apellido','p.telefono','p.direccion','p.correo','sts.nombre as snombre')
      		->where('p.idstatus','=',3)
-            ->paginate(15);
+            ->get();
 
      		$tipop=DB::table('tipopersona as tp')->where('tp.tipopersona','=','Bienhechor')->get();
             $donacion=DB::table('tipodonacion as td')->get();
@@ -58,7 +58,7 @@ class CBienhechor extends Controller
             ->select('p.idpersona','p.nombre','p.apellido','p.telefono','p.direccion','p.correo','sts.nombre as snombre')
             ->where('p.idstatus','=',4)
             ->where('p.nombre','LIKE','%'.$query.'%')
-            ->paginate(15);
+            ->get();
 
             $tipop=DB::table('tipopersona as tp')->where('tp.tipopersona','=','Bienhechor')->get();
             $donacion=DB::table('tipodonacion as td')->get();
