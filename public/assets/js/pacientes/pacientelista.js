@@ -26,7 +26,7 @@ $("#btnGuardar").click(function(e){
 
             success: function (data) {
                 $(data).each(function(i,v){
-                    $("#origens").append('<option selected value='+v.idmunicipio+'">'+v.municipio+'</option>');
+                    $("#origens").append('<option selected value='+v.idmunicipio+'>'+v.municipio+'</option>');
                 });
                 $('#formModall').modal('hide');        
             },
@@ -34,8 +34,8 @@ $("#btnGuardar").click(function(e){
                 $('#loading').modal('hide');
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                 }else{
                     errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
@@ -110,8 +110,8 @@ $("#btnGuardarp").click(function(e){
             $('#loading').modal('hide');
             var errHTML="";
             if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON){
-                    errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                 }
             }else{
                 errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';

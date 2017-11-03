@@ -46,7 +46,7 @@ class CPaciente extends Controller
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
 		->select('p.idpaciente','p.nombrepa','p.fechaingreso','r.nombre','r.telefono')
 		->where('p.idstatus','=','5')
-		->paginate(15);
+		->get();
 		$origen = DB::table('municipio')->get();
 		return view('pacientes.index',['paciente'=>$paciente,'origen'=>$origen,"dato"=>$dato]);
 	}
@@ -67,7 +67,7 @@ class CPaciente extends Controller
 		->join('responsable as r','r.idresponsable','=','p.idresponsable')
 		->select('p.idpaciente','p.nombrepa','p.fechaingreso','r.nombre','r.telefono')
 		->where('p.idstatus','=','6')
-		->paginate(15);
+		->get();
 		
 		return view('pacientes.indexinc',['paciente'=>$paciente]);
 	}
@@ -414,8 +414,11 @@ class CPaciente extends Controller
 	        $fecha=$fechadona->format('Y-m-d');
 
 	        $miArray = $request->items;
+	        //$miArrayL = $request->itemsL;
+	        //$miArrayA = $request->itemsA;
 
 	        $infeccembarazo =$request->get('imde');
+	        //dd($infeccembarazo);
 	        $enfcronicas =$request->get('ecdm');
 	        $conviveanimal =$request->get('cmcad');
 	        $personatendio =$request->get('tpamp');
@@ -460,7 +463,7 @@ class CPaciente extends Controller
 	                $familiar= new Familiar;
 	                $familiar-> nombre = $value['0'];
 	                //$familiar-> apellido = $value['1'];
-	                /*$fechanacf = $value['1'];//esta es una prueba de el recoorrido de la tabla para llenar el valor de la fecha 
+	                /*$fechanacf = $value['1'];
 	                $fechanacf=Carbon::createFromFormat('d/m/Y',$fechanacf);
 	                $fechanacf=$fechanacf->format('Y-m-d');*/
 	                $familiar-> fechanac = $value['1'];

@@ -128,8 +128,8 @@
                         $('#loading').modal('hide');
                         var errHTML="";
                         if((typeof data.responseJSON != 'undefined')){
-                            for( var er in data.responseJSON){
-                                errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                            for( var er in data.responseJSON.errors){
+                                errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                             }
                         }else{
                             errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
@@ -190,8 +190,8 @@
                 $('#loading').modal('hide');
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                 }else{
                     errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
@@ -362,7 +362,7 @@ $("#btnGuardartd").click(function(e){
 
             success: function (data) {
                 $(data).each(function(i,v){
-                    $("#tipodonativo").append('<option selected value='+v.idtipodonacion+'">'+v.donaciontipo+'</option>');
+                    $("#tipodonativo").append('<option selected value='+v.idtipodonacion+'>'+v.donaciontipo+'</option>');
                 });
                 $('#formModaltd').modal('hide');        
             },
@@ -370,8 +370,8 @@ $("#btnGuardartd").click(function(e){
                 $('#loading').modal('hide');
                 var errHTML="";
                 if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON){
-                        errHTML+="<li>"+data.responseJSON[er]+"</li>";
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                     }
                 }else{
                     errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
