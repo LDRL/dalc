@@ -36,7 +36,7 @@ $(document).on('click','.btn-btnGuardarRequisicion',function(e){
                 type: "success"
             },
             function(){
-            
+                cargarindex(7);
             });     
         },
         error: function (data) {

@@ -84,7 +84,6 @@
 </div>
 
 
-    <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
     <script src="{{asset('assets/js/validacion.js')}}"></script>
 <!-- Sweet alert -->
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
@@ -159,6 +158,8 @@ function agregar(){
 
     if(idmedicamento != '' && cantidad != '' && medicamento != '' && cantidad > 0)
     {
+        cantexistente = parseInt(cantexistente);
+        cantidad = parseInt(cantidad);
         if(cantexistente >= cantidad)
         {
             var item  = '<tr class="even gradeA" id="medicamento'+cont+'">';

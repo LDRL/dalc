@@ -115,8 +115,13 @@ function agregarmr(){
     cantidad = $('#cantidad').val();
     cantexistente = $('#cantexistente').val();
 
+
+
     if(idmedicamento != '' && cantidad != '' && medicamento != '' && cantidad > 0)
     {
+        cantexistente = parseInt(cantexistente);
+        cantidad = parseInt(cantidad);
+
         if(cantexistente >= cantidad)
         {
             var item  = '<tr class="even gradeA" id="medicamento'+cont+'">';
