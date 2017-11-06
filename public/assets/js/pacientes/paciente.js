@@ -187,9 +187,15 @@ $(document).ready(function(){
                     $('#loading').modal('hide');
                     var errHTML="";
                     if((typeof data.responseJSON != 'undefined')){
+
+                        if(typeof data.responseJSON.error != 'undefined'){
+                                errHTML+="<li>"+data.responseJSON.error+"</li>";
+                        }
+
                         for( var er in data.responseJSON.errors){
                             errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
                         }
+                        
                     }else{
                         errHTML+='<li>Error, intente mas tarde gracias.</li>';
                     }

@@ -510,51 +510,83 @@ class CPaciente extends Controller
             $perinatal->save();
 
             if ($infeccembarazo === 'Si' ) {
-            	
-            	
-            	foreach ($miArrayInf as $key => $value) {
-	                $infec= new Infecciones;
-	                $infec-> idtipoinfeccion = $value['0'];
-	                $infec-> idperinatal = $perinatal->idperinatal;
-	                $infec->save();
-	            }
-	        
+            	if ($miArrayInf == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos de la infeccion de la madre dando click en el boton con el signo mas (+)'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayInf as $key => $value) {
+		                $infec= new Infecciones;
+		                $infec-> idtipoinfeccion = $value['0'];
+		                $infec-> idperinatal = $perinatal->idperinatal;
+		                $infec->save();
+		            }
+	        	}
             }
             else
             {
 
             }
             if ($enfcronicas === 'Si' ) {
-            	foreach ($miArrayEn as $key => $value) {
-	                $enfer= new Enfermedades;
-	                $enfer-> idtipoenfermedad = $value['0'];
-	                $enfer-> idperinatal = $perinatal->idperinatal;
-	                $enfer->save();
-	            }
+            	if ($miArrayEn == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos de las enfermedades cronicas de la madre dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayEn as $key => $value) {
+		                $enfer= new Enfermedades;
+		                $enfer-> idtipoenfermedad = $value['0'];
+		                $enfer-> idperinatal = $perinatal->idperinatal;
+		                $enfer->save();
+		            }
+		        }
             }
             if ($conviveanimal === 'Si' ) {
-            	foreach ($miArrayAn as $key => $value) {
-	                $ca= new ConviveAnimales;
-	                $ca-> idanimal = $value['0'];
-	                $ca-> idperinatal = $perinatal->idperinatal;
-	                $ca->save();
-	            }
+            	if ($miArrayAn == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos de las animales con las que convivio la madre durante su embarazo dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayAn as $key => $value) {
+		                $ca= new ConviveAnimales;
+		                $ca-> idanimal = $value['0'];
+		                $ca-> idperinatal = $perinatal->idperinatal;
+		                $ca->save();
+		            }
+		        }
             }
             if ($personatendio === 'Si' ) {
-            	foreach ($miArrayPer as $key => $value) {
-	                $perat= new PersonalAtendio;
-	                $perat-> idpersonalatiende = $value['0'];
-	                $perat-> idperinatal = $perinatal->idperinatal;
-	                $perat->save();
-	            }
+            	if ($miArrayPer == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos del personal que atendio a la madre durante su embarazo dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayPer as $key => $value) {
+		                $perat= new PersonalAtendio;
+		                $perat-> idpersonalatiende = $value['0'];
+		                $perat-> idperinatal = $perinatal->idperinatal;
+		                $perat->save();
+		            }
+	        	}
             }
             if ($medicatomados === 'Si' ) {
-            	foreach ($miArrayMed as $key => $value) {
-	                $medic= new MedicTomada;
-	                $medic-> idmedicina = $value['0'];
-	                $medic-> idperinatal = $perinatal->idperinatal;
-	                $medic->save();
-	            }
+            	if ($miArrayMed == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos del medicamento que tomo la madre durante su embarazo dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayMed as $key => $value) {
+		                $medic= new MedicTomada;
+		                $medic-> idmedicina = $value['0'];
+		                $medic-> idperinatal = $perinatal->idperinatal;
+		                $medic->save();
+		            }
+		        }
             }
             if ($tuvocontrol === 'Si' ) {
 	            $ctl= new Control;
@@ -582,21 +614,35 @@ class CPaciente extends Controller
             $cres->save();
 
             if ($vacunastiene === 'Si' ) {
-            	foreach ($miArrayVac as $key => $value) {
-	                $vac= new VacunaTiene;
-	                $vac-> idvacuna = $value['0'];
-	                $vac-> iddesarrollo = $cres->iddesarrollo;
-	                $vac->save();
-	            }
+            	if ($miArrayVac == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos de las vacunas que tenga el niño dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+	            {
+	            	foreach ($miArrayVac as $key => $value) {
+		                $vac= new VacunaTiene;
+		                $vac-> idvacuna = $value['0'];
+		                $vac-> iddesarrollo = $cres->iddesarrollo;
+		                $vac->save();
+		            }
+		        }
             }
 
             if ($enfepadecido === 'Si' ) {
-            	foreach ($miArrayPad as $key => $value) {
-	                $pades= new EnfPadecido;
-	                $pades-> idtipoenfermedad = $value['0'];
-	                $pades-> iddesarrollo = $cres->iddesarrollo;
-	                $pades->save();
-	            }
+            	if ($miArrayPad == null) {
+
+            		return response()->json(array('error'=>'Debe agregar a la tabla los datos de las enfermedades que han padecido dando click en el boton  con el signo mas (+)'),404);
+            	}
+            	else
+	            {
+	            	foreach ($miArrayPad as $key => $value) {
+		                $pades= new EnfPadecido;
+		                $pades-> idtipoenfermedad = $value['0'];
+		                $pades-> iddesarrollo = $cres->iddesarrollo;
+		                $pades->save();
+		            }
+		        }
             }
             
         DB::commit();
@@ -637,11 +683,13 @@ class CPaciente extends Controller
         $rules=[
         	'nino' => 'required',
             'responsable' => 'required',
+            'fechanacp' => 'required',
         ];
 
         $messages=[
             //'required' => 'Debe ingresar datos del :attribute.',
         	'nino.required' => 'Debe ingresar al menos el nombre del Niño.',
+        	'fechanacp.required' => 'Debe ingresar la fecha de nacimiento del Niño',
         	'responsable.required' => 'Debe ingresar datos del Responsable.',
         ];
         $this->validate($request, $rules,$messages);         
