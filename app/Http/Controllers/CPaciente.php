@@ -642,11 +642,13 @@ class CPaciente extends Controller
         $rules=[
         	'nino' => 'required',
             'responsable' => 'required',
+            'fechanacp' => 'required',
         ];
 
         $messages=[
             //'required' => 'Debe ingresar datos del :attribute.',
         	'nino.required' => 'Debe ingresar al menos el nombre del Niño.',
+        	'fechanacp.required' => 'Debe ingresar la fecha de nacimiento del Niño',
         	'responsable.required' => 'Debe ingresar datos del Responsable.',
         ];
         $this->validate($request, $rules,$messages);         
