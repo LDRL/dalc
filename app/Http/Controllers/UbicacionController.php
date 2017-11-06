@@ -8,6 +8,11 @@ use App\Ubicacion;
 
 class UbicacionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(Request $request)
     {
     	$ubicacion = DB::table('ubicacion as u')

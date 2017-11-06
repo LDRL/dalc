@@ -21,6 +21,11 @@ class RequisicionController extends Controller
     //idpasdieta, idpaciente, iddieta, idusuario, fechain, fechafin, observacion.
     //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $requisicion = DB::table('requisicion as req')

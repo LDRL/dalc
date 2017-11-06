@@ -8,6 +8,11 @@ use App\Principio;
 use DB;
 class PrincipioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 	public function addp()
 	{
     	$tipomedicamento = TipoMedicamento::all();

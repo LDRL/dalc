@@ -12,6 +12,11 @@ use DateTime;
 
 class CPHistorialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function add(Request $request)
     {
         $paciente = DB::table('paciente')->select('idpaciente','nombrepa')

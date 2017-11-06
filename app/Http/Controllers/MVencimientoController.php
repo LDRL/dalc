@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Auth;
 
 class MVencimientoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $requisicion = DB::table('requisicion as req')
