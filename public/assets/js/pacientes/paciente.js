@@ -189,8 +189,7 @@ $(document).ready(function(){
                     if((typeof data.responseJSON != 'undefined')){
 
                         if(typeof data.responseJSON.error != 'undefined'){
-                             errHTML+="<li>"+data.responseJSON.error+"</li>";
-
+                                errHTML+="<li>"+data.responseJSON.error+"</li>";
                         }
 
                         for( var er in data.responseJSON.errors){
