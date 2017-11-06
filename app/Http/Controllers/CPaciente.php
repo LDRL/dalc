@@ -510,15 +510,20 @@ class CPaciente extends Controller
             $perinatal->save();
 
             if ($infeccembarazo === 'Si' ) {
-            	
-            	
-            	foreach ($miArrayInf as $key => $value) {
-	                $infec= new Infecciones;
-	                $infec-> idtipoinfeccion = $value['0'];
-	                $infec-> idperinatal = $perinatal->idperinatal;
-	                $infec->save();
-	            }
-	        
+            	//dd($miArrayInf);
+            	if ($miArrayInf == null) {
+
+            		return response()->json(array('error'=>'Debe agregar en el boton verde consigo mas'),404);
+            	}
+            	else
+            	{
+	            	foreach ($miArrayInf as $key => $value) {
+		                $infec= new Infecciones;
+		                $infec-> idtipoinfeccion = $value['0'];
+		                $infec-> idperinatal = $perinatal->idperinatal;
+		                $infec->save();
+		            }
+	        	}
             }
             else
             {
