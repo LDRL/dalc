@@ -3,7 +3,7 @@
 <div class="tabs-container ibox-content" id="contpaciente">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<h2 align="center">Listado general de pacietes</h2>
+			<h2 align="center">Listado general de pacientes inactivos</h2>
 			<hr style="border-color:black;"/>
 		</div>
 	</div>
