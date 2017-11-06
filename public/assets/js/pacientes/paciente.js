@@ -279,6 +279,7 @@ $(document).ready(function(){
                 $('#formAgregar').trigger("reset");
                 $('#btnGuardar').val('addpv');
                 $('#formModal').modal('show');
+
             //});
     });
     $("#btnaddenfh").click(function(){
@@ -389,7 +390,14 @@ $("#btnGuardar").click(function(e){
     if (status == "addbrel") {
         miurl = 'paciente/addrel';
     }
-
+    /**/
+    if (status == "addpv") {
+        miurl = 'paciente/addvacuna';
+    }
+    if (status == "addbep") {
+        miurl = 'paciente/addenfermedad';
+    }
+    /**/
     $.ajax({
         type: "POST",
         url: miurl,
@@ -398,55 +406,66 @@ $("#btnGuardar").click(function(e){
 
         success: function (data) {
             if (status == "addbi") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#infecciontipo").append('<option selected value='+v.idtipoinfeccion+'>'+v.nombre+'</option>');
                     agregarinfeccion();
                 });
             }
             if (status == "addbe") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                    $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
                     agregarenfermedad();
                 });
             }
             if (status == "addba") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#animaltipo").append('<option selected value='+v.idanimal+'>'+v.nombreanimal+'</option>');
                     agregaranimal();
                 });
             }
             if (status == "addbp") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#personalati").append('<option selected value='+v.idpersonalatiende+'>'+v.nombre+'</option>');
                     agregarpersonal();
                 });
             }
             if (status == "addbm") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#medicamento").append('<option selected value='+v.idmedicina+'>'+v.nombre+'</option>');
                     agregarmedicina();
                 });
             }
             if (status == "addpv") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#vacunass").append('<option selected value='+v.idvacuna+'>'+v.vacuna+'</option>');
                     agregarvacuna();
                 });
             }
             if (status == "addbep") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                    $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
                     agregarpadecidos();
                 });
             }
             /**/
             if (status == "addid") {
+                
                 var urlraiz=$("#url_raiz_proyecto").val();
                 var miurl=urlraiz+"/paciente/idget";
                 $.ajax({
                 url: miurl
                 }).done( function(resul) 
                 {
+                    swal("Agregado correctamente","","success");
                     $("#divlenguaje").html(resul);
                 }).fail( function() 
                 {
@@ -455,12 +474,13 @@ $("#btnGuardar").click(function(e){
 
             }
             if (status == "addban") {
+
                 var urlraiz=$("#url_raiz_proyecto").val();
                 var miurl=urlraiz+"/paciente/getanoma";
                 $.ajax({
                 url: miurl
                 }).done( function(resul) 
-                {
+                {   swal("Agregado correctamente","","success");
                     $("#divanomal").html(resul);
                 }).fail( function() 
                 {
@@ -468,11 +488,13 @@ $("#btnGuardar").click(function(e){
                 });
             }
             if (status == "addblug") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#origenp").append('<option selected value='+v.idmunicipio+'>'+v.municipio+'</option>');
                 });
             }
             if (status == "addbrel") {
+                swal("Agregado correctamente","","success");
                 $(data).each(function(i,v){
                     $("#religionfam").append('<option selected value='+v.idreligion+'>'+v.religion+'</option>');
                 });
@@ -697,7 +719,7 @@ function agregaranfam(){
 function agregarinfeccion(){
     infecciontipo =$("#infecciontipo option:selected").val(); 
     tipoinfeccion =$("#infecciontipo option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idinfeccion'+continf+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarIn('+continf+');">X</button></td>';
         item +='<td><input type="hidden" name="infecciontipo[]" value="'+infecciontipo+'">'+tipoinfeccion+'</td></tr>';
@@ -707,7 +729,7 @@ function agregarinfeccion(){
 function agregarenfermedad(){
     enfermedadtipo =$("#enfermedadtipo option:selected").val(); 
     tipoenfermedad =$("#enfermedadtipo option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idenfermedad'+contenf+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarE('+contenf+');">X</button></td>';
         item +='<td><input type="hidden" name="enfermedadtipo[]" value="'+enfermedadtipo+'">'+tipoenfermedad+'</td></tr>';
@@ -717,7 +739,7 @@ function agregarenfermedad(){
 function agregaranimal(){
     animaltipo =$("#animaltipo option:selected").val(); 
     tipoanimal =$("#animaltipo option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idanimal'+contani+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarAni('+contani+');">X</button></td>';
         item +='<td><input type="hidden" name="animaltipo[]" value="'+animaltipo+'">'+tipoanimal+'</td></tr>';
@@ -727,7 +749,7 @@ function agregaranimal(){
 function agregarpersonal(){
     personalati =$("#personalati option:selected").val(); 
     atipersonal =$("#personalati option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idpersonal'+contper+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarPer('+contper+');">X</button></td>';
         item +='<td><input type="hidden" name="personalati[]" value="'+personalati+'">'+atipersonal+'</td></tr>';
@@ -737,7 +759,7 @@ function agregarpersonal(){
 function agregarmedicina(){
     medicamento =$("#medicamento option:selected").val(); 
     tmedicamento =$("#medicamento option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idmedicamento'+contmed+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarMed('+contmed+');">X</button></td>';
         item +='<td><input type="hidden" name="medicamento[]" value="'+medicamento+'">'+tmedicamento+'</td></tr>';
@@ -748,7 +770,7 @@ function agregarmedicina(){
 function agregarvacuna(){
     vacunass =$("#vacunass option:selected").val(); 
     svacunas =$("#vacunass option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idvacunass'+contvac+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarVac('+contvac+');">X</button></td>';
         item +='<td><input type="hidden" name="vacunass[]" value="'+vacunass+'">'+svacunas+'</td></tr>';
@@ -758,7 +780,7 @@ function agregarvacuna(){
 function agregarpadecidos(){
     enfpadecido =$("#enfpadecido option:selected").val(); 
     padecidoenf =$("#enfpadecido option:selected").text();
-
+    swal("Se agrego un nuevo registro a la tabla verifique","","success");
     var item = '<tr class="even gradeA" id="idpadecidos'+contpad+'">';
         item +='<td><button type="button" class="btn btn-warning" onclick="eliminarPad('+contpad+');">X</button></td>';
         item +='<td><input type="hidden" name="enfpadecido[]" value="'+enfpadecido+'">'+padecidoenf+'</td></tr>';
