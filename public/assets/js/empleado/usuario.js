@@ -33,24 +33,12 @@ $(document).on('click','.btn-GuardarUsuario',function(e){
 
         success: function (data) {
             swal({
-                    title:"Se registro un usuario nuevo",
-                    text: "Gracias",
-                    type: "success"
-                }).then(function () {
-                  cargarindex(3);
-
-                    $.ajax({
-                    url: miurl
-                    }).done( function(resul) 
-                    {
-                     $("#capa_modal").html(resul);
-                   
-                    }).fail( function() 
-                    {
-                        $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                    });
-                });
-                            
+                title:"Se registro un usuario nuevo",
+                text: "Gracias",
+                type: "success"
+            }).then(function () {
+                cargarindex(3);
+            });                
         },
         error: function (data) {
             $('#loading').modal('hide');

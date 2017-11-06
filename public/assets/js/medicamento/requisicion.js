@@ -35,7 +35,7 @@ $(document).on('click','.btn-btnGuardarRequisicion',function(e){
                 text: "Información guardada correctamente",
                 type: "success"
             },
-            function(){
+            }).then(function () {
                 cargarindex(7);
             });     
         },

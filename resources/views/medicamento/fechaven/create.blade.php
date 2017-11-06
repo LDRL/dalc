@@ -129,8 +129,7 @@
                 title:"Envio correcto",
                 text: "Información guardada correctamente",
                 type: "success"
-            },
-            function(){
+            }).then(function () {
                 cargarindex(17);            
             });     
         },
