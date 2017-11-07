@@ -183,8 +183,8 @@ $(document).on('click','.btn-eliminaremp',function(e){
     });
 
     swal({
-        title: '¿Desea eliminar este registro?',
-        text: "Precione si para eliminar empleado, no para cerrar este mensaje.",
+        title: '¿Esta seguro de dar de baja al empleado?',
+        text: "Precione si para continuar, no para cerrar este mensaje.",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -203,7 +203,7 @@ $(document).on('click','.btn-eliminaremp',function(e){
                 success: function() {
                     $("#empleado" + id).remove();
                     swal( 
-                        "Regitro eliminado",
+                        "Regitro dado de baja",
                         "",
                         "success"
                     )

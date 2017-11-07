@@ -126,7 +126,7 @@
         });
 
         swal({
-            title: '¿Esta seguro de cambiar de status a empleado Activo?',
+            title: '¿Esta seguro de cambiar de estado a empleado Activo?',
             text: "Precione si para continuar, no para cerrar este mensaje.",
             type: 'question',
             showCancelButton: true,

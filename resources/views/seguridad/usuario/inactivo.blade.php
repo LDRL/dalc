@@ -80,7 +80,7 @@
         });
 
         swal({
-            title: '¿Esta seguro de cambiar de status a usuario Activo?',
+            title: '¿Esta seguro de cambiar de estado a usuario Activo?',
             text: "Precione si para continuar, no para cerrar este mensaje.",
             type: 'question',
             showCancelButton: true,
