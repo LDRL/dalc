@@ -68,8 +68,7 @@ class RequisicionController extends Controller
             $requisicion-> idtiporequisicion = 1;
 
             $requisicion->save();
-
-
+            
             foreach ($miArray as $key => $value) {
                 $idmedicamento = $value['0'];
 

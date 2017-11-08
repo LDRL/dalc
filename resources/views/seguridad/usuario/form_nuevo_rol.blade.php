@@ -30,7 +30,7 @@
 
 				<div class="col-md-12">	  
 			            <div class="form-group">
-							<label class="col-sm-2" for="apellido">Descripcion*</label>
+							<label class="col-sm-2" for="apellido">Descripción*</label>
 			            	<div class="col-sm-10" >
 								<input type="text" class="form-control" id="rol_descripcion" name="rol_descripcion" " required >
 			        		</div>

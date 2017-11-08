@@ -48,7 +48,3 @@
     $('.chosen-select').chosen({width: "100%"});
 
 </script>
-
-
-
-

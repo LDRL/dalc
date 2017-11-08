@@ -46,8 +46,6 @@ class UbicacionController extends Controller
         try {
             $this->validateRequest($request);
 
-            //$today = Carbon::now();
-            //idmedicamento medicamento idtipo  idmarca
             $ubicacion =new Ubicacion;
             $ubicacion-> habitacion =  $request->get('habitacion');
             $ubicacion-> estanteria = $request->get('estanteria');
@@ -67,7 +65,6 @@ class UbicacionController extends Controller
         }
       
             return json_encode($ubicacion);
-        
     }
 
     public function busqueda($id)

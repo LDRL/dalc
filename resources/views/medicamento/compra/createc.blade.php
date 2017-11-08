@@ -42,7 +42,7 @@
 
                     <div class="modal-header">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ubic">
-                            <label class="col-md-2">Ubicacion</label>
+                            <label class="col-md-2">Ubicación</label>
                             <div class="col-md-6">
                                 <input type="text" name="" id="ubicacion" placeholder="Habitacion-Estanteria-Coordenada" class="form-control" disabled="">
                                 <input type="hidden" id="idubicacion">  

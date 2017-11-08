@@ -32,13 +32,13 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label for="stock">Direccion</label>
+                                <label for="stock">Dirección</label>
                                 <input type="text" name="direccion"  id="direccion" class="form-control" placeholder="..." value="{{$empleado->direccion}}" maxlength="100">
                             </div>
                         </div>
                                                                        
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label for="descripcion">Telefono</label>
+                            <label for="descripcion">Teléfono</label>
                             <div class="input-group">
                             <span class="input-group-addon">502</span>
                                 <input type="text" name="telefono" id="telefono" class="form-control" placeholder="..." value="{{$empleado->telefono}}" maxlength="8" onkeypress="return valida(event)" >

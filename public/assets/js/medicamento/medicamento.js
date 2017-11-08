@@ -5,15 +5,28 @@ var cont = 0;
         concentracion = $('#concentracion').val();
         console.log(idsustancia);
 
-
-        var item  = '<tr class="even gradeA" id="sustancia'+cont+'">';
+        if(sustancia != '' && concentracion != '' && idsustancia != '')
+        {   
+            var item  = '<tr class="even gradeA" id="sustancia'+cont+'">';
             item +='<td><button type="button" class="btn btn-warning" onclick="eliminarm('+cont+');">X</button></td>';
             item += '<td><input type="hidden" name="idprincipio[]" value="'+idsustancia+'">'+sustancia+'</td>';
             item += '<td>'+concentracion+'</td><tr>';
             cont++;
 
         $('#detallecompo').append(item);
+        limpiar();
         evaluarm();
+        }
+        else{
+            alert("Error al ingresar el detalle, revise los datos del medicamento")
+        }
+
+        
+        function limpiar(){
+            $("#sustancia").val("");
+            $("#idprincipio").val("");
+            $("#concentracion").val("");
+        }
     }
 //btn-addcon
 

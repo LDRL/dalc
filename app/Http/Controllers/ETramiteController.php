@@ -89,7 +89,6 @@ class ETramiteController extends Controller
         try {
             $this->validateRequest($request);
 
-
             $today = Carbon::now();
             $year = $today->format('Y');
 
@@ -108,14 +107,9 @@ class ETramiteController extends Controller
 	    	->join('tipoantecedente as tan','tra.idtipoantecedente','=','tan.idtipoantecedente')
 	    	->select('tra.idtramite',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'tra.idtipoantecedente','tan.nombreantecedente as antecedente')
 	    	->where('idtramite','=',$id)->first();
-    		
-
-
-
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar nuevo empreado'),404);
-            
         }
 
 		return response()->json($tramite);

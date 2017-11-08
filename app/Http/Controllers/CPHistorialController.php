@@ -130,18 +130,7 @@ class CPHistorialController extends Controller
         ->orderby('his.fecha','desc')
         ->where('his.idpaciente','=',$id)
         ->get();
-
-
-
-    /*        
-        $detalle = DB::table('pacientexamen as pac')
-        ->join('historialmedico as his','pac.idhistorialmedic','=','his.idhistorialmedic')
-        ->join('usuario as u','pac.idusuario','=','u.id')
-        ->join('paciente as p','his.idpaciente','=','p.idpaciente')
-        ->select('med.idmedicamento','med.medicamento','pre.nombre as presentacion','mar.marca','med.cantidad')
-        ->where('med.idmedicamento','=',$id)
-        ->first();
-    */
+        
         return view('pacientes.historial.detalle',["encabezado"=>$encabezado,"detalle"=>$detalle,"edad"=>$fnac]);        
     }
 

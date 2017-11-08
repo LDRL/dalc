@@ -16,6 +16,5 @@ class ComposicionController extends Controller
 
         $tipomedicamento = TipoMedicamento::all();
         return view('medicamento.composicion.createc',["tipomedicamento"=>$tipomedicamento]);
-        //return view('empleado.create',["tipopersona"=>$tipopersona,"puesto"=>$puesto,"tipoantecedente"=>$tipoantecedente]);
     }
 }

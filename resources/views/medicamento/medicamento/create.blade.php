@@ -16,19 +16,16 @@
         </a>
         <hr style="border-color:black;"/>
 
-                @include('medicamento.medicamento.modalcreate')
-
-                <div class="modal-footer">
-                    <div class="col-md-12">
-                        <div><br></div>
-                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>-->
-                        <button type="button" class="btn btn-primary btn-btnGuardarMedicamento" id="btnGuardarMedicamento" style="display:none;">Guardar</button>
-                    </div>
-                </div>
-            
+        @include('medicamento.medicamento.modalcreate')
+        <div class="modal-footer">
+            <div class="col-md-12">
+                <div><br></div>
+                <button type="button" class="btn btn-primary btn-btnGuardarMedicamento" id="btnGuardarMedicamento" style="display:none;">Guardar</button>
+            </div>
+        </div>    
     </div>
 </div>
-    <div id="modales2"></div>
+<div id="modales2"></div>
 
 <div class="modal fade" id="erroresModalMedicamento" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
     <div class="modal-dialog">

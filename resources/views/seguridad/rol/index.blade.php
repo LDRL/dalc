@@ -24,10 +24,10 @@
 					    	<table  class="table table-hover table-striped" cellspacing="0" width="100%">
 					    		<thead>
 					    			<tr>
-					    				<th>codigo</th>
-										<th>nombre</th>
-										<th>slug</th>
-										<th>descripcion</th>
+					    				<th>Codigo</th>
+										<th>Nombre</th>
+										<th>Slug</th>
+										<th>Descripción</th>
 										<th>Acción</th>
 									</tr>
 								</thead>
@@ -49,7 +49,7 @@
 						</div>
                     </div>
                     @else
-                    <br><div class="rechazado"><label style='color:#FA206A'>..No se ha encontrado ningun proveedor</label></div>
+                    <br><div class="rechazado"><label style='color:#FA206A'>..No se ha encontrado ningun rol</label></div>
                     @endif
                     @endif
                 </div>

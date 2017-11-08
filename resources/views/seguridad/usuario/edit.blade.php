@@ -58,14 +58,14 @@
         <div class="col-md-12">
           <div class="box box-primary box-gris">
             <div class="box-header with-border my-box-header">
-              <h3 class="box-title"><strong>Modificar clave al usuario: {{$usuario->name}}</strong></h3>
+              <h3 class="box-title"><strong>Modificar contraseña al usuario: {{$usuario->name}}</strong></h3>
             </div><!-- /.box-header -->
             
 
              <div class="box-body">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label class="col-sm-2 control-label" for="email">E-Mail</label>
+                  <label class="col-sm-2 control-label" for="email">Correo</label>
                   <div class="col-sm-6">
                       <input id="email" type="email" class="form-control" name="email" value="{{ $usuario->email }}" disabled="" required>
                       @if ($errors->has('email'))

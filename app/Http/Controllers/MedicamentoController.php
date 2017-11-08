@@ -62,7 +62,6 @@ class MedicamentoController extends Controller
         $presentacion = Presentacion::all();
         $marca = Marca::all();
         return view('medicamento.medicamento.create',["presentacion"=>$presentacion,"marca"=>$marca]);
-        //return view('empleado.create',["tipopersona"=>$tipopersona,"puesto"=>$puesto,"tipoantecedente"=>$tipoantecedente]);
     }
 
     public function addm(Request $request)
@@ -70,8 +69,8 @@ class MedicamentoController extends Controller
 
         $tipomedicamento = TipoMedicamento::all();
         $marca = Marca::all();
-        return view('medicamento.medicamento.createm',["tipomedicamento"=>$tipomedicamento,"marca"=>$marca]);
-        //return view('empleado.create',["tipopersona"=>$tipopersona,"puesto"=>$puesto,"tipoantecedente"=>$tipoantecedente]);
+        $presentacion = Presentacion::all();
+        return view('medicamento.medicamento.createm',["tipomedicamento"=>$tipomedicamento,"marca"=>$marca,"presentacion"=>$presentacion]);
     }
 
     public function store(Request $request)
@@ -81,8 +80,6 @@ class MedicamentoController extends Controller
 
             $this->validateRequest($request);
 
-            //$today = Carbon::now();
-            //idmedicamento	medicamento	idtipo	idmarca
             $miArray = $request->items;
             
             $medicamento =new Medicamento;

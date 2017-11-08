@@ -43,51 +43,6 @@
     </div>
 </div>
 
-<div class="col-lg-12">
-    <div class="modal fade" id="formModalD" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="inputTitleD"></h4>
-                </div>
-
-                <form role="form" id="formAgregarD">
-                    <div class="modal-header">
-                        <input id="iddona" type="hidden" class="form-control" maxlength="9" aria-describedby="basic-addon1"> 
-                        <div class="col-lg-12 col-md-6 col-sm-6 col-xs-12">
-                            <label class="control-label">Bienhechor</label>
-                            <input id="nombreD" type="text" class="form-control" aria-describedby="basic-addon1" disabled="disabled">   
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label class="control-label">Fecha del donativo</label>
-                            <div class="input-group date">
-                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input id="fechadona" type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label class="control-label">Cantidad</label>
-                            <input id="cantidad" type="text" class="form-control" maxlength="9" aria-describedby="basic-addon1">   
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label class="control-label">Descripción</label>
-                            <textarea class="form-control" id="observaciones" rows="3" maxlength="300"></textarea>
-                        </div>
-                    </div> 
-                </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary" id="btnGuardarD">Guardar</button>
-                    <input type="hidden" id="idbi" name="idbi" value="0"/>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <div class="modal fade" id="erroresModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">

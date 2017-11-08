@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="prov">
-                        <div><br></div>
+                <div><br></div>
                 
                 <label class="col-md-2">Proveedor</label>
                 <div class="col-md-6">
@@ -38,7 +38,7 @@
 
         <div class="modal-header">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="ubic">
-                <label class="col-md-2">Ubicacion</label>
+                <label class="col-md-2">Ubicación</label>
                 <div class="col-md-6">
                     <input type="text" name="" id="ubicacion" placeholder="Habitacion-Estanteria-Coordenada" class="form-control" disabled="">
                     <input type="hidden" id="idubicacion">  
@@ -87,31 +87,3 @@
             </div>
         </div>
     </form>
-
-<script type="text/javascript">
-    /*
-    var cont = 0;
-    function agregar(){
-
-        idrol =$("#idrol option:selected").val(); 
-        rol =$("#idrol option:selected").text();
-
-        var item  = '<tr class="even gradeA" id="rol'+cont+'">';
-            item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td>';
-            item += '<td><input type="hidden" name="idrol[]" value="'+idrol+'">'+rol+'</td>';
-
-        $('#rolUsuario').append(item);
-    }
-
-    $(document).ready(function() {
-        $('#bt_addrol').click(function() {
-            agregar();
-        });
-    });
-
-    function eliminar(index){
-       $("#rol" + index).remove();
-       cont--;
-   }*/
-
-</script>

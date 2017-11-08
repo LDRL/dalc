@@ -8,7 +8,7 @@
             <h3 class="box-title" align="center">Datos del empleado</h3>
             <hr style="border-color:black;"/>
 	        <h4><strong>Nombre Empleado:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->nombre.' '.$detalle->apellido}}</h4>
-	        <h4><strong>Teléfono:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->telefono}}</h4>
+	        <h4><strong>Teléfono:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->telefono}}</h4>
 	        <h4><strong>Correo electronico:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->correo}}</h4>
             <h4><strong>Dirección:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->direccion}} 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>

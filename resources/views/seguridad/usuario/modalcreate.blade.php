@@ -1,7 +1,7 @@
 <form role="form" id="formAgregarUsuario">
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
+                            <label for="name" class="col-md-4 control-label">Nombre usuario</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required />
                                 @if ($errors->has('name'))
@@ -14,7 +14,7 @@
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+                            <label for="email" class="col-md-4 control-label">Correo</label>
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required />
                                 @if ($errors->has('email'))

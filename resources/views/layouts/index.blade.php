@@ -445,7 +445,7 @@
     <script src="{{asset('assets/js/medicamento/compra.js')}}"></script>
     <script src="{{asset('assets/js/medicamento/requisicion.js')}}"></script>
     <script src="{{asset('assets/js/pacientes/pacienteexamen.js')}}"></script>
-
+    <script src="{{asset('assets/js/medicamento/presentacion.js')}}"></script>
 
     <script src="{{asset('assets/js/empleado/persona.js')}}"></script>
     

@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <label>Dirección</label>
+            <label>Direcci&oacute;n</label>
             <input type="text" id="direccion" class="form-control" placeholder="" maxlength="50">
         </div>
 
@@ -21,12 +21,12 @@
         </div>
 
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <label>telefono</label>
+            <label>Tel&eacute;fono</label>
             <input type="text" id="telefono" class="form-control" placeholder="" maxlength="8">
         </div>
 
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <label>nit</label>
+            <label>Nit</label>
             <input type="text" id="nit" class="form-control" placeholder="" maxlength="9">
         </div>
     </div>

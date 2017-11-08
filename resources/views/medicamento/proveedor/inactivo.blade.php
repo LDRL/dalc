@@ -17,10 +17,10 @@
                                         <th style="width: 5%">Id</th>
                                         <th style="width: 15%">Proveedor</th>
                                         <th style="width: 10%">Nit</th>
-                                        <th style="width: 10%">Telefono</th>
-                                        <th style="width: 30%">Dirección</th>
-                                        <th style="width: 10%">cuenta</th>
-                                        <th style="width: 10%">cheque</th>
+                                        <th style="width: 10%">Tel&eacute;fono</th>
+                                        <th style="width: 30%">Direcci&oacute;n</th>
+                                        <th style="width: 10%">Cuenta</th>
+                                        <th style="width: 10%">Cheque</th>
                                         <th style="width: 10%">Opciones</th>
                                 </thead>
                                 <tbody id="listempleado">
@@ -81,10 +81,10 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 "language": {
                     "decimal":        "",
-                    "emptyTable":     "No data available in table",
-                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
-                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
-                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "emptyTable":     "No hay datos en la tabla",
+                    "info":           "",
+                    "infoEmpty":      "",
+                    "infoFiltered":   "",
                     "infoPostFix":    "",
                     "thousands":      ",",
                     "lengthMenu":     "Mostrar _MENU_ registros",
@@ -92,7 +92,7 @@
                     "processing":     "Processing...",
                     "search":         "Buscar:",
                     "total":          "total",          
-                    "zeroRecords":    "No matching records found",
+                    "zeroRecords":    "No se han encontrado resultados",
                     "paginate": {
                         "first":      "First",
                         "last":       "Last",

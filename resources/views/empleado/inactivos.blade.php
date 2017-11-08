@@ -17,7 +17,7 @@
                                 <th style="width: 5%">Id</th>
                                 <th style="width: 20%">Nombre</th>
                                 <th style="width: 25%">Direcci&oacute;n</th>
-                                <th style="width: 10%">telefono</th>
+                                <th style="width: 10%">Tel&eacute;fono</th>
                                 <th style="width: 15%">Correo</th>
                                 <th style="width: 10%">Opciones</th>
                             </thead>
@@ -78,10 +78,10 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 "language": {
                     "decimal":        "",
-                    "emptyTable":     "No data available in table",
-                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
-                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
-                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "emptyTable":     "No hay datos en la tabla",
+                    "info":           "",
+                    "infoEmpty":      "",
+                    "infoFiltered":   "",
                     "infoPostFix":    "",
                     "thousands":      ",",
                     "lengthMenu":     "Mostrar _MENU_ registros",

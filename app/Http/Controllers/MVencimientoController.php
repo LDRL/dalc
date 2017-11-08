@@ -24,7 +24,6 @@ class MVencimientoController extends Controller
     public function index()
     {
         $requisicion = DB::table('requisicion as req')
-        //->join('requisiciondetalle as rde','req.idrequisicion','=','rde.idrequisicion')
         ->join('usuario as U','req.idusuario','=','U.id')
         ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
         ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
@@ -110,7 +109,6 @@ class MVencimientoController extends Controller
     public function show($id)
     {
         $detalle = DB::table('requisicion as req')
-        //->join('requisiciondetalle as rde','req.idrequisicion','=','rde.idrequisicion')
         ->join('usuario as U','req.idusuario','=','U.id')
         ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
         ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')

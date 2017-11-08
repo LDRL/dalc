@@ -18,7 +18,7 @@
                                     <th style="width: 5%">Id</th>
                                     <th style="width: 20%">Medicamento</th>
                                     <th style="width: 20%">Marca</th>
-                                    <th style="width: 10%">Presentacion</th>
+                                    <th style="width: 10%">Presentación</th>
                                     <th style="width: 10%">Cantidad</th>
                                     <th style="width: 20%">Opciones</th>
                                 </thead>
@@ -57,10 +57,10 @@
                 dom: '<"html5buttons"B>lTfgitp',
                 "language": {
                     "decimal":        "",
-                    "emptyTable":     "No hay datos disponibles en la tabla",
-                    "info":           "Mostrar _START_ a _END_ de _TOTAL_ registros por pagina",
-                    "infoEmpty":      "Showing 0 to 0 of 0 entries",
-                    "infoFiltered":   "(filtered from _MAX_ total entries)",
+                    "emptyTable":     "No hay datos en la tabla",
+                    "info":           "",
+                    "infoEmpty":      "",
+                    "infoFiltered":   "",
                     "infoPostFix":    "",
                     "thousands":      ",",
                     "lengthMenu":     "Mostrar _MENU_ registros",
@@ -68,7 +68,7 @@
                     "processing":     "Processing...",
                     "search":         "Buscar:",
                     "total":          "total",          
-                    "zeroRecords":    "No se encontraron registros coincidentes",
+                    "zeroRecords":    "No se han encontrado resultados",
                     "paginate": {
                         "first":      "First",
                         "last":       "Last",

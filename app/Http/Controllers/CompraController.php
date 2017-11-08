@@ -31,21 +31,6 @@ class CompraController extends Controller
         return view('medicamento.compra.index',["compras"=>$compras]);
     }
 
-    public function compra()
-    {
-        //idmedicamento idproveedor idcompra    fechacompra fechavencimiento    precio  cantidad    idusuario
-
-        $compras = DB::table('compra as com')
-        ->join('proveedor as pro','com.idproveedor','=','pro.idproveedor')
-        ->join('usuario as U','com.idusuario','=','U.id')
-        ->join('medicamento as med','com.idmedicamento','=','med.idmedicamento')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->select('med.idmedicamento','med.medicamento','tip.tipomedic as tipo','mar.marca','pro.proveedor','com.fechacompra','com.fechavencimiento','com.precio','com.cantidad','com.idcompra','U.name')
-        ->paginate(15);
-        return view('medicamento.compra.compra',["compras"=>$compras]);
-    }
-
-
     public function add(Request $request)
     {
         $medicamento = DB::table('medicamento as med')

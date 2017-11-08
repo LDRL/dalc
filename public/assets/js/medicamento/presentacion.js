@@ -19,10 +19,8 @@ $(document).on('click','.btn-btnGuardarPresentacion',function(e){
         dataType: 'json',
             
         success: function (data) {
-           
             var urlraiz=$("#url_raiz_proyecto").val();
             var miurl=urlraiz+"/medicamento/presentacion/idpresentacion/"+data.idpresentacion;
-            console.log(miurl);
             $.ajax({
                 url: miurl
             }).done( function(resul) 
@@ -32,35 +30,26 @@ $(document).on('click','.btn-btnGuardarPresentacion',function(e){
             {
                     $("#presentacionselect").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
             });
-                /*
-                swal({
-                    title:"Se registro una nueva marca",
-                    text: "Gracias",
-                    type: "success"
-                });
-                */
-
-
+            
             alert('Se registro una nueva marca');
 
             $('#formAgregarPresentacion').trigger("reset");
-            $('#formModal').modal('hide');
-
-            },
-            error: function (data) {
-                var errHTML="";
-                if((typeof data.responseJSON != 'undefined')){
-                    for( var er in data.responseJSON.errors){
-                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
-                    }
-                    }else{
-                        errHTML+='<li>Error.</li>';
-                    }
-                $("#erroresContentPresentacion").html(errHTML); 
-                $('#erroresModalPresentacion').modal('show');
-            },
-        });
-    }); 
+            $('#formModal2').modal('hide');
+        },
+        error: function (data) {
+            var errHTML="";
+            if((typeof data.responseJSON != 'undefined')){
+                for( var er in data.responseJSON.errors){
+                    errHTML+="<li>"+data.responseJSON[er].errors+"</li>";
+                }
+            }else{
+                errHTML+='<li>Error.</li>';
+            }
+            $("#erroresContentPresentacion").html(errHTML); 
+            $('#erroresModalPresentacion').modal('show');
+        },
+    });
+}); 
 
 $(document).on('click','.btn-btnGuardarPre',function(e){
     var urlraiz=$("#url_raiz_proyecto").val();
@@ -94,8 +83,8 @@ $(document).on('click','.btn-btnGuardarPre',function(e){
             {
                     $("#presentacionselect").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
             });
-           
-
+            
+            alert('Se registro una nueva presentacion');
  
             $('#formAgregarPresentacion').trigger("reset");
             $('#formModal').modal('hide');

@@ -137,7 +137,7 @@ Route::group(['prefix'=>'medicamento'], function(){
 
 	//Principio Activo
 	Route::get('principio/index','PrincipioController@index');
-	Route::get('principio/add','PrincipioController@index');
+	Route::get('principio/add','PrincipioController@add');
 	Route::get('principio/addp','PrincipioController@addp');
 	Route::post('principio/store','PrincipioController@store');
 	Route::get('principio/busqueda/{id}','PrincipioController@busqueda');

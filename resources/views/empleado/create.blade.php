@@ -33,14 +33,14 @@
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group">
-                                <label for="stock">Direccion</label>
+                                <label for="stock">Dirección</label>
                                 <input type="text" name="direccion"  id="direccion" class="form-control" placeholder="..." maxlength="100">
                             </div>
                         </div>
                         
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <label for="descripcion">Telefono</label>
+                            <label for="descripcion">Teléfono</label>
                             <div class="input-group">
                                 <span class="input-group-addon">502</span>
                                 <input type="text" name="telefono"  id="telefono" class="form-control" placeholder="..." maxlength="8" onkeypress="return valida(event)">
@@ -181,21 +181,11 @@
                         </div>
                     </div>
 
-                        <!--
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group">
-                                <label for="imagen">Imagen</label>
-                                <input type="file" name="imagen" class="form-control">
-                            </div>
-                        </div>
-                        -->
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div><br></div>
                             <div class="form-group">
                                 <button class="btn btn-primary btn-btnGuardarEmpleado"  type="button" id="btnGuardarEmpleado" style="display:none;" >Guardar</button>
-                                <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                             </div>
                         </div>
                     </div>
@@ -227,53 +217,54 @@
 
 
 <div class="col-lg-12">
-                <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="inputTitle"></h4>
+    <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="inputTitle"></h4>
+                </div>
+
+                <form role="form" id="formAgregar">
+                    <div class="modal-header">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <label class="control-label">Nombre</label>
+                                <input id="nombre_" name="nombre" type="text" class="form-control" aria-describedby="basic-addon1">   
                             </div>
-
-                        <form role="form" id="formAgregar">
-                            <div class="modal-header">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <label class="control-label">Nombre</label>
-                                        <input id="nombre_" name="nombre" type="text" class="form-control" aria-describedby="basic-addon1">   
-                                    </div>
-                                </div>
-                            </div> 
-                        </form>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary" id="btnGuardarO">Guardar</button>
-                            <input type="hidden" id="idb" name="idb" value="0"/>
                         </div>
-                    </div>
+                    </div> 
+                </form>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btnGuardarO">Guardar</button>
+                    <input type="hidden" id="idb" name="idb" value="0"/>
                 </div>
             </div>
-</div>
-<div class="modal fade" id="erroresModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title">Errores</h4>
-          </div>
-
-          <div class="modal-body">
-            <ul style="list-style-type:circle" id="erroresContent"></ul>
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          </div>
         </div>
-      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="erroresModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Errores</h4>
+            </div>
+
+            <div class="modal-body">
+                <ul style="list-style-type:circle" id="erroresContent"></ul>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/plugins/footable/footable.all.min.js')}}"></script>

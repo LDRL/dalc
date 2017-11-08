@@ -13,6 +13,12 @@ class PrincipioController extends Controller
         $this->middleware('auth');
     }
     
+    public function add()
+    {
+        $tipomedicamento = TipoMedicamento::all();
+        return view('medicamento.principioactivo.create',["tipomedicamento"=>$tipomedicamento]);
+    }
+
 	public function addp()
 	{
     	$tipomedicamento = TipoMedicamento::all();
@@ -24,12 +30,9 @@ class PrincipioController extends Controller
         try {
             $this->validateRequest($request);
 
-            //$today = Carbon::now();
-            //idmedicamento	medicamento	idtipo	idmarca
             $principioactivo =new Principio;
             $principioactivo-> idtipo =  $request->get('familia');
-            $principioactivo-> nombre = $request->get('nombre');
-            
+            $principioactivo-> nombre = $request->get('nombre');            
 
             $principioactivo->save();
 

@@ -66,7 +66,6 @@
                     <div><br></div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-btnGuardarRequisicion"  type="button" id="btnGuardarRequisicion" style="display:none;">Guardar</button>
-                        <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                     </div>
                 </div>
             </div>

@@ -30,8 +30,7 @@
                             </div>
                             <div class="col-md-4 col-sm-4">
                                 <a href="javascript:void(0);" onclick="cargarmodal2(4);">
-
-                                    <button type="button" class="btn btn-primary btn-md " id="nuevomarca" title="Nueva marca" value=""><i class="fa fa-plus-square"></i></button>
+                                    <button type="button" class="btn btn-primary btn-md" id="nuevomarca" title="Nueva marca" value=""><i class="fa fa-plus-square"></i></button>
                                 </a>
                             </div>
                         </div>
@@ -87,17 +86,17 @@
                             </div>
                         </div>
                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                        <br>
-                                        <table id="detallecompo" class="table table-striped table-bordered table-hover">
-                                            <thead style="background-color:#A9D0F5">
-                                                <tr>
-                                                    <th>Opciones</th>
-                                                    <th>Composici&oacute;n</th>
-                                                    <th>Concentraci&oacute;n</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
+                            <br>
+                            <table id="detallecompo" class="table table-striped table-bordered table-hover">
+                                <thead style="background-color:#A9D0F5">
+                                <tr>
+                                    <th>Opciones</th>
+                                    <th>Composici&oacute;n</th>
+                                    <th>Concentraci&oacute;n</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                 </form>
@@ -106,7 +105,7 @@
                     <div class="col-md-12">
                         <div><br></div>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary btn-btnGuardarMed" id="btnGuardarMedicamento>Guardar" style="display:none;"></button>
+                        <button type="button" class="btn btn-primary btn-btnGuardarMed" id="btnGuardarMedicamento" style="display:none;">Guardar</button>
                     </div>
                 </div>
             </div>

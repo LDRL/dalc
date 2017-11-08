@@ -4,15 +4,13 @@
 
 <div class="tabs-container" id="contentsecundario">
 	<div class="row">
-	    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <h3 class="box-title" align="center">Datos de un medicamento</h3>
             <hr style="border-color:black;"/>
-	        <h4><strong>Nombre Medicamento:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->medicamento}}</h4>
-	        <h4><strong>Marca:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->marca}}</h4>
-	        <h4><strong>Presentaci&oacute;n:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->presentacion}}</h4>
-            <h4><strong>Cantidad:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->cantidad}} 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h4>
-	        
+	        <h4><strong>Nombre medicamento:</strong>&nbsp;&nbsp;&nbsp;{{$detalle->medicamento}}</h4>
+	        <h4><strong>Marca:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->marca}}</h4>
+	        <h4><strong>Presentaci&oacute;n:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->presentacion}}</h4>
+            <h4><strong>Cantidad:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$detalle->cantidad}}</h4>
 	    </div>
 	</div>
 
@@ -20,7 +18,6 @@
         <a href="javascript:void(0);" onclick="cargarindex(4);">
             <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado Empleado"><i class="fa fa-arrow-circle-left"></i></button>
         </a>
-
     </div>
 
 	<div class="row"><br><br>
@@ -47,7 +44,6 @@
             </div>
        </div>           
     </div>
-
 </div>
 
 <meta name="_token" content="{!! csrf_token() !!}" />

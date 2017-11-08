@@ -43,7 +43,6 @@ class EmpleadoController1 extends Controller
         $puesto = Puesto::all();
         $tipoantecedente = TipoAntecedente::all();
         $estadocivil = EstadoCivil::all();
-        //return view('empleado.create')->with("tipopersona", $tipopersona);
         return view('empleado.create',["tipopersona"=>$tipopersona,"puesto"=>$puesto,"tipoantecedente"=>$tipoantecedente,"estadocivil"=>$estadocivil]);
     }
 
@@ -85,7 +84,6 @@ class EmpleadoController1 extends Controller
 
             $persona->save();
 
-
             $empleado = new Empleado;
 
             $empleado-> idpersona   = $persona->idpersona;
@@ -96,7 +94,6 @@ class EmpleadoController1 extends Controller
             $empleado-> idpuesto=$request->get('idpuesto');
             
             $empleado->save();
-
 
             foreach ($miArray as $key => $value) {
                 $tramite = new Tramite;
@@ -184,11 +181,9 @@ class EmpleadoController1 extends Controller
             
             $empleado->save();
 
-
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar nuevo empreado'),404);
-            
         }
 
         return json_encode($empleado);
@@ -258,8 +253,6 @@ class EmpleadoController1 extends Controller
         
         return response()->json($infec);
     }
-
-   
 
     public function validateRequest($request){                
         $rules=[

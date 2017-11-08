@@ -19,7 +19,7 @@
                                 <thead>
                                     <th style="width: 5%">Id</th>
                                     <th style="width: 50%">Habitacion</th>
-                                    <th style="width: 30%">Estanteria</th>
+                                    <th style="width: 30%">Estantería</th>
                                     <th style="width: 10%">Coordenada</th>
                                     <th style="width: 5%"></th>
                                 </thead>

@@ -6,8 +6,7 @@
         </a>
         <hr style="border-color:black;"/>
         <div class="panel-body">
-            <div class="row">
-                
+            <div class="row">    
                 <div id="rmedi">
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <label>Medicamento</label>
@@ -42,7 +41,7 @@
                             <tr>
                                 <th>Opciones</th>
                                 <th>Medicamento</th>
-                                <th>cantidad</th>
+                                <th>Cantidad</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -54,7 +53,6 @@
                     <div><br></div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-btnGuardarMVencimiento"  type="button" id="btnGuardarMVencimiento" style="display:none;">Guardar</button>
-                        <!--<button class="btn btn-danger" type="reset">Cancelar</button>-->
                     </div>
                 </div>
             </div>

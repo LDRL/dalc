@@ -32,8 +32,8 @@
                         			<table class="table table-striped table-bordered table-condensed table-hover dataTables-index-Uactivo">
 				                        <thead>
 				                            <th  style="width: 5%">Id</th>
-				                            <th  style="width: 20%">Nombre</th>
-				                            <th  style="width: 20%">Email</th>
+				                            <th  style="width: 20%">Nombre usuario</th>
+				                            <th  style="width: 20%">Correo</th>
 				                            <th >Roles</th>
 				                            <th  style="width: 5%">Opciones</th>
 				                        </thead>
