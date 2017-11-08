@@ -209,7 +209,9 @@ $(document).ready(function(){
         }
     });
     $('.select2_demo_2').select2();
-    $('.chosen-select').chosen({width: "100px"});
+    $('.chosen-select').chosen({width: "200px"});
+    $(".chzn-select").chosen({width: "250px"});
+    $(".chzn-select1").chosen({width: "150px"});
     $("#addFam").click(function(){
         agregarfam();
     });
