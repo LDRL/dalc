@@ -2,6 +2,7 @@
 <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet" />
 <link href="{{asset('assets/css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
+<link rel="stylesheet" href="{{asset('assets/js/Chosenform/chosen.css')}}" />
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -130,20 +131,22 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12">
 
-                                    <div class="col-lg-3 col-md-5 col-sm-9 col-xs-12 form-inline">
+                                    <div class="col-lg-3 col-md-5 col-sm-9 col-xs-12 ">
                                     <label>Lenguaje</label>
-                                            <div id="divlenguaje">
-                                                    <select id="idiomafam" class="chosen-select form-control"  style="width:350px;" tabindex="4" multiple data-placeholder="Seleccione ...">
+                                        <div class="form-group">
+                                                    <select id="idiomafam" class="chzn-select"  style="width:350px;" tabindex="4" multiple data-placeholder="Seleccione ...">
                                                         @if (isset($idioma))
                                                             @foreach($idioma as $idi)
                                                                 <option value="{{$idi->ididioma}}">{{$idi->nombreid}},&nbsp;&nbsp;</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12"><br>
+                                    <div class="form-group">
                                         <button id="addIdiofam" class="btn btn-success btn-md" title="Agregar nuevo registro"><i class="fa fa-window-restore"></i></button>
+                                        </div>
                                     </div>
                                     <div class="col-lg-2 col-md-4 col-sm-9 col-xs-12">
                                         <label>Religión</label>
@@ -168,7 +171,7 @@
                                             <label>Ninguna<input type="radio" value="No" onclick="Anofams(this)" id="an" name="an" checked=""></label>
                                         </div>
                                         <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12" id="divanomal" style="display: none;">
-                                            <select id="anomaliafam" class="chosen-select" style="width:350px;"  multiple data-placeholder="Seleccione ...">
+                                            <select id="anomaliafam" class="chzn-select" style="width:350px;" tabindex="4" multiple data-placeholder="Seleccione ...">
                                                 @if (isset($anomalia))
                                                     @foreach($anomalia as $ano)
                                                         <option value="{{$ano->idanomalia}}">{{$ano->anomalia}},&nbsp;&nbsp;</option>
@@ -756,6 +759,11 @@
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/plugins/chosen/chosen.jquery.js')}}"></script>
 <script src="{{asset('assets/js/pacientes/paciente.js')}}"></script>
+<script src="{{asset('assets/js/Chosenform/mootools-more-1.4.0.1.js')}}"></script>
+<script src="{{asset('assets/js/Chosenform/chosen.js')}}"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/mootools/1.3/mootools-yui-compressed.js"></script>
+<script src="{{asset('assets/js/Chosenform/Locale.es-ES.Chosen.js')}}"></script>
+
 
 
 
