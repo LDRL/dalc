@@ -200,6 +200,12 @@ function evaluar(){
         $("#btnGuardarMVencimiento").hide();
     }
 }
+
+function eliminar(index){
+    $("#medicamento" + index).remove();
+    cont--;
+    evaluar();
+}
 </script>
 
 

@@ -3,7 +3,6 @@ var cont = 0;
         sustancia = $("#sustancia").val();
         idsustancia = $("#idprincipio").val();
         concentracion = $('#concentracion').val();
-        console.log(idsustancia);
 
         if(sustancia != '' && concentracion != '' && idsustancia != '')
         {   
@@ -13,9 +12,9 @@ var cont = 0;
             item += '<td>'+concentracion+'</td><tr>';
             cont++;
 
-        $('#detallecompo').append(item);
-        limpiar();
-        evaluarm();
+            $('#detallecompo').append(item);
+            limpiar();
+            evaluarm();
         }
         else{
             alert("Error al ingresar el detalle, revise los datos del medicamento")
@@ -51,43 +50,49 @@ var cont = 0;
     }
 
 $(document).on('click','.btn-btnGuardarMedicamento',function(e){
-    var urlraiz=$("#url_raiz_proyecto").val();
-    var miurl=urlraiz+"/medicamento/store";
+    var $f = $(this);
+    if($f.data('locked') == undefined && !$f.data('locked'))
+    {
 
-    var itemsData=[];
+        var urlraiz=$("#url_raiz_proyecto").val();
+        var miurl=urlraiz+"/medicamento/store";
 
-    $('#detallecompo tr').each(function(){
-        var id = $(this).closest('tr').find('input[type="hidden"]').val();
-        var expiration_date = $(this).find('td').eq(2).html();
-        valor = new Array(id,expiration_date);
-        itemsData.push(valor);
-    });
- 
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
+        var itemsData=[];
 
-    var formData = {
-        idmarca: $("#idmarca").val(),
-        idpresentacion: $("#idpresentacion").val(),
-        medicamento: $("#medicamento").val(),
-        items: itemsData,
-    };
+        $('#detallecompo tr').each(function(){
+            var id = $(this).closest('tr').find('input[type="hidden"]').val();
+            var expiration_date = $(this).find('td').eq(2).html();
+            valor = new Array(id,expiration_date);
+            itemsData.push(valor);
+        });
+     
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
 
-    $.ajax({
-        type: "POST",
-        url: miurl,
-        data: formData,
-        dataType: 'json',
+        var formData = {
+            idmarca: $("#idmarca").val(),
+            idpresentacion: $("#idpresentacion").val(),
+            medicamento: $("#medicamento").val(),
+            items: itemsData,
+        };
 
-        success: function (data) {
+        $.ajax({
+            type: "POST",
+            url: miurl,
+            data: formData,
+            dataType: 'json',
 
-            $('#formAgregarUsuario').trigger("reset");
-            $('#formModalUsuario').modal('hide');
+            success: function (data) {
 
-            swal({
+                $f.data('locked', true);
+
+                $('#formAgregarUsuario').trigger("reset");
+                $('#formModalUsuario').modal('hide');
+
+                swal({
                     title: '¿Desea agregar medicamento al inventario?',
                     text: "Precione si para realizar un nuevo registro, no para cerrar este mensaje.",
                     type: 'question',
@@ -99,50 +104,56 @@ $(document).on('click','.btn-btnGuardarMedicamento',function(e){
                     confirmButtonClass: 'btn btn-success',
                     cancelButtonClass: 'btn btn-danger',
                     buttonsStyling: false
-                    }).then(function () {
-                        var miurl=urlraiz+"/medicamento/compra/addc/"+data.idmedicamento;
-                        var errHTML="";
-                        $.ajax({
-                            url: miurl
-                        }).done( function(resul) 
-                        {
-                            $("#capa_modal").html(resul);
-                            $('#inputTitleUsuario').html("Nuevo ingreso medicamento al inventario");
-                            $('#formModalUsuario').modal('show'); 
-                        }).fail(function() 
-                        {
-                            $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                        });
-                    }, function (dismiss) {
-                        // dismiss can be 'cancel', 'overlay',
-                        // 'close', and 'timer'
-                        if (dismiss === 'cancel') {
-                            swal({ 
-                                title:"Envio correcto",
-                                text: "Se guardado correctamente un nuevo ingreso de medicamento al invetario",
-                                type: "success"
-                            }).then(function(){
-                                cargarindex(4);
-                            });
-                        }
+                }).then(function () {
+                    var miurl=urlraiz+"/medicamento/compra/addc/"+data.idmedicamento;
+                    var errHTML="";
+                    $.ajax({
+                        url: miurl
+                    }).done( function(resul) 
+                    {
+                        $("#capa_modal").html(resul);
+                        $('#inputTitleUsuario').html("Nuevo ingreso medicamento al inventario");
+                        $('#formModalUsuario').modal('show'); 
+                    }).fail(function() 
+                    {
+                        $("#capa_modal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
                     });
-                            
-        },
-        error: function (data) {
-            $('#loading').modal('hide');
-            var errHTML="";
-            if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON.errors){
-                    errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
-                }
-            }else{
-                errHTML+='<li>Error</li>';
-            }
+                }, function (dismiss) {
+                    if (dismiss === 'cancel') {
+                        swal({ 
+                            title:"Envio correcto",
+                            text: "Se guardado correctamente un nuevo ingreso de medicamento al invetario",
+                            type: "success"
+                        }).then(function(){
+                            cargarindex(4);
+                        });
+                    }
+                });
 
-            $("#erroresContentMedicamento").html(errHTML); 
-            $('#erroresModalMedicamento').modal('show');
-        }
-    });    
+                $f.data('locked',false);
+            },
+            error: function (data) {
+                $('#loading').modal('hide');
+                var errHTML="";
+                if((typeof data.responseJSON != 'undefined')){
+                    for( var er in data.responseJSON.errors){
+                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+                    }
+                }else{
+                    errHTML+='<li>Error</li>';
+                }
+
+                $("#erroresContentMedicamento").html(errHTML); 
+                $('#erroresModalMedicamento').modal('show');
+            }
+        });
+     }else{
+        swal({
+            title:"Envio en espera",
+            text: "Se esta enviando su solicitud :)",
+            type: "warning",
+        });
+    }
 });
 
 $(document).on('click','.btn-btnGuardarMed',function(e){
