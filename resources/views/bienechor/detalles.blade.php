@@ -3,6 +3,7 @@
         <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
     <link href="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('assets/css/plugins/dataTables/datatables.min.css')}}" rel="stylesheet">
 
 <div class="tabs-container" id="contentsecundario">
 	<div class="row">
@@ -31,7 +32,7 @@
 	<div class="row"><br><br>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         	<div class="table-responsive">
-                <table class="table table-striped table-bordered table-condensed table-hover "> 
+                <table class="table table-striped table-bordered table-condensed table-hover dataTables-index-detalles"> 
                     <thead>
                         <th style="width: 2%">Id</th>
                         <th style="width: 10%">Tipo de donación</th>
@@ -178,6 +179,7 @@
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
 <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.js')}}"></script>
+<script src="{{asset('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
 
 <script>
     $(document).ready(function() {
@@ -200,5 +202,46 @@
              });
     });
 </script>
+<script>
+    $('.dataTables-index-detalles').DataTable({
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                "language": {
+                    "decimal":        "",
+                    "emptyTable":     "No hay datos en la tabla",
+                    "info":           "",
+                    "infoEmpty":      "",
+                    "infoFiltered":   "",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Mostrar _MENU_ registros",
+                    "loadingRecords": "Loading...",
+                    "processing":     "Processing...",
+                    "search":         "Buscar:",
+                    "total":          "total",          
+                    "zeroRecords":    "No se han encontrado resultados",
+                    "paginate": {
+                        "first":      "First",
+                        "last":       "Last",
+                        "next":       "Siguiente",
+                        "previous":   "Anterior"
+                    },
+                },
+                columns: [
+                null,
+                null,
+                null,
+                null,
+                null,
+                { "bSortable": false }
+                ],
 
+                aLengthMenu:[
+                10,15],
+
+                buttons: [
+                    
+                ]
+    });
+</script>
 
