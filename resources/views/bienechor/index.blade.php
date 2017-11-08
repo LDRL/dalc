@@ -47,7 +47,7 @@
                                         <td>{{$em->telefono}}</td>
                                         <td>{{$em->correo}}</td>
                                         <td>
-                                            <button class="btn  btn-success btn-md btnnd" title="Nuevo Donativo" value="{{$em->idpersona}}"><i class="fa fa-heart fa-plus-circle"></i></button>
+                                            <button id="btnnd" class="btn  btn-success btn-md btnnd" title="Nuevo Donativo" value="{{$em->idpersona}}"><i class="fa fa-heart fa-plus-circle"></i></button>
 
                                              <a href="javascript:void(0);" onclick="detalle(20,{{$em->idpersona}});"><button class="btn btn-primary btn-md" title="Detalles" ><i class="fa fa-address-card"></i></button></a>
 
@@ -322,6 +322,7 @@
                     }
                  }
              });
+
     });
 </script>
 

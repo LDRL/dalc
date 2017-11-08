@@ -144,12 +144,11 @@
 
 /////Donación
     $(document).on('click','.btnnd',function(){
-
         $("#fechadona").val("");
         $("#cantidad").val("");
         $("#observaciones").val("");
-
         var idbi=$(this).val();
+        console.log(idbi);
         var miurl="/bienhechor/listarbienhe";
         $.get(miurl+'/'+ idbi,function(data){
             $('#idbi').val(data.idpersona);
@@ -158,9 +157,7 @@
             $('#formModalD').modal('show');
         });
     });
-
-    //$("#btnGuardarD").click(function(e){
-    $(document).on('click','#btnGuardarD',function(){
+    $("#btnGuardarD").click(function(e){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -175,7 +172,6 @@
                 observaciones:$("#observaciones").val(),
                 idb:$('#idbi').val(),
             };
-
         $.ajax({
             type: type,
             url: miurl,
