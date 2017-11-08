@@ -1,6 +1,7 @@
 <link href="{{asset('assets/css/plugins/steps/jquery.steps.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/plugins/select2/select2.min.css')}}" rel="stylesheet" />
+<link href="{{asset('assets/css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
 <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
 <div class="wrapper wrapper-content animated fadeInRight ecommerce">
@@ -131,8 +132,8 @@
 
                                     <div class="col-lg-3 col-md-5 col-sm-9 col-xs-12 form-inline">
                                     <label>Lenguaje</label>
-                                            <div id="divlenguaje" >
-                                                    <select id="idiomafam" class="chosen-select form-control"  multiple data-placeholder="Seleccione ...">
+                                            <div id="divlenguaje">
+                                                    <select id="idiomafam" class="chosen-select form-control"  style="width:350px;" tabindex="4" multiple data-placeholder="Seleccione ...">
                                                         @if (isset($idioma))
                                                             @foreach($idioma as $idi)
                                                                 <option value="{{$idi->ididioma}}">{{$idi->nombreid}},&nbsp;&nbsp;</option>
@@ -699,6 +700,7 @@
                 </div>
 
 </div>
+<input type="hidden" name="" id="identificador" value="0">
 <div class="col-lg-12">
                 <div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
@@ -752,7 +754,9 @@
 <script src="{{asset('assets/js/plugins/steps/jquery.steps.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/js/plugins/datapicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('assets/js/plugins/chosen/chosen.jquery.js')}}"></script>
 <script src="{{asset('assets/js/pacientes/paciente.js')}}"></script>
+
 
 
 
