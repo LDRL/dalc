@@ -1,4 +1,4 @@
-<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+<div class="wrapper wrapper-content animated fadeInRight ecommerce" id="nrol">
     <div class="ibox-content m-b-sm border-bottom">
     	<h4 class="box-title" align="center">Nuevo Rol</h4> 
         <a href="javascript:void(0);" onclick="cargarindex(12);">

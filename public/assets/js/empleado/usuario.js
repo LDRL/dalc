@@ -339,25 +339,31 @@ $(document).on('click','.btn-btnGuardarRol',function(e){
                 cancelButtonClass: 'btn btn-danger',
                 buttonsStyling: false
             }).then(function () {
-                var miurl=urlraiz+"/seguridad/form_nuevo_rol";
-                var errHTML="";
-                $.ajax({
-                    url: miurl
-                }).done( function(resul) 
-                {
-                    $("#contentsecundario").html(resul);
-                }).fail(function() 
-                {
-                    $("#contentsecundario").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                });
+                swal({ 
+                    title:"Envio correcto",
+                    text: "Se guardado correctamente un nuevo rol",
+                    type: "success"
+                }).then(function(){
+                    var miurl=urlraiz+"/seguridad/form_nuevo_rol";
+                    var errHTML="";
+                    $.ajax({
+                        url: miurl
+                    }).done( function(resul) 
+                    { 
+                        $("#nrol").html(resul);
+                    }).fail(function() 
+                    {
+                        $("#nrol").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                    });
+                });  
             }, function (dismiss) {
                 // dismiss can be 'cancel', 'overlay',
                 // 'close', and 'timer'
                 if (dismiss === 'cancel') {
                     swal({ 
-                                title:"Envio correcto",
-                                text: "Se guardado correctamente un nuevo empleado",
-                                type: "success"
+                        title:"Envio correcto",
+                        text: "Se guardado correctamente un nuevo rol",
+                        type: "success"
                     }).then(function(){
                       var miurl=urlraiz+"/seguridad/rol/index";
                         $.ajax({

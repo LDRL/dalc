@@ -28,7 +28,6 @@
 										<th>Nombre</th>
 										<th>Slug</th>
 										<th>Descripción</th>
-										<th>Acción</th>
 									</tr>
 								</thead>
 						    	<tbody>
@@ -39,9 +38,7 @@
 									<td><span class="label label-default">{{ $rol->name or "Ninguno" }}</span></td>
 									<td class="mailbox-messages mailbox-name"><a href="javascript:void(0);" style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp;{{ $rol->slug  }}</a></td>
 									<td>{{ $rol->description }}</td>
-									<td>
-									<button type="button"  class="btn  btn-danger btn-xs" onclick="borrar_rol({{ $rol->id }});"   ><i class="fa fa-fw fa-remove"></i></button>
-									</td>
+									
 								</tr>
 							    @endforeach
 								</tbody>
