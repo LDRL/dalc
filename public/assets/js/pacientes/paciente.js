@@ -1,5 +1,7 @@
+    var $f = $(this);
+
 $(document).ready(function(){
-    
+    console.log($f.data('locked'));
     $("#wizard").steps({
         /*onStepChanging: function (e)
         {
@@ -207,7 +209,9 @@ $(document).ready(function(){
         }
     });
     $('.select2_demo_2').select2();
-    $('.chosen-select').chosen({width: "100%"});
+    $('.chosen-select').chosen({width: "200px"});
+    $(".chzn-select").chosen({width: "250px"});
+    $(".chzn-select1").chosen({width: "150px"});
     $("#addFam").click(function(){
         agregarfam();
     });
@@ -239,10 +243,13 @@ $(document).ready(function(){
         agregarpadecidos();
     });
     $("#btnaddinf").click(function(){
+        
+        console.log($f.data('locked'));
         //$(document).on('click','.btn-addB',function(){
                 $('#inputTitle').html("Nueva Infeccion");
                 $('#formAgregar').trigger("reset");
-                $('#btnGuardar').val('addbi');
+                $('#btnGuardar').trigger("reset");
+                $('#btnGuardar').val('addbi1');
                 $('#formModal').modal('show');
             //});
     });
@@ -357,170 +364,314 @@ var contvac=0;
 var contpad=0;
 
 $("#btnGuardar").click(function(e){
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    });
-    var miurl;
-    var status = $("#btnGuardar").val();
-    var formData = {
-            nombre:$("#nombre").val(),
-        };
+     e.preventDefault();
+    console.log($f.data('locked'));
+    var identificador = $('#identificador').val();
 
-    if (status == "addbi") {
-        miurl = 'paciente/addinfeccion';
-    }
-    if (status == "addbe") {
-        miurl = 'paciente/addenfermedad';
-    }
-    if (status == "addba") {
-        miurl = 'paciente/addanimal';
-    }
-    if (status == "addbp") {
-        miurl = 'paciente/addpersonal';
-    }
-    if (status == "addbm") {
-        miurl = 'paciente/addmedicina';
-    }
-    /**/
-    if (status == "addid") {
-        miurl = 'paciente/addidioma';
-    }
-    if (status == "addban") {
-        miurl = 'paciente/addanomalia';
-    }
-    if (status == "addblug") {
-        miurl = 'paciente/addlugar';
-    }
-    if (status == "addbrel") {
-        miurl = 'paciente/addrel';
-    }
-    /**/
-    if (status == "addpv") {
-        miurl = 'paciente/addvacuna';
-    }
-    if (status == "addbep") {
-        miurl = 'paciente/addenfermedad';
-    }
-    /**/
-    $.ajax({
-        type: "POST",
-        url: miurl,
-        data: formData,
-        dataType: 'json',
+    console.log(identificador);
 
-        success: function (data) {
-            if (status == "addbi") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#infecciontipo").append('<option selected value='+v.idtipoinfeccion+'>'+v.nombre+'</option>');
-                    agregarinfeccion();
-                });
+    if(identificador == 0)
+    {
+            console.log($f.data('locked'));
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            var miurl;
+            var status = $("#btnGuardar").val();
+            var formData = {
+                    nombre:$("#nombre").val(),
+                };
+
+            if (status == "addbi1") {
+                miurl = 'paciente/addinfeccion';
             }
             if (status == "addbe") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
-                    $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
-                    agregarenfermedad();
-                });
+                miurl = 'paciente/addenfermedad';
             }
             if (status == "addba") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#animaltipo").append('<option selected value='+v.idanimal+'>'+v.nombreanimal+'</option>');
-                    agregaranimal();
-                });
+                miurl = 'paciente/addanimal';
             }
             if (status == "addbp") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#personalati").append('<option selected value='+v.idpersonalatiende+'>'+v.nombre+'</option>');
-                    agregarpersonal();
-                });
+                miurl = 'paciente/addpersonal';
             }
             if (status == "addbm") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#medicamento").append('<option selected value='+v.idmedicina+'>'+v.nombre+'</option>');
-                    agregarmedicina();
-                });
-            }
-            if (status == "addpv") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#vacunass").append('<option selected value='+v.idvacuna+'>'+v.vacuna+'</option>');
-                    agregarvacuna();
-                });
-            }
-            if (status == "addbep") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
-                    $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
-                    agregarpadecidos();
-                });
+                miurl = 'paciente/addmedicina';
             }
             /**/
             if (status == "addid") {
-                
-                var urlraiz=$("#url_raiz_proyecto").val();
-                var miurl=urlraiz+"/paciente/idget";
-                $.ajax({
-                url: miurl
-                }).done( function(resul) 
-                {
-                    swal("Agregado correctamente","","success");
-                    $("#divlenguaje").html(resul);
-                }).fail( function() 
-                {
-                    $("#divlenguaje").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                });
-
+                miurl = 'paciente/addidioma';
             }
             if (status == "addban") {
-
-                var urlraiz=$("#url_raiz_proyecto").val();
-                var miurl=urlraiz+"/paciente/getanoma";
-                $.ajax({
-                url: miurl
-                }).done( function(resul) 
-                {   swal("Agregado correctamente","","success");
-                    $("#divanomal").html(resul);
-                }).fail( function() 
-                {
-                    $("#divanomal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
-                });
+                miurl = 'paciente/addanomalia';
             }
             if (status == "addblug") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#origenp").append('<option selected value='+v.idmunicipio+'>'+v.municipio+'</option>');
-                });
+                miurl = 'paciente/addlugar';
             }
             if (status == "addbrel") {
-                swal("Agregado correctamente","","success");
-                $(data).each(function(i,v){
-                    $("#religionfam").append('<option selected value='+v.idreligion+'>'+v.religion+'</option>');
-                });
+                miurl = 'paciente/addrel';
             }
-            $('#formModal').modal('hide');            
-        },
-        error: function (data) {
-            $('#loading').modal('hide');
-            var errHTML="";
-            if((typeof data.responseJSON != 'undefined')){
-                for( var er in data.responseJSON.errors){
-                                errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+            /**/
+            if (status == "addpv") {
+                miurl = 'paciente/addvacuna';
+            }
+            if (status == "addbep") {
+                miurl = 'paciente/addenfermedad';
+            }
+            /**/
+            $.ajax({
+                type: "POST",
+                url: miurl,
+                data: formData,
+                dataType: 'json',
+
+                success: function (data) {
+                    if (status == "addbi1") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+
+                            $(data).each(function(i,v){
+                                $("#infecciontipo").append('<option selected value='+v.idtipoinfeccion+'>'+v.nombre+'</option>');
+                                agregarinfeccion();
+                            });
+                        });
+                        
+
+                    }
+                    if (status == "addbe") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                                $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                                agregarenfermedad();
+                            });
+                        });
+                    }
+                    if (status == "addba") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#animaltipo").append('<option selected value='+v.idanimal+'>'+v.nombreanimal+'</option>');
+                                agregaranimal();
+                            });
+                        });
+                    }
+                    if (status == "addbp") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#personalati").append('<option selected value='+v.idpersonalatiende+'>'+v.nombre+'</option>');
+                                agregarpersonal();
+                            });
+                        });
+                    }
+                    if (status == "addbm") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#medicamento").append('<option selected value='+v.idmedicina+'>'+v.nombre+'</option>');
+                                agregarmedicina();
+                            });
+                        });
+                    }
+                    if (status == "addpv") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#vacunass").append('<option selected value='+v.idvacuna+'>'+v.vacuna+'</option>');
+                                agregarvacuna();
+                            });
+                        });
+                    }
+                    if (status == "addbep") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#enfpadecido").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                                $("#enfermedadtipo").append('<option selected value='+v.idtipoenfermedad+'>'+v.nombre+'</option>');
+                                agregarpadecidos();
+                            });
+                        });
+                    }
+                    /**/
+                    if (status == "addid") {
+                        
+                        /*var urlraiz=$("#url_raiz_proyecto").val();
+                        var miurl=urlraiz+"/paciente/idget";
+                        $.ajax({
+                        url: miurl
+                        }).done( function(resul) 
+                        {
+                            identificador = 1;
+                            $('#identificador').val('1');
+                            swal({ 
+                            title:"Agregado correctamente",
+                            text: "",
+                            type: "success",
+                            }).then( function () {
+                                identificador = 0;
+                                $('#identificador').val('0');
+                                $("#divlenguaje").html(resul);
+                            });
+                        }).fail( function() 
+                        {
+                            $("#divlenguaje").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                        });*/
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                    $("#idiomafam").append('<option selected value='+v.ididioma+'>'+v.nombreid+'</option>');
+                                    $('#idiomafam').trigger('chosen:updated');
+                            });
+                        });
+                    }
+                    if (status == "addban") {
+
+                        /*var urlraiz=$("#url_raiz_proyecto").val();
+                        var miurl=urlraiz+"/paciente/getanoma";
+                        $.ajax({
+                        url: miurl
+                        }).done( function(resul) 
+                        {   identificador = 1;
+                            $('#identificador').val('1');
+                            swal({ 
+                            title:"Agregado correctamente",
+                            text: "",
+                            type: "success",
+                            }).then( function () {
+                                identificador = 0;
+                                $('#identificador').val('0');
+                                $("#divanomal").html(resul);
+                                console.log($('#identificador').val());
+                            });
+                        }).fail( function() 
+                        {
+                            $("#divanomal").html('<span>...Ha ocurrido un error, revise su conexión y vuelva a intentarlo...</span>');
+                        });*/
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                    $("#anomaliafam").append('<option selected value='+v.idanomalia+'>'+v.anomalia+'</option>');
+                                    $('#anomaliafam').trigger('chosen:updated');
+                            });
+                        });
+                    }
+                    if (status == "addblug") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#origenp").append('<option selected value='+v.idmunicipio+'>'+v.municipio+'</option>');
+                            });
+                        });
+                    }
+                    if (status == "addbrel") {
+                        identificador = 1;
+                        $('#identificador').val('1');
+                        swal({ 
+                        title:"Agregado correctamente",
+                        text: "",
+                        type: "success",
+                        }).then( function () {
+                            identificador = 0;
+                            $('#identificador').val('0');
+                            $(data).each(function(i,v){
+                                $("#religionfam").append('<option selected value='+v.idreligion+'>'+v.religion+'</option>');
+                            });
+                        });
+                    }
+                    $('#formModal').modal('hide');            
+                },
+                error: function (data) {
+                    $('#loading').modal('hide');
+                    var errHTML="";
+                    if((typeof data.responseJSON != 'undefined')){
+                        for( var er in data.responseJSON.errors){
+                                        errHTML+="<li>"+data.responseJSON.errors[er]+"</li>";
+                        }
+                    }else{
+                        errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
+                    }
+                    $("#erroresContent").html(errHTML); 
+                    $('#erroresModal').modal('show');
                 }
-            }else{
-                errHTML+='<li>Error al intentar guardar un nuevo registro, intente mas tarde.</li>';
-            }
-            $("#erroresContent").html(errHTML); 
-            $('#erroresModal').modal('show');
-        }
-    });
+            });
+    
+    }
+    else{
+        alert("se esta enviando su solicitud");
+    }
 });
 function Anofams(elementos) {
     element = document.getElementById("divanomal");
