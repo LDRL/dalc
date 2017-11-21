@@ -13,7 +13,6 @@ class ComposicionController extends Controller
     
     public function addc(Request $request)
     {
-
         $tipomedicamento = TipoMedicamento::all();
         return view('medicamento.composicion.createc',["tipomedicamento"=>$tipomedicamento]);
     }

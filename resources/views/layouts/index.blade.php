@@ -1,18 +1,7 @@
-<!--
-*
-*  INSPINIA - Responsive Admin Theme
-*  version 2.7
-*
--->
-
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <meta charset="utf-8">
-
-
 
     <title>HNMHP</title>
 
@@ -31,10 +20,8 @@
     <link href="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- Date Picker-->
-
     <link href="{{asset('assets/css/plugins/datapicker/datepicker3.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/plugins/footable/footable.core.css')}}" rel="stylesheet">
-
     <link href="{{asset('assets/css/plugins/chosen/bootstrap-chosen.css')}}" rel="stylesheet">
 
     <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet">
@@ -42,8 +29,8 @@
 
     @show
 </head>
-@if(isset($mensaje))
-        @if($mensaje > 0)
+    @if(isset($mensaje))
+        @if($mensaje[0]->conteo > 0)
         <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay actividades que requieren su atención')">
         @else
         <body class="md-skin">
@@ -52,7 +39,7 @@
     <body class="md-skin">
     @endif
 
-<!--<body>-->
+    <!--<body>-->
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -89,7 +76,6 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(24);">Pacientes Inactivos</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(22);">Ingreso de paciente</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(9);">Ingreso Examenes</a></li>
-
                         </ul>
                     </li>
                     @endrole
@@ -107,14 +93,11 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(19);">Medicamento por vencer</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso por vencimiento</a></li>
- 
                         </ul>
                     </li>
                     @endrole
 
-                    @role('proveedor') 
-
-
+                    @role('proveedor')
                     <li>
                         <a href="#"><i class="fa fa-truck"></i><span class="nav-label">Proveedores</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
@@ -158,8 +141,6 @@
                             <li><a href="javascript:void(0);" onclick="cargarindex(3);">Usuario activos</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(11);">Ingreso usuario</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(15);">Usuario inactivos</a></li>
-                            <!--
-                            <li><a href="javascript:void(0);" onclick="cargarmodalempleado(4);">Ingreso Marca</a></li>-->
                             @role('rol')
                             <li><a href="javascript:void(0);" onclick="cargarindex(12);">Listado Rol</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(16);">Ingreso Rol</a></li>
@@ -175,18 +156,83 @@
             <div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
-                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-                        <!--
-                        <form role="search" class="navbar-form-custom" action="search_results.html">
-                            <div class="form-group">
-                                <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                            </div>
-                        </form>
-                        -->
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
                     </div>
 
                     <!-- COLOCAR COLOR AL NAV -->
                     <ul class="nav navbar-top-links navbar-right ">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope"></i><span class="label label-warning">{{Session::get('mensaje[0]','0')}}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <!--<li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a7.jpg">
+                                        </a>
+                                        <div class="media-body">
+                                            <small class="pull-right">46h ago</small>
+                                            <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/a4.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right text-navy">5h ago</small>
+                                            <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                            <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="dropdown-messages-box">
+                                        <a href="profile.html" class="pull-left">
+                                            <img alt="image" class="img-circle" src="img/profile.jpg">
+                                        </a>
+                                        <div class="media-body ">
+                                            <small class="pull-right">23h ago</small>
+                                            <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                            <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                -->
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i>  <span class="label label-success">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <!--<li class="divider"></li>
+                                <li>
+                                    <a href="grid_options.html">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a href="notifications.html">
+                                            <strong>See All Alerts</strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                -->
+                            </ul>
+                        </li>
                         <li>
                             <a href="{{ url('/logout') }}">
                                 <i class="fa fa-sign-out"></i> Cerrar Sesion
@@ -201,24 +247,17 @@
                 </nav>
             </div>
 
-
             <div class="row">
                 <div class="wrapper wrapper-content">
                     @yield('contenido')
-                
-
                     <div id="capa_modal" class="div_modal" ></div>
                     <div id="capa_formularios" class="div_modal"></div>
                     <div id="capa_busqueda" class="div_modal"></div>
-
 
                     <div id="modales" class="div_modal"></div>
                     <div id="modales1"></div>
                     <div id="modales2" class="div_modal"></div>
                     <div id="modales3" class="div_modal"></div>
-
-
-                    
                 </div>
 
                 <div class="footer">
@@ -373,10 +412,7 @@
     </div>
     -->
 
-
     <input type="hidden"  id="url_raiz_proyecto" value="{{ url("/") }}" />
-
-
     <div style="display: none;" id="cargador_empresa" align="center">
         <br>
         <label style="color:#FFF; background-color:#ABB6BA; text-align:center">&nbsp;&nbsp;&nbsp;Espere... &nbsp;&nbsp;&nbsp;</label>
@@ -400,9 +436,6 @@
     </div>
               
     <!-- cuando se hace una cita textual utilizar comias"-->
-
-
-
     <!-- Mainly scripts -->
     @section('fin')
     <script src="{{asset('assets/js/jquery-3.1.1.min.js')}}"></script>
@@ -439,8 +472,6 @@
     <!-- ChartJS-->
     <script src="{{asset('assets/js/plugins/chartJs/Chart.min.js')}}"></script>
 
-
-
     <!--rutas del empleado-->
     <meta name="_token" content="{!! csrf_token() !!}" />
 
@@ -461,21 +492,14 @@
     <script src="{{asset('assets/js/notify.js')}}"></script>
     <script src="{{asset('assets/js/notify-metro.js')}}"></script>
 
-    
     <script src="{{asset('assets/js/plugins/validate/jquery.validate.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/validate/jquery.validate.js')}}"></script>
-    
 
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/sweetalert/dist/sweetalert2.js')}}"></script>
 
-
     <!-- Chosen -->
     <script src="{{asset('assets/js/plugins/chosen/chosen.jquery.js')}}"></script>
-
-
-
-
     <script>
         $(document).ready(function() {
             /*
@@ -553,19 +577,13 @@
                 }
             };
 
-            /*
-            var ctx4 = document.getElementById("doughnutChart").getContext("2d");
-            new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});
-            */
-
             var doughnutData = {
                 labels: ["App","Software","Laptop" ],
                 datasets: [{
                     data: [70,27,85],
                     backgroundColor: ["#a3e1d4","#dedede","#9CC3DA"]
                 }]
-            } ;
-
+            };
 
             var doughnutOptions = {
                 responsive: false,
@@ -573,240 +591,236 @@
                     display: false
                 }
             };
-            
-            /*var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
-            new Chart(ctx4, {type: 'doughnut', data: doughnutData, options:doughnutOptions});*/
         });
 
-        // Config box
+    // Config box
 
-    // Enable/disable fixed top navbar
-    $('#fixednavbar').click(function (){
-        if ($('#fixednavbar').is(':checked')){
-            $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
-            $("body").removeClass('boxed-layout');
-            $("body").addClass('fixed-nav');
-            $('#boxedlayout').prop('checked', false);
+        // Enable/disable fixed top navbar
+        $('#fixednavbar').click(function (){
+            if ($('#fixednavbar').is(':checked')){
+                $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
+                $("body").removeClass('boxed-layout');
+                $("body").addClass('fixed-nav');
+                $('#boxedlayout').prop('checked', false);
 
-            if (localStorageSupport){
-                localStorage.setItem("boxedlayout",'off');
+                if (localStorageSupport){
+                    localStorage.setItem("boxedlayout",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar",'on');
+                }
+            } else{
+                $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+                $("body").removeClass('fixed-nav');
+                $("body").removeClass('fixed-nav-basic');
+                $('#fixednavbar2').prop('checked', false);
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar2",'off');
+                }
             }
+        });
 
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar",'on');
+        // Enable/disable fixed top navbar
+        $('#fixednavbar2').click(function (){
+            if ($('#fixednavbar2').is(':checked')){
+
+                $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
+                $("body").removeClass('boxed-layout');
+                $("body").addClass('fixed-nav').addClass('fixed-nav-basic');
+                $('#boxedlayout').prop('checked', false);
+
+                if (localStorageSupport){
+                    localStorage.setItem("boxedlayout",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar2",'on');
+                }
+            } else {
+                $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+                $("body").removeClass('fixed-nav').removeClass('fixed-nav-basic');
+                $('#fixednavbar').prop('checked', false);
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar2",'off');
+                }
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar",'off');
+                }
             }
-        } else{
-            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
-            $("body").removeClass('fixed-nav');
-            $("body").removeClass('fixed-nav-basic');
-            $('#fixednavbar2').prop('checked', false);
+        });
 
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar",'off');
+        // Enable/disable fixed sidebar
+        $('#fixedsidebar').click(function (){
+            if ($('#fixedsidebar').is(':checked')){
+                $("body").addClass('fixed-sidebar');
+                $('.sidebar-collapse').slimScroll({
+                    height: '100%',
+                    railOpacity: 0.9
+                });
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixedsidebar",'on');
+                }
+            } else{
+                $('.sidebar-collapse').slimScroll({destroy: true});
+                $('.sidebar-collapse').attr('style', '');
+                $("body").removeClass('fixed-sidebar');
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixedsidebar",'off');
+                }
             }
+        });
 
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar2",'off');
+        // Enable/disable collapse menu
+        $('#collapsemenu').click(function (){
+            if ($('#collapsemenu').is(':checked')){
+                $("body").addClass('mini-navbar');
+                SmoothlyMenu();
+
+                if (localStorageSupport){
+                    localStorage.setItem("collapse_menu",'on');
+                }
+
+            } else{
+                $("body").removeClass('mini-navbar');
+                SmoothlyMenu();
+
+                if (localStorageSupport){
+                    localStorage.setItem("collapse_menu",'off');
+                }
+            }
+        });
+
+        // Enable/disable boxed layout
+        $('#boxedlayout').click(function (){
+            if ($('#boxedlayout').is(':checked')){
+                $("body").addClass('boxed-layout');
+                $('#fixednavbar').prop('checked', false);
+                $('#fixednavbar2').prop('checked', false);
+                $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+                $("body").removeClass('fixed-nav');
+                $("body").removeClass('fixed-nav-basic');
+                $(".footer").removeClass('fixed');
+                $('#fixedfooter').prop('checked', false);
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixednavbar2",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixedfooter",'off');
+                }
+
+
+                if (localStorageSupport){
+                    localStorage.setItem("boxedlayout",'on');
+                }
+            } else{
+                $("body").removeClass('boxed-layout');
+
+                if (localStorageSupport){
+                    localStorage.setItem("boxedlayout",'off');
+                }
+            }
+        });
+
+        // Enable/disable fixed footer
+        $('#fixedfooter').click(function (){
+            if ($('#fixedfooter').is(':checked')){
+                $('#boxedlayout').prop('checked', false);
+                $("body").removeClass('boxed-layout');
+                $(".footer").addClass('fixed');
+
+                if (localStorageSupport){
+                    localStorage.setItem("boxedlayout",'off');
+                }
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixedfooter",'on');
+                }
+            } else{
+                $(".footer").removeClass('fixed');
+
+                if (localStorageSupport){
+                    localStorage.setItem("fixedfooter",'off');
+                }
+            }
+        });
+
+        // SKIN Select
+        $('.spin-icon').click(function (){
+            $(".theme-config-box").toggleClass("show");
+        });
+
+        // Default skin
+        $('.s-skin-0').click(function (){
+            $("body").removeClass("skin-1");
+            $("body").removeClass("skin-2");
+            $("body").removeClass("skin-3");
+        });
+
+        // Blue skin
+        $('.s-skin-1').click(function (){
+            $("body").removeClass("skin-2");
+            $("body").removeClass("skin-3");
+            $("body").addClass("skin-1");
+        });
+
+        // Inspinia ultra skin
+        $('.s-skin-2').click(function (){
+            $("body").removeClass("skin-1");
+            $("body").removeClass("skin-3");
+            $("body").addClass("skin-2");
+        });
+
+        // Yellow skin
+        $('.s-skin-3').click(function (){
+            $("body").removeClass("skin-1");
+            $("body").removeClass("skin-2");
+            $("body").addClass("skin-3");
+        });
+
+        if (localStorageSupport){
+            var collapse = localStorage.getItem("collapse_menu");
+            var fixedsidebar = localStorage.getItem("fixedsidebar");
+            var fixednavbar = localStorage.getItem("fixednavbar");
+            var fixednavbar2 = localStorage.getItem("fixednavbar2");
+            var boxedlayout = localStorage.getItem("boxedlayout");
+            var fixedfooter = localStorage.getItem("fixedfooter");
+
+            if (collapse == 'on'){
+                $('#collapsemenu').prop('checked','checked')
+            }
+            if (fixedsidebar == 'on'){
+                $('#fixedsidebar').prop('checked','checked')
+            }
+            if (fixednavbar == 'on'){
+                $('#fixednavbar').prop('checked','checked')
+            }
+            if (fixednavbar2 == 'on'){
+                $('#fixednavbar2').prop('checked','checked')
+            }
+            if (boxedlayout == 'on'){
+                $('#boxedlayout').prop('checked','checked')
+            }
+            if (fixedfooter == 'on') {
+                $('#fixedfooter').prop('checked','checked')
             }
         }
-    });
-
-    // Enable/disable fixed top navbar
-    $('#fixednavbar2').click(function (){
-        if ($('#fixednavbar2').is(':checked')){
-
-            $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
-            $("body").removeClass('boxed-layout');
-            $("body").addClass('fixed-nav').addClass('fixed-nav-basic');
-            $('#boxedlayout').prop('checked', false);
-
-            if (localStorageSupport){
-                localStorage.setItem("boxedlayout",'off');
-            }
-
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar2",'on');
-            }
-        } else {
-            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
-            $("body").removeClass('fixed-nav').removeClass('fixed-nav-basic');
-            $('#fixednavbar').prop('checked', false);
-
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar2",'off');
-            }
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar",'off');
-            }
-        }
-    });
-
-    // Enable/disable fixed sidebar
-    $('#fixedsidebar').click(function (){
-        if ($('#fixedsidebar').is(':checked')){
-            $("body").addClass('fixed-sidebar');
-            $('.sidebar-collapse').slimScroll({
-                height: '100%',
-                railOpacity: 0.9
-            });
-
-            if (localStorageSupport){
-                localStorage.setItem("fixedsidebar",'on');
-            }
-        } else{
-            $('.sidebar-collapse').slimScroll({destroy: true});
-            $('.sidebar-collapse').attr('style', '');
-            $("body").removeClass('fixed-sidebar');
-
-            if (localStorageSupport){
-                localStorage.setItem("fixedsidebar",'off');
-            }
-        }
-    });
-
-    // Enable/disable collapse menu
-    $('#collapsemenu').click(function (){
-        if ($('#collapsemenu').is(':checked')){
-            $("body").addClass('mini-navbar');
-            SmoothlyMenu();
-
-            if (localStorageSupport){
-                localStorage.setItem("collapse_menu",'on');
-            }
-
-        } else{
-            $("body").removeClass('mini-navbar');
-            SmoothlyMenu();
-
-            if (localStorageSupport){
-                localStorage.setItem("collapse_menu",'off');
-            }
-        }
-    });
-
-    // Enable/disable boxed layout
-    $('#boxedlayout').click(function (){
-        if ($('#boxedlayout').is(':checked')){
-            $("body").addClass('boxed-layout');
-            $('#fixednavbar').prop('checked', false);
-            $('#fixednavbar2').prop('checked', false);
-            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
-            $("body").removeClass('fixed-nav');
-            $("body").removeClass('fixed-nav-basic');
-            $(".footer").removeClass('fixed');
-            $('#fixedfooter').prop('checked', false);
-
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar",'off');
-            }
-
-            if (localStorageSupport){
-                localStorage.setItem("fixednavbar2",'off');
-            }
-
-            if (localStorageSupport){
-                localStorage.setItem("fixedfooter",'off');
-            }
-
-
-            if (localStorageSupport){
-                localStorage.setItem("boxedlayout",'on');
-            }
-        } else{
-            $("body").removeClass('boxed-layout');
-
-            if (localStorageSupport){
-                localStorage.setItem("boxedlayout",'off');
-            }
-        }
-    });
-
-    // Enable/disable fixed footer
-    $('#fixedfooter').click(function (){
-        if ($('#fixedfooter').is(':checked')){
-            $('#boxedlayout').prop('checked', false);
-            $("body").removeClass('boxed-layout');
-            $(".footer").addClass('fixed');
-
-            if (localStorageSupport){
-                localStorage.setItem("boxedlayout",'off');
-            }
-
-            if (localStorageSupport){
-                localStorage.setItem("fixedfooter",'on');
-            }
-        } else{
-            $(".footer").removeClass('fixed');
-
-            if (localStorageSupport){
-                localStorage.setItem("fixedfooter",'off');
-            }
-        }
-    });
-
-    // SKIN Select
-    $('.spin-icon').click(function (){
-        $(".theme-config-box").toggleClass("show");
-    });
-
-    // Default skin
-    $('.s-skin-0').click(function (){
-        $("body").removeClass("skin-1");
-        $("body").removeClass("skin-2");
-        $("body").removeClass("skin-3");
-    });
-
-    // Blue skin
-    $('.s-skin-1').click(function (){
-        $("body").removeClass("skin-2");
-        $("body").removeClass("skin-3");
-        $("body").addClass("skin-1");
-    });
-
-    // Inspinia ultra skin
-    $('.s-skin-2').click(function (){
-        $("body").removeClass("skin-1");
-        $("body").removeClass("skin-3");
-        $("body").addClass("skin-2");
-    });
-
-    // Yellow skin
-    $('.s-skin-3').click(function (){
-        $("body").removeClass("skin-1");
-        $("body").removeClass("skin-2");
-        $("body").addClass("skin-3");
-    });
-
-    if (localStorageSupport){
-        var collapse = localStorage.getItem("collapse_menu");
-        var fixedsidebar = localStorage.getItem("fixedsidebar");
-        var fixednavbar = localStorage.getItem("fixednavbar");
-        var fixednavbar2 = localStorage.getItem("fixednavbar2");
-        var boxedlayout = localStorage.getItem("boxedlayout");
-        var fixedfooter = localStorage.getItem("fixedfooter");
-
-        if (collapse == 'on'){
-            $('#collapsemenu').prop('checked','checked')
-        }
-        if (fixedsidebar == 'on'){
-            $('#fixedsidebar').prop('checked','checked')
-        }
-        if (fixednavbar == 'on'){
-            $('#fixednavbar').prop('checked','checked')
-        }
-        if (fixednavbar2 == 'on'){
-            $('#fixednavbar2').prop('checked','checked')
-        }
-        if (boxedlayout == 'on'){
-            $('#boxedlayout').prop('checked','checked')
-        }
-        if (fixedfooter == 'on') {
-            $('#fixedfooter').prop('checked','checked')
-        }
-    }
 
         $('.chosen-select').chosen({width: "100%"});
-
     </script>
     @show
 </body>

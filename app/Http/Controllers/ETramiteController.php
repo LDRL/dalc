@@ -46,7 +46,6 @@ class ETramiteController extends Controller
         $puesto = Puesto::all();
         $tipoantecedente = TipoAntecedente::all();
         $estadocivil = EstadoCivil::all();
-        //return view('empleado.create')->with("tipopersona", $tipopersona);
         return view('empleado.create',["tipopersona"=>$tipopersona,"puesto"=>$puesto,"tipoantecedente"=>$tipoantecedente,"estadocivil"=>$estadocivil]);
     }
 
@@ -78,7 +77,6 @@ class ETramiteController extends Controller
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar nuevo empreado'),404);
-            
         }
 
         return json_encode($tramites);    
@@ -104,9 +102,9 @@ class ETramiteController extends Controller
             $tramite->save();
 
             $tramite = DB::table('tramite as tra')
-	    	->join('tipoantecedente as tan','tra.idtipoantecedente','=','tan.idtipoantecedente')
-	    	->select('tra.idtramite',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'tra.idtipoantecedente','tan.nombreantecedente as antecedente')
-	    	->where('idtramite','=',$id)->first();
+	    	    ->join('tipoantecedente as tan','tra.idtipoantecedente','=','tan.idtipoantecedente')
+	    	    ->select('tra.idtramite',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'tra.idtipoantecedente','tan.nombreantecedente as antecedente')
+                ->where('idtramite','=',$id)->first();
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar nuevo empreado'),404);
@@ -114,7 +112,6 @@ class ETramiteController extends Controller
 
 		return response()->json($tramite);
     }
-
 
     public function delete($id)
     {

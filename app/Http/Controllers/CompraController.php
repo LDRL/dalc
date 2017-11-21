@@ -63,8 +63,6 @@ class CompraController extends Controller
         try {
 
             DB::beginTransaction();
-
-
             $this->validateRequest($request);
 
             $fechacompra=$request->get('fecha_compra');
@@ -96,7 +94,6 @@ class CompraController extends Controller
             $almacen-> fechavencimiento = $fechavencimiento;
             $almacen->idcompra = $compra->idcompra;
             $almacen-> idmedicamento = $request->get('medicamento');
-
             $almacen->save();
 
             DB::commit();

@@ -20,7 +20,7 @@ class CPHistorialController extends Controller
     public function add(Request $request)
     {
         $paciente = DB::table('paciente')->select('idpaciente','nombrepa')
-                    ->where('idstatus','=',5)->get();
+            ->where('idstatus','=',5)->get();
         return view('pacientes.historial.create',["paciente"=>$paciente]);
     }
 
@@ -28,9 +28,7 @@ class CPHistorialController extends Controller
     {
         try {
             $this->validateRequest($request);
-
             $miArray = $request->observacion;
-
             $mytime = Carbon::now('America/Guatemala');
             $idpaciente = $request->paciente;
 
@@ -67,7 +65,6 @@ class CPHistorialController extends Controller
 
             $historial->save();
 
-		
             foreach ($miArray as $key => $value) {
                 $examen = new Examen;
                 $examen->idpaciente = $idpaciente;
@@ -77,13 +74,10 @@ class CPHistorialController extends Controller
                 $examen->idusuario = Auth::user()->id;
                 $examen->save();
             }
-
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar un nuevo examen'),404);
-            
         }
-
         return json_encode($historial);    
     }
 
@@ -95,7 +89,6 @@ class CPHistorialController extends Controller
     	->get();
     	return json_decode($paciente);    
     }
-
 
     public function validateRequest($request){
         $rules=[
@@ -113,9 +106,9 @@ class CPHistorialController extends Controller
     public function show($id)
     {
         $encabezado = DB::table('paciente')
-        ->select('idpaciente','nombrepa','procedencia','lorigen','fechanac','fechaingreso')
-        ->where('idpaciente','=',$id)
-        ->first();
+            ->select('idpaciente','nombrepa','procedencia','lorigen','fechanac','fechaingreso')
+            ->where('idpaciente','=',$id)
+            ->first();
 
         $edad = new DateTime($encabezado->fechanac);
         $month = $edad->format('m');
@@ -125,11 +118,11 @@ class CPHistorialController extends Controller
         $fnac = Carbon::createFromDate($year,$month,$day)->age;
 
         $detalle = DB::table('historialmedico as his')
-        ->join('paciente as p','his.idpaciente','=','p.idpaciente')
-        ->select('his.fecha','his.temperatura','his.respiracionminuto','his.pulso','his.idhistorialmedic')   
-        ->orderby('his.fecha','desc')
-        ->where('his.idpaciente','=',$id)
-        ->get();
+            ->join('paciente as p','his.idpaciente','=','p.idpaciente')
+            ->select('his.fecha','his.temperatura','his.respiracionminuto','his.pulso','his.idhistorialmedic')   
+            ->orderby('his.fecha','desc')
+            ->where('his.idpaciente','=',$id)
+            ->get();
         
         return view('pacientes.historial.detalle',["encabezado"=>$encabezado,"detalle"=>$detalle,"edad"=>$fnac]);        
     }
@@ -137,16 +130,16 @@ class CPHistorialController extends Controller
     public function showe($id)
     {
         $historial = DB::table('historialmedico as his')
-        ->select('his.idhistorialmedic','his.temperatura','his.respiracionminuto','his.pulso','his.circunferencia',
-            'his.piel','his.cabeza','his.ojos','his.oidos','his.nariz','his.bacayfaringe','his.cuello','his.corazon','his.corazon','his.pulmones','his.torax','his.manoaxila','his.columna','his.abdomen','his.exsuperior','his.exinferior','his.muscoesqueletico','his.genitales','his.motor','his.reflejos','his.estadomental','his.reqconoce','his.fecha','his.idpaciente')
-        ->where('his.idhistorialmedic','=',$id)
-         ->first();
+            ->select('his.idhistorialmedic','his.temperatura','his.respiracionminuto','his.pulso','his.circunferencia',
+                'his.piel','his.cabeza','his.ojos','his.oidos','his.nariz','his.bacayfaringe','his.cuello','his.corazon','his.corazon','his.pulmones','his.torax','his.manoaxila','his.columna','his.abdomen','his.exsuperior','his.exinferior','his.muscoesqueletico','his.genitales','his.motor','his.reflejos','his.estadomental','his.reqconoce','his.fecha','his.idpaciente')
+            ->where('his.idhistorialmedic','=',$id)
+            ->first();
 
         $observacion = DB::table('pacientexamen as pac')
-        ->join('historialmedico as his','pac.idhistorialmedic','=','his.idhistorialmedic')
-        ->select('pac.observacion')
-        ->where('pac.idhistorialmedic','=',$id)
-        ->get();
+            ->join('historialmedico as his','pac.idhistorialmedic','=','his.idhistorialmedic')
+            ->select('pac.observacion')
+            ->where('pac.idhistorialmedic','=',$id)
+            ->get();
 
         return view('pacientes.historial.detallee',["historial"=>$historial,"observacion"=>$observacion]);        
     }

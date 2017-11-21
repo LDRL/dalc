@@ -27,26 +27,25 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function index()
-    {
-        return view('home');
-    }
-    */
-     public function index(Request $request)
+
+    public function index(Request $request)
     {
         $empleado = DB::table('role_user as ru')
-        ->select(DB::raw('count(ru.id) as conteo'))
-        ->where('ru.role_id','=','2')
-        ->where('ru.user_id','=',Auth::user()->id)
-        ->first();
+            ->select(DB::raw('count(ru.id) as conteo'))
+            ->where('ru.role_id','=','2')
+            ->where('ru.user_id','=',Auth::user()->id)
+            ->first();
 
         if($empleado->conteo > 0)
         {
             $mensaje = DB::select("call Alerta_M");
-        }
+            $value = $request->session($mensaje[0]->conteo);
+            Session::put('mensaje',$mensaje[0]->conteo);
 
-        //$value = $request->session($mensaje->conteo);
-        Session::put('mensaje',$mensaje);
-        return view('home',array('mensaje'=>$mensaje));
+            return view('home',array('mensaje'=>$mensaje));
+        }
+        else{
+            return view('home');
+        }
     }
 }

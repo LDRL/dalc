@@ -113,7 +113,6 @@ class EmpleadoController1 extends Controller
         } catch (Exception $e) {
             DB::rollback();
             return response()->json(array('error'=>'No se ha podido enviar la peticion de agregar nuevo empreado'),404);
-            
         }
 
         return json_encode($empleado);    
@@ -122,10 +121,10 @@ class EmpleadoController1 extends Controller
     public function edit($id)
     {
         $empleado = DB::table('empleado as emp')
-        ->join('persona as per','emp.idpersona','=','per.idpersona')
-        ->select('emp.fechainicio','emp.salario','emp.idpuesto','per.nombre','per.apellido','per.direccion','telefono','per.nit','per.dpi','per.correo','per.fechanacimiento','emp.idpersona','per.idcivil')
-        ->where('emp.idpersona','=',$id)
-        ->first();
+            ->join('persona as per','emp.idpersona','=','per.idpersona')
+            ->select('emp.fechainicio','emp.salario','emp.idpuesto','per.nombre','per.apellido','per.direccion','telefono','per.nit','per.dpi','per.correo','per.fechanacimiento','emp.idpersona','per.idcivil')
+            ->where('emp.idpersona','=',$id)
+            ->first();
         $pactual = DB::table('puesto as p')->select('p.idpuesto','p.nombrepuesto')->where('p.idpuesto','=',$empleado->idpuesto)->first();
         $puesto = Puesto::all();
         $eactual = DB::table('estadocivil as eci')->select('eci.idcivil','eci.nombre')->where('eci.idcivil','=',$empleado->idcivil)->first();
@@ -192,19 +191,19 @@ class EmpleadoController1 extends Controller
     public function show($id)
     {
         $detalle = DB::table('persona as per')
-        ->join('empleado as emp','per.idpersona','=','emp.idpersona')
-        ->join('estadocivil as est','per.idcivil','=','est.idcivil')
-        ->select('emp.idempleado','per.nombre','per.apellido','per.dpi','per.nit',
+            ->join('empleado as emp','per.idpersona','=','emp.idpersona')
+            ->join('estadocivil as est','per.idcivil','=','est.idcivil')
+            ->select('emp.idempleado','per.nombre','per.apellido','per.dpi','per.nit',
                 'per.direccion','per.telefono','per.correo','est.nombre as estadocivil',(DB::raw('DATE_FORMAT(per.fechanacimiento,"%d/%m/%Y") as fechanacimiento')))
-        ->where('per.idpersona','=',$id)
-        ->first();
+            ->where('per.idpersona','=',$id)
+            ->first();
 
         $tramite = DB::table('tramite as tra')
-        ->join('empleado as emp','tra.idempleado','=','emp.idempleado')
-        ->join('tipoantecedente as tip','tra.idtipoantecedente','=','tip.idtipoantecedente')
-        ->select('tra.idtramite','tip.nombreantecedente',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')))
-        ->where('tra.idempleado','=',$detalle->idempleado)
-        ->get();
+            ->join('empleado as emp','tra.idempleado','=','emp.idempleado')
+            ->join('tipoantecedente as tip','tra.idtipoantecedente','=','tip.idtipoantecedente')
+            ->select('tra.idtramite','tip.nombreantecedente',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')))
+            ->where('tra.idempleado','=',$detalle->idempleado)
+            ->get();
 
         $tipoantecedente = TipoAntecedente::all();
 
@@ -298,5 +297,4 @@ class EmpleadoController1 extends Controller
         ];
         $this->validate($request, $rules,$messages);         
     }
-
 }

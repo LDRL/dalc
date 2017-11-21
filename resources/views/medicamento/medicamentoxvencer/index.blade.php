@@ -20,7 +20,6 @@
                                         <th style="width: 20%">Fecha Vencimiento</th>
                                         <th style="width: 10%">Cantidad</th>
                                         <th style="width: 25%">Ubicacion</th>
-                                        <!--<th style="width: 20%">Opciones</th>-->
                                 </thead>
                                 <tbody id="listempleado">
                                     @foreach ($medicamentoxvencer as $mxv)
@@ -49,42 +48,39 @@
 <script src="{{asset('assets/js/plugins/dataTables/datatables.min.js')}}"></script>
 <script>
     $('.dataTables-index-compra').DataTable({
-                responsive: true,
-                dom: '<"html5buttons"B>lTfgitp',
-                "language": {
-                    "decimal":        "",
-                    "emptyTable":     "No hay datos en la tabla",
-                    "info":           "",
-                    "infoEmpty":      "",
-                    "infoFiltered":   "",
-                    "infoPostFix":    "",
-                    "thousands":      ",",
-                    "lengthMenu":     "Mostrar _MENU_ registros",
-                    "loadingRecords": "Loading...",
-                    "processing":     "Processing...",
-                    "search":         "Buscar:",
-                    "total":          "total",          
-                    "zeroRecords":    "No se han encontrado resultados",
-                    "paginate": {
-                        "first":      "First",
-                        "last":       "Last",
-                        "next":       "Siguiente",
-                        "previous":   "Anterior"
-                    },
-                },
-                columns: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                ],
-
-                aLengthMenu:[
-                10,15,25],
-
-                buttons: [
-                    
-                ]
+        responsive: true,
+        dom: '<"html5buttons"B>lTfgitp',
+        "language": {
+            "decimal":        "",
+            "emptyTable":     "No hay datos en la tabla",
+            "info":           "",
+            "infoEmpty":      "",
+            "infoFiltered":   "",
+            "infoPostFix":    "",
+            "thousands":      ",",
+            "lengthMenu":     "Mostrar _MENU_ registros",
+            "loadingRecords": "Loading...",
+            "processing":     "Processing...",
+            "search":         "Buscar:",
+            "total":          "total",          
+            "zeroRecords":    "No se han encontrado resultados",
+            "paginate": {
+        	    "first":      "First",
+                "last":       "Last",
+                "next":       "Siguiente",
+                "previous":   "Anterior"
+            },
+        },
+        columns: [
+            null,
+            null,
+            null,
+            null,
+            null,
+        ],
+        aLengthMenu:[
+            10,15,25],
+        buttons: [
+        ]
     });
 </script>

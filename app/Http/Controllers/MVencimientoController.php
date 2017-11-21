@@ -24,11 +24,11 @@ class MVencimientoController extends Controller
     public function index()
     {
         $requisicion = DB::table('requisicion as req')
-        ->join('usuario as U','req.idusuario','=','U.id')
-        ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
-        ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
-        ->where('tre.idtiporequisicion','=',2)
-        ->get();
+            ->join('usuario as U','req.idusuario','=','U.id')
+            ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
+            ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
+            ->where('tre.idtiporequisicion','=',2)
+            ->get();
 
         return view('medicamento.fechaven.index',["requisicion"=>$requisicion]);
     }
@@ -36,10 +36,10 @@ class MVencimientoController extends Controller
     public function add(Request $request)
     {
         $medicamento = DB::table('medicamento as med')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-        ->select('med.idmedicamento','mar.marca','pre.nombre as presentacion','med.medicamento')
-        ->get();
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->select('med.idmedicamento','mar.marca','pre.nombre as presentacion','med.medicamento')
+            ->get();
 
         return view('medicamento.fechaven.create',["medicamento"=>$medicamento]);
     }
@@ -88,10 +88,10 @@ class MVencimientoController extends Controller
     public function modalrequisicion()
     {
         $medicamento = DB::table('medicamento as med')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-        ->select('med.idmedicamento','med.medicamento','pre.nombre as presentacion','mar.marca','med.cantidad')
-        ->get();
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->select('med.idmedicamento','med.medicamento','pre.nombre as presentacion','mar.marca','med.cantidad')
+            ->get();
         
         return view('medicamento.fechaven.modalbuscarm',["medicamento"=>$medicamento]);
     }
@@ -99,11 +99,11 @@ class MVencimientoController extends Controller
     public function busqueda($id)
     {
         $medicamento = DB::table('medicamento as med')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-        ->select('med.idmedicamento','mar.marca','pre.nombre as presentacion','med.medicamento','med.cantidad')
-        ->where('med.idmedicamento','=',$id)
-        ->first();
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->select('med.idmedicamento','mar.marca','pre.nombre as presentacion','med.medicamento','med.cantidad')
+            ->where('med.idmedicamento','=',$id)
+            ->first();
 
         return view ('medicamento.fechaven.modalmedicamento',["medicamento"=>$medicamento]);
     }
@@ -111,20 +111,20 @@ class MVencimientoController extends Controller
     public function show($id)
     {
         $detalle = DB::table('requisicion as req')
-        ->join('usuario as U','req.idusuario','=','U.id')
-        ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
-        ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
-        ->where('req.idrequisicion','=',$id)
-        ->first();
+            ->join('usuario as U','req.idusuario','=','U.id')
+            ->join('tiporequisiscion as tre','req.idtiporequisicion','=','tre.idtiporequisicion')
+            ->select('req.idrequisicion','U.name','tre.nombre as tiporequisicion')
+            ->where('req.idrequisicion','=',$id)
+            ->first();
 
         $requisiciondetalle = DB::table('requisiciondetalle as rde')
-        ->join('requisicion as req','rde.idrequisicion','=','req.idrequisicion')
-        ->join('medicamento as med','rde.idmedicamento','=','med.idmedicamento')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-        ->select('med.medicamento','pre.nombre as presentacion','mar.marca','rde.cantidad','rde.iddetalle')
-        ->where('rde.idrequisicion','=',$id)
-        ->get();
+            ->join('requisicion as req','rde.idrequisicion','=','req.idrequisicion')
+            ->join('medicamento as med','rde.idmedicamento','=','med.idmedicamento')
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->select('med.medicamento','pre.nombre as presentacion','mar.marca','rde.cantidad','rde.iddetalle')
+            ->where('rde.idrequisicion','=',$id)
+            ->get();
 
         return view('medicamento.fechaven.detalle',["detalle"=>$detalle,"requisiciondetalle"=>$requisiciondetalle]);
     }
@@ -132,15 +132,14 @@ class MVencimientoController extends Controller
     public function medicamentoxvencer()
     {
         $medicamentoxvencer = DB::table('medicamento as med')
-        ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
-        ->join('almacen as alm','med.idmedicamento','=','alm.idmedicamento')
-        ->join('ubicacion as ubi','alm.idubicacion','=','ubi.idubicacion')
-        ->select('med.idmedicamento','med.medicamento','alm.cantidad',(DB::raw('DATE_FORMAT(alm.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'ubi.habitacion','ubi.estanteria','ubi.coordenada','mar.marca','pre.nombre as presentacion')
-        ->where('alm.cantidad','>',0)
-        ->orderby('alm.fechavencimiento','asc')
-        ->get();
-
+            ->join('marca as mar','med.idmarca','=','mar.idmarca')
+            ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+            ->join('almacen as alm','med.idmedicamento','=','alm.idmedicamento')
+            ->join('ubicacion as ubi','alm.idubicacion','=','ubi.idubicacion')
+            ->select('med.idmedicamento','med.medicamento','alm.cantidad',(DB::raw('DATE_FORMAT(alm.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'ubi.habitacion','ubi.estanteria','ubi.coordenada','mar.marca','pre.nombre as presentacion')
+            ->where('alm.cantidad','>',0)
+            ->orderby('alm.fechavencimiento','asc')
+            ->get();
 
         return view ('medicamento.medicamentoxvencer.index',["medicamentoxvencer"=>$medicamentoxvencer]);
     }
