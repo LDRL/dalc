@@ -119,24 +119,25 @@ function cargarindex(arg){
 	
 
 
-	if(arg==1){var miurl=urlraiz+"/empleado/index";}
-	if(arg==2){var miurl=urlraiz+"/empleado/add";}
-	if(arg==3){var miurl=urlraiz+"/seguridad/index";}
-	if(arg==4){var miurl=urlraiz+"/medicamento/index";}
-	if(arg==5){var miurl=urlraiz+"/medicamento/compra/index";}
-	if(arg==6){var miurl=urlraiz+"/medicamento/proveedor/index";}
-  if(arg==7){var miurl=urlraiz+"/medicamento/requisicion/index";}
-  if(arg==8){var miurl=urlraiz+"/medicamento/requisicion/add";}
-  if(arg==9){var miurl=urlraiz+"/paciente/historial/add";}
-  if(arg==10){var miurl=urlraiz+"/medicamento/add";}
-  if(arg==11){var miurl=urlraiz+"/seguridad/add";}
-  if(arg==12){var miurl=urlraiz+"/seguridad/rol/index";}
-  if(arg==13){var miurl=urlraiz+"/empleado/inactivo";}
-  if(arg==14){var miurl=urlraiz+"/medicamento/proveedor/inactivo";}
-  if(arg==15){var miurl=urlraiz+"/seguridad/inactivo";}
-  if(arg==16){var miurl=urlraiz+"/seguridad/form_nuevo_rol";}
-  if(arg==17){var miurl=urlraiz+"/medicamento/vencimiento/index";}
-  if(arg==18){var miurl=urlraiz+"/medicamento/vencimiento/add"}
+  	if(arg==1){var miurl=urlraiz+"/empleado/index";}
+  	if(arg==2){var miurl=urlraiz+"/empleado/add";}
+  	if(arg==3){var miurl=urlraiz+"/seguridad/index";}
+  	if(arg==4){var miurl=urlraiz+"/medicamento/index";}
+  	if(arg==5){var miurl=urlraiz+"/medicamento/compra/index";}
+  	if(arg==6){var miurl=urlraiz+"/medicamento/proveedor/index";}
+    if(arg==7){var miurl=urlraiz+"/medicamento/requisicion/index";}
+    if(arg==8){var miurl=urlraiz+"/medicamento/requisicion/add";}
+    if(arg==9){var miurl=urlraiz+"/paciente/historial/add";}
+    if(arg==10){var miurl=urlraiz+"/medicamento/add";}
+    if(arg==11){var miurl=urlraiz+"/seguridad/add";}
+    if(arg==12){var miurl=urlraiz+"/seguridad/rol/index";}
+    if(arg==13){var miurl=urlraiz+"/empleado/inactivo";}
+    if(arg==14){var miurl=urlraiz+"/medicamento/proveedor/inactivo";}
+    if(arg==15){var miurl=urlraiz+"/seguridad/inactivo";}
+    if(arg==16){var miurl=urlraiz+"/seguridad/form_nuevo_rol";}
+    if(arg==17){var miurl=urlraiz+"/medicamento/vencimiento/index";}
+    if(arg==18){var miurl=urlraiz+"/medicamento/vencimiento/add"}
+    if(arg==19){var miurl=urlraiz+"/medicamento/medicamentoxvencer/index"}
 
   //17,18
 

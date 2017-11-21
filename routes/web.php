@@ -173,6 +173,9 @@ Route::group(['prefix'=>'medicamento'], function(){
 	Route::get ('vencimiento/busqueda/{id}','MVencimientoController@busqueda');
 	Route::get ('vencimiento/show/{id}','MVencimientoController@show');
 
+
+	Route::get ('medicamentoxvencer/index','MVencimientoController@medicamentoxvencer');
+
 	
 	Route::get('/logout', 'Auth\LoginController@logout');
 });

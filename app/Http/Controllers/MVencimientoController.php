@@ -50,11 +50,13 @@ class MVencimientoController extends Controller
         try {
             DB::beginTransaction();
 
+            $mytime = Carbon::now('America/Guatemala');
             $miArray = $request->items;
             
             $requisicion = new Requisicion;
             $requisicion-> idusuario =  Auth::user()->id;
             $requisicion-> idtiporequisicion = 2;
+            $requisicion-> fecha = $mytime->toDateTimeString();;
 
             $requisicion->save();
 
@@ -127,5 +129,19 @@ class MVencimientoController extends Controller
         return view('medicamento.fechaven.detalle',["detalle"=>$detalle,"requisiciondetalle"=>$requisiciondetalle]);
     }
 
+    public function medicamentoxvencer()
+    {
+        $medicamentoxvencer = DB::table('medicamento as med')
+        ->join('marca as mar','med.idmarca','=','mar.idmarca')
+        ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
+        ->join('almacen as alm','med.idmedicamento','=','alm.idmedicamento')
+        ->join('Ubicacion as ubi','alm.idubicacion','=','ubi.idubicacion')
+        ->select('med.idmedicamento','med.medicamento','alm.cantidad',(DB::raw('DATE_FORMAT(alm.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'ubi.habitacion','ubi.estanteria','ubi.coordenada','mar.marca','pre.nombre as presentacion')
+        ->where('alm.cantidad','>',0)
+        ->orderby('alm.fechavencimiento','asc')
+        ->get();
 
+
+        return view ('medicamento.medicamentoxvencer.index',["medicamentoxvencer"=>$medicamentoxvencer]);
+    }
 }

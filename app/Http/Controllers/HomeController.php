@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+
 class HomeController extends Controller
 {
     /**
@@ -28,6 +34,19 @@ class HomeController extends Controller
     */
      public function index(Request $request)
     {
-        return view('home');
+        $empleado = DB::table('role_user as ru')
+        ->select(DB::raw('count(ru.id) as conteo'))
+        ->where('ru.role_id','=','2')
+        ->where('ru.user_id','=',Auth::user()->id)
+        ->first();
+
+        if($empleado->conteo > 0)
+        {
+            $mensaje = DB::select("call Alerta_M");
+        }
+
+        //$value = $request->session($mensaje->conteo);
+        Session::put('mensaje',$mensaje);
+        return view('home',array('mensaje'=>$mensaje));
     }
 }

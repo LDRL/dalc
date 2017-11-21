@@ -26,8 +26,8 @@ class CompraController extends Controller
         ->join('usuario as U','com.idusuario','=','U.id')
         ->join('medicamento as med','com.idmedicamento','=','med.idmedicamento')
         ->join('marca as mar','med.idmarca','=','mar.idmarca')
-        ->select('med.idmedicamento','med.medicamento','mar.marca','pro.proveedor','com.fechacompra','com.fechavencimiento','com.precio','com.cantidad','com.idcompra','U.name')
-        ->paginate(15);
+        ->select('med.idmedicamento','med.medicamento','mar.marca','pro.proveedor',(DB::raw('DATE_FORMAT(com.fechacompra,"%d/%m/%Y") as fechacompra')), (DB::raw('DATE_FORMAT(com.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'com.precio','com.cantidad','com.idcompra','U.name')
+        ->get();
         return view('medicamento.compra.index',["compras"=>$compras]);
     }
 

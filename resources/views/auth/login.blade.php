@@ -37,10 +37,11 @@
 
                         </div>
                         <button type="submit" class="btn btn-primary block full-width m-b">Ingresar</button>
-
+                        <!--
                         <a href="{{ url('/password/reset') }}">
                             <small>¿Olvidaste tu contraseña?</small>
                         </a>
+                        -->
                         <!--
                         <p class="text-muted text-center">
                             <small>Do not have an account?</small>

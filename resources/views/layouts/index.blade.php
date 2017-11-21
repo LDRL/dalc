@@ -42,8 +42,16 @@
 
     @show
 </head>
+@if(isset($mensaje))
+        @if($mensaje > 0)
+        <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay actividades que requieren su atención')">
+        @else
+        <body class="md-skin">
+        @endif
+    @else
+    <body class="md-skin">
+    @endif
 
-<body class="md-skin">
 <!--<body>-->
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -72,7 +80,7 @@
                     <li>
                         <a href="{{ url('/home')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span> </a>
                     </li>
-                    
+
                     @role('paciente')
                     <li>
                         <a href="layouts.html"><i class="fa fa-wheelchair"></i> <span class="nav-label">Paciente</span><span class="fa arrow"></span></a>
@@ -96,6 +104,7 @@
                             <li><a href="javascript:void(0);" onclick="cargarmedi(3);">Ingreso Inventario</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(7);">Requisici&oacute;n</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreso Requisici&oacute;n</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(19);">Medicamento por vencer</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso por vencimiento</a></li>
  
@@ -448,6 +457,10 @@
     <script src="{{asset('assets/js/medicamento/presentacion.js')}}"></script>
 
     <script src="{{asset('assets/js/empleado/persona.js')}}"></script>
+    <script src="{{asset('assets/js/noti.js')}}"></script>
+    <script src="{{asset('assets/js/notify.js')}}"></script>
+    <script src="{{asset('assets/js/notify-metro.js')}}"></script>
+
     
     <script src="{{asset('assets/js/plugins/validate/jquery.validate.min.js')}}"></script>
     <script src="{{asset('assets/js/plugins/validate/jquery.validate.js')}}"></script>

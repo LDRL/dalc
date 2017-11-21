@@ -15,7 +15,7 @@
 
     <div>
         <a href="javascript:void(0);" onclick="cargarindex(7);">
-            <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado Empleado"><i class="fa fa-arrow-circle-left"></i></button>
+            <button class="btn btn-primary btn-md btn-detalle-empleado" title="Listado medicamento por fecha vencimiento"><i class="fa fa-arrow-circle-left"></i></button>
         </a>
     </div>
     
@@ -39,7 +39,7 @@
                     </tbody>
                 </table>
             </div>
-        </div>           
+        </div>
     </div>
 </div>
 
