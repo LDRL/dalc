@@ -135,7 +135,7 @@ class MVencimientoController extends Controller
         ->join('marca as mar','med.idmarca','=','mar.idmarca')
         ->join('presentacion as pre','med.idpresentacion','=','pre.idpresentacion')
         ->join('almacen as alm','med.idmedicamento','=','alm.idmedicamento')
-        ->join('Ubicacion as ubi','alm.idubicacion','=','ubi.idubicacion')
+        ->join('ubicacion as ubi','alm.idubicacion','=','ubi.idubicacion')
         ->select('med.idmedicamento','med.medicamento','alm.cantidad',(DB::raw('DATE_FORMAT(alm.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'ubi.habitacion','ubi.estanteria','ubi.coordenada','mar.marca','pre.nombre as presentacion')
         ->where('alm.cantidad','>',0)
         ->orderby('alm.fechavencimiento','asc')
