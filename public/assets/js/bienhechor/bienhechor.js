@@ -172,6 +172,7 @@
                 observaciones:$("#observaciones").val(),
                 idb:$('#idbi').val(),
             };
+        
         $.ajax({
             type: type,
             url: miurl,
@@ -377,3 +378,4 @@ $("#btnGuardartd").click(function(e){
             }
     });
 });
+//Funcion oculta cantidad
