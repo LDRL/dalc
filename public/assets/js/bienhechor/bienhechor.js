@@ -293,7 +293,7 @@
         });
 
         swal({
-            title: '¿Esta seguro de cambiar de status a Bienhechor Activo?',
+            title: '¿Esta seguro de cambiar a estado Activo al bienhechor?',
             text: "Precione si para continuar, no para cerrar este mensaje.",
             type: 'question',
             showCancelButton: true,
