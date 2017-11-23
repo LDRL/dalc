@@ -138,6 +138,7 @@ function cargarindex(arg){
     if(arg==17){var miurl=urlraiz+"/medicamento/vencimiento/index";}
     if(arg==18){var miurl=urlraiz+"/medicamento/vencimiento/add"}
     if(arg==19){var miurl=urlraiz+"/medicamento/medicamentoxvencer/index"}
+    if(arg==40){var miurl=urlraiz+"/empleado/tramitexvencer/index"}
 
 
   //17,18

@@ -30,19 +30,44 @@ class HomeController extends Controller
 
     public function index(Request $request)
     {
-        $empleado = DB::table('role_user as ru')
+        $farmacia = DB::table('role_user as ru')
             ->select(DB::raw('count(ru.id) as conteo'))
             ->where('ru.role_id','=','2')
             ->where('ru.user_id','=',Auth::user()->id)
             ->first();
 
-        if($empleado->conteo > 0)
+        $empleado = DB::table('role_user as ru')
+            ->select(DB::raw('count(ru.id) as conteo'))
+            ->where('ru.role_id','=','5')
+            ->where('ru.user_id','=',Auth::user()->id)
+            ->first();
+
+        if($farmacia->conteo > 0 and $empleado->conteo >0)
+        {
+            $mensaje = DB::select("call Alerta_M");
+            $value = $request->session($mensaje[0]->conteo);
+            Session::put('mensaje',$mensaje[0]->conteo);
+
+            $mempleado = DB::select("call Alerta_T");
+            $value = $request->session($mempleado[0]->conteo);
+            Session::put('mempleado',$mempleado[0]->conteo);
+
+            return view('home',array('mensaje'=>$mensaje,'mempleado'=>$mempleado));
+        }
+        else if ($farmacia->conteo > 0)
         {
             $mensaje = DB::select("call Alerta_M");
             $value = $request->session($mensaje[0]->conteo);
             Session::put('mensaje',$mensaje[0]->conteo);
 
             return view('home',array('mensaje'=>$mensaje));
+        }
+        else if ($empleado->conteo >0) {
+            $mempleado = DB::select("call Alerta_T");
+            $value = $request->session($mempleado[0]->conteo);
+            Session::put('mempleado',$mempleado[0]->conteo);
+
+            return view('home',array('mempleado'=>$mempleado));
         }
         else{
             return view('home');

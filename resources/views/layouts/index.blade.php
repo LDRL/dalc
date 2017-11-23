@@ -29,12 +29,26 @@
 
     @show
 </head>
-    @if(isset($mensaje))
-        @if($mensaje[0]->conteo > 0)
-        <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay actividades que requieren su atención')">
+    @if(isset($mempleado) and isset($mensaje))
+        @if($mempleado[0]->conteo > 0)
+        <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay medicamentos por vencer que requieren su atención'), $.Notification.autoHideNotify('success', 'top right', 'Notificaciones','Hay antecedentes de empleado que requieren su atención') ">
         @else
         <body class="md-skin">
         @endif
+    @elseif(isset($mensaje))
+        @if($mensaje[0]->conteo > 0)
+        <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay medicamentos por vencer que requieren su atención')">
+        @else
+        <body class="md-skin">
+        @endif
+
+    @elseif(isset($mempleado))
+        @if($mempleado[0]->conteo > 0)
+        <body class="md-skin" onload="$.Notification.autoHideNotify('success', 'top right', 'Notificaciones','Hay antecedentes de empleado que requieren su atención')">
+        @else
+        <body class="md-skin">
+        @endif
+
     @else
     <body class="md-skin">
     @endif
@@ -90,7 +104,7 @@
                             <li><a href="javascript:void(0);" onclick="cargarmedi(3);">Ingreso Inventario</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(7);">Requisici&oacute;n</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(8);">Ingreso Requisici&oacute;n</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(19);">Medicamento por vencer</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(19);">Medicamentos por vencer</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(17);">Caducados</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(18);">Ingreso por vencimiento</a></li>
                         </ul>
@@ -101,9 +115,9 @@
                     <li>
                         <a href="#"><i class="fa fa-truck"></i><span class="nav-label">Proveedores</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(6);">Proveedor activos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(6);">Proveedores activos</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarmodalempleado(6);">Ingreso Proveedores</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(14);">Proveedor inactivo</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(14);">Proveedores inactivo</a></li>
                         </ul>                        
                     </li>
                     @endrole
@@ -123,10 +137,12 @@
                     <li>
                         <a href="#"><i class="fa fa-group"></i> <span class="nav-label">Empleado</span>  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(1);">Empleado activos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(1);">Empleados activos</a></li>
                             <!--<li><a href="{{url('/empleado/add')}}">Ingreso empleado</a></li>-->
                             <li><a href="javascript:void(0);" onclick="cargarindex(2);">Ingreso empleado</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(13);">Empleado inactivos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(13);">Empleados inactivos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(40);">Antecedentes por vencer</a></li>
+
                             <!--<li><a href="{{url('/empleado/index')}}">Ingreso antecedentes</a></li>-->
                         </ul>
                     </li>
@@ -138,9 +154,9 @@
                     <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Usuario</span>  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(3);">Usuario activos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(3);">Usuarios activos</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(11);">Ingreso usuario</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(15);">Usuario inactivos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(15);">Usuarios inactivos</a></li>
                             @role('rol')
                             <li><a href="javascript:void(0);" onclick="cargarindex(12);">Listado Rol</a></li>
                             <li><a href="javascript:void(0);" onclick="cargarindex(16);">Ingreso Rol</a></li>
@@ -161,12 +177,13 @@
 
                     <!-- COLOCAR COLOR AL NAV -->
                     <ul class="nav navbar-top-links navbar-right ">
+                        <!--
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                 <i class="fa fa-envelope"></i><span class="label label-warning">{{Session::get('mensaje[0]','0')}}</span>
                             </a>
                             <ul class="dropdown-menu dropdown-messages">
-                                <!--<li>
+                                <li>
                                     <div class="dropdown-messages-box">
                                         <a href="profile.html" class="pull-left">
                                             <img alt="image" class="img-circle" src="img/a7.jpg">
@@ -204,15 +221,16 @@
                                         </div>
                                     </div>
                                 </li>
-                                -->
                             </ul>
+                        
+                        
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                                 <i class="fa fa-bell"></i>  <span class="label label-success">8</span>
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
-                                <!--<li class="divider"></li>
+                                <li class="divider"></li>
                                 <li>
                                     <a href="grid_options.html">
                                         <div>
@@ -230,9 +248,9 @@
                                         </a>
                                     </div>
                                 </li>
-                                -->
                             </ul>
                         </li>
+                        -->
                         <li>
                             <a href="{{ url('/logout') }}">
                                 <i class="fa fa-sign-out"></i> Cerrar Sesion

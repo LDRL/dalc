@@ -253,6 +253,21 @@ class EmpleadoController1 extends Controller
         return response()->json($infec);
     }
 
+    public function tramitexvencer()
+    {
+        $tramitexvencer = DB::table('empleado as emp')
+            ->join('persona as per','emp.idpersona','=','per.idpersona')
+            ->join('tramite as tra','emp.idempleado','=','tra.idempleado')
+            ->join('tipoantecedente as tpa','tra.idtipoantecedente','=','tpa.idtipoantecedente')
+            ->select('tra.idtramite','per.nombre', 'per.apellido', 'tpa.nombreantecedente as antecedente',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')))
+            ->orderby('tra.fechavencimiento','asc')
+            ->get();
+
+        $tipoantecedente = TipoAntecedente::all();
+
+        return view ('empleado.tramitexvencer',["tramitexvencer"=>$tramitexvencer,"tipoantecedente"=>$tipoantecedente]);
+    }
+
     public function validateRequest($request){                
         $rules=[
             'nombre' => 'required',

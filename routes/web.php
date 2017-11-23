@@ -206,6 +206,9 @@ Route::group(['prefix'=>'empleado'], function(){
 	Route::post('puesto/store','EmpleadoController1@storepu');
 	Route::post('tipoantecedente/store','EmpleadoController1@storeta');
 
+	Route::get ('tramitexvencer/index','EmpleadoController1@tramitexvencer');
+
+
 
 	Route::get('/logout', 'Auth\LoginController@logout');
 });
