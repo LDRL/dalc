@@ -103,7 +103,9 @@ class ETramiteController extends Controller
 
             $tramite = DB::table('tramite as tra')
 	    	    ->join('tipoantecedente as tan','tra.idtipoantecedente','=','tan.idtipoantecedente')
-	    	    ->select('tra.idtramite',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'tra.idtipoantecedente','tan.nombreantecedente as antecedente')
+                ->join('empleado as emp','tra.idempleado','=','emp.idempleado')
+                ->join('persona as per','emp.idpersona','=','per.idpersona')
+	    	    ->select('tra.idtramite',(DB::raw('DATE_FORMAT(tra.fechavencimiento,"%d/%m/%Y") as fechavencimiento')),'tra.idtipoantecedente','tan.nombreantecedente as antecedente','per.nombre','per.apellido')
                 ->where('idtramite','=',$id)->first();
         } catch (Exception $e) {
             DB::rollback();

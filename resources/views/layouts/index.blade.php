@@ -30,7 +30,7 @@
     @show
 </head>
     @if(isset($mempleado) and isset($mensaje))
-        @if($mempleado[0]->conteo > 0)
+        @if($mempleado[0]->conteo > 0 and $mensaje[0]->conteo > 0)
         <body class="md-skin" onload="$.Notification.autoHideNotify('info', 'top right', 'Notificaciones','Hay medicamentos por vencer que requieren su atención'), $.Notification.autoHideNotify('success', 'top right', 'Notificaciones','Hay antecedentes de empleado que requieren su atención') ">
         @else
         <body class="md-skin">

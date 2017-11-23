@@ -24,9 +24,9 @@
                                     <th style="width: 20%">Fecha Vencimiento</th>
                                     <th style="width: 5%">Opciones</th>
                                 </thead>
-                                <tbody id="listempleado">
+                                <tbody id="antecedentes">
                                     @foreach ($tramitexvencer as $txv)
-                                    <tr class="even gradeA" id="tramite{{$txv->idtramite}}">
+                                    <tr class="even gradeA" id="antecedente{{$txv->idtramite}}">
                                         <td>{{$txv->idtramite}}</td>
                                         <td>{{$txv->nombre.' - '.$txv->apellido}}</td>
                                         <td>{{$txv->antecedente}}</td>
@@ -222,12 +222,12 @@
             dataType: 'json',
 
             success: function (data) {
-                var item = '<tr class="even gradeA" id="antecedente'+data.idtramite+'">';
+                var item = '<tr class="even gradeA" id="tramite'+data.idtramite+'">';
                     item += '<td>'+data.idtramite+'</td>';
+                    item += '<td>'+data.nombre+' '+data.apellido+'</td>';
                     item += '<td>'+data.antecedente+'</td>';
                     item += '<td>'+data.fechavencimiento+'</td>';
-                    item += '<td><button class="btn  btn-warning btn-md btn-editartra" title="Editar" value="'+data.idtramite+'"><i class="fa fa-pencil"></i></button>';
-                    item += '<button class="btn btn-danger btn-md btn-eliminartra" value="'+data.idtramite+'" title="Eliminar" ><i class="fa fa-remove"></i></button></td></tr>';
+                    item += '<td><button class="btn  btn-warning btn-md btn-editartra" title="Editar" value="'+data.idtramite+'"><i class="fa fa-pencil"></i></button></td></tr>';
                 if (state == "addtra")
                 {
                     $('#antecedentes').append(item);
