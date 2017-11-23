@@ -89,7 +89,7 @@
                                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">    
                                     <div class="form-group">
                                         <label>Tipo de donativo</label>
-                                        <select id="tipodonativo" class="form-control">
+                                        <select id="tipodonativo" class="form-control" onchange="ocultar();">
                                             @foreach($donacion as $td)
                                                 <option value="{{$td->idtipodonacion}}">{{$td->donaciontipo}}</option>
                                             @endforeach
@@ -100,8 +100,8 @@
                                     <br>    
                                         <button type="button" id="btntd" class="btn btn-success btn-md btntd" title="Agregar"><i class="fa fa-window-restore"></i></button>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <label class="control-label">Cantidad</label>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="divcant" style="display: none;">
+                                    <label class="control-label">Monto</label>
                                     <input id="cantidad" type="text" class="form-control" maxlength="9" aria-describedby="basic-addon1">   
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -201,6 +201,17 @@
                  }
              });
     });
+    function ocultar()
+    {
+        var selec = $("#tipodonativo option:selected").text();
+        if (selec == 'Dinero') {
+            $("#divcant").show();
+        }
+        else
+        {
+            $("#divcant").hide();
+        }
+    }
 </script>
 <script>
     $('.dataTables-index-detalles').DataTable({
