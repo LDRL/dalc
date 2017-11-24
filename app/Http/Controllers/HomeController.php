@@ -42,6 +42,14 @@ class HomeController extends Controller
             ->where('ru.user_id','=',Auth::user()->id)
             ->first();
 
+
+        /*$tableroini = DB::table('tablero as evento')
+            ->select('evento.imagen')
+            ->where('evento.home','=',1)
+            ->orderBy('evento.fechapublica','desc')
+            ->get();
+        */
+
         if($farmacia->conteo > 0 and $empleado->conteo >0)
         {
             $mensaje = DB::select("call Alerta_M");

@@ -197,7 +197,6 @@
 		                    <abbr title="Telefono"><strong>Por Teléfono:</abbr></strong> (502) 7763-1821 <br/>
 		                    <abbr title="Fax"><strong>Por Fax:</abbr></strong> (502) 7763-3827 <br>
 		                    <abbr title="Correo Electronico"><strong>Por Correo Electrónico:</abbr></strong> hnito.pedro@gmail.com
-
                     </ul>
                 </div>
             </div>
