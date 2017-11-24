@@ -264,7 +264,7 @@ $(document).ready(function(){
     });
     $("#btnaddanimal").click(function(){
         //$(document).on('click','.btn-addB',function(){
-                $('#inputTitle').html("Nueva registro");
+                $('#inputTitle').html("Nuevo registro");
                 $('#formAgregar').trigger("reset");
                 $('#btnGuardar').val('addba');
                 $('#formModal').modal('show');
@@ -272,7 +272,7 @@ $(document).ready(function(){
     });
     $("#btnaddpersonal").click(function(){
         //$(document).on('click','.btn-addB',function(){
-                $('#inputTitle').html("Nueva Personal");
+                $('#inputTitle').html("Nuevo Personal");
                 $('#formAgregar').trigger("reset");
                 $('#btnGuardar').val('addbp');
                 $('#formModal').modal('show');

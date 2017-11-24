@@ -171,7 +171,7 @@
                                             <label>Ninguna<input type="radio" value="No" onclick="Anofams(this)" id="an" name="an" checked=""></label>
                                         </div>
                                         <div class="col-lg-10 col-md-9 col-sm-9 col-xs-12" id="divanomal" style="display: none;">
-                                            <select id="anomaliafam" class="chzn-select" style="width:350px;" tabindex="4" multiple data-placeholder="Seleccione ...">
+                                            <select id="anomaliafam" class="chzn-select" style="width:350px;" tabindex="3" multiple data-placeholder="Seleccione ...">
                                                 @if (isset($anomalia))
                                                     @foreach($anomalia as $ano)
                                                         <option value="{{$ano->idanomalia}}">{{$ano->anomalia}},&nbsp;&nbsp;</option>

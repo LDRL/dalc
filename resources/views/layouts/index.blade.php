@@ -130,8 +130,8 @@
                     <li>
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Bienhechores</span>  <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
-                            <li><a href="javascript:void(0);" onclick="cargarindex(20);">Bienhechor activos</a></li>
-                            <li><a href="javascript:void(0);" onclick="cargarindex(23);">Bienhechor inactivos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(20);">Bienhechores activos</a></li>
+                            <li><a href="javascript:void(0);" onclick="cargarindex(23);">Bienhechores inactivos</a></li>
                         </ul>
                     </li>
                     @endrole
