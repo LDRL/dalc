@@ -32,10 +32,11 @@
 
             <div class="col-md-6">
                 <h2 class="font-bold">Bienvenido al sistema Hermano Pedro</h2>
+               
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
-                    <form class="m-t" role="form" action="index.html">
+                    <form class="m-t" role="form">
                         <div class="form-group">
                             <input type="email" class="form-control" placeholder="Usuario" required="">
                         </div>

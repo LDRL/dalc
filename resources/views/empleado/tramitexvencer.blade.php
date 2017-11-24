@@ -11,7 +11,7 @@
 
                     @if(count($tramitexvencer) > 0)
 
-                    <h4 class="box-title" align="center">Listado medicamento por vencer</h4>
+                    <h4 class="box-title" align="center">Listado antecedentes por vencer</h4>
                     <hr style="border-color:black;"/>
 
                     <div class="ibox-content" style="border-color:black;">

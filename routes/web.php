@@ -12,14 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('layouts/inicio');
 });
-Route::get('/logout', 'Auth\LoginController@logout');
 
+
+Route::get('/logout', 'Auth\LoginController@logout');
+		
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/', 'HomeController@index');
+	//Route::get('/', 'HomeController@index');
 	Route::get('/home', 'HomeController@index');
 	Route::get('/{slug?}','HomeController@index');
 
