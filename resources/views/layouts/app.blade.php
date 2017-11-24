@@ -5,6 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+    <style type="text/css">
+        body {
+
+        /* Ubicación de la imagen */
+
+        background-image: url("{{asset('assets/img/p_big3.jpg')}}");
+
+        /* Para dejar la imagen de fondo centrada, vertical y horizontalmente */
+
+        background-position: center center;
+
+        /* Para que la imagen de fondo no se repita */
+
+        background-repeat: no-repeat;
+
+        /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+
+        background-attachment: fixed;
+
+        /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+
+        background-size: cover;
+
+        /* Se muestra un color de fondo mientras se está cargando la imagen de fondo o si hay problemas para cargarla */
+
+        background-color: #66999;
+
+        }
+
+        @media only screen and (max-width: 767px) {
+            body {
+                background-position: center center;
+                background-repeat: no-repeat;
+                background: url("{{asset('assets/img/p5.jpg')}}");
+            }
+    </style>
+
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="cache-control" content="max-age-0" />
     <meta http-equiv="cache-control" content="no-cache" />
@@ -38,7 +75,6 @@
         ]) !!};
     </script>
 </head>
-<body >
 <body class="gray-bg">
             @yield('content')
 

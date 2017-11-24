@@ -2,11 +2,12 @@
 
 @section('content')
 
-    <div class="loginColumns animated fadeInDown">
+    <div class="loginColumns animated fadeInDown" >
         <div class="row">
 
             <div class="col-md-6">
-                <h2 class="font-bold">Bienvenido al sistema Hermano Pedro</h2>
+                <h2 class="font-bold"><strong><font color="WHITE">Bienvenido al sistema Hermano Pedro <br>DALC</font></strong></h2>
+
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">

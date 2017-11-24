@@ -46,48 +46,41 @@
         </nav>
 </div>
 <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+    <!--
     <ol class="carousel-indicators">
         <li data-target="#inSlider" data-slide-to="0" class="active"></li>
         <li data-target="#inSlider" data-slide-to="1"></li>
+        <li data-target="#inSlider" data-slide-to="2"></li>
+        <li data-target="#inSlider" data-slide-to="3"></li>
     </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <div class="container">
-                <div class="carousel-caption">
-                <!--
-                    <h1>We craft<br/>
-                        brands, web apps,<br/>
-                        and user interfaces<br/>
-                        we are IN+ studio</h1>
-                    <p>Lorem Ipsum is simply dummy text of the printing.</p>
-                    <p>
-                        <a class="btn btn-lg btn-primary" href="#" role="button">READ MORE</a>
-                        <a class="caption-link" href="#" role="button">Inspinia Theme</a>
-                    </p>
-                  -->
-                </div>
-                <div class="carousel-image wow zoomIn">
-                    <img src="img/landing/laptop.png" alt="laptop"/>
-                </div>
-            </div>
-            <!-- Set background for slide in css -->
-            <div class="header-back one"></div>
+    -->
 
-        </div>
-        <div class="item">
-            <div class="container">
-                <div class="carousel-caption blank">
-                <!--
-                    <h1>We create meaningful <br/> interfaces that inspire.</h1>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                -->
+    <div class="ibox-content">
+        <div class="carousel slide" id="carousel1">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/landing/header_one.jpg')}}">
+                </div>
+
+                <div class="item">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/landing/header_two.jpg')}}">
+                </div>
+
+                <div class="item">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/p_big3.jpg')}}">
+                </div>
+                
+                <div class="item">
+                    <img alt="image"  class="img-responsive" src="{{asset('assets/img/p_big1.jpg')}}">
+                </div>
+                
+                <div class="item ">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/p_big2.jpg')}}">
                 </div>
             </div>
-            <!-- Set background for slide in css -->
-            <div class="header-back two"></div>
         </div>
     </div>
+
     <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Anterior</span>
