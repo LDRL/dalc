@@ -59,7 +59,7 @@
         <div class="carousel slide" id="carousel1">
             <div class="carousel-inner">
                 <div class="item active">
-                    <img alt="image" class="img-responsive" src="{{asset('assets/img/landing/header_one.jpg')}}">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/inicio/slide0.jpeg')}}">
                 </div>
 
                 <div class="item">
@@ -98,7 +98,7 @@
     
 
         <div class="col-sm-12">
-            <div class="col-lg-10" align="center">
+            <div class="col-lg-12" align="center">
 
             <h2><strong>Quiénes somos</strong></h2>
 

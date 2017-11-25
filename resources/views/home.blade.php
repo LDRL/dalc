@@ -41,7 +41,7 @@
     </div>
 </div>
 -->
-
+<!--
 <div class="col-sm-12">
     <div class="card-box">
         <div class="row"> 
@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-
+-->
 @endsection
 <!-- blueimp gallery -->
 
