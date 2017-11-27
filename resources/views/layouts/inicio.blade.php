@@ -63,15 +63,15 @@
                 </div>
 
                 <div class="item">
-                    <img alt="image" class="img-responsive" src="{{asset('assets/img/landing/header_two.jpg')}}">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/inicio/slide1.jpeg')}}">
                 </div>
 
                 <div class="item">
-                    <img alt="image" class="img-responsive" src="{{asset('assets/img/p_big3.jpg')}}">
+                    <img alt="image" class="img-responsive" src="{{asset('assets/img/inicio/slide2.jpeg')}}">
                 </div>
                 
                 <div class="item">
-                    <img alt="image"  class="img-responsive" src="{{asset('assets/img/p_big1.jpg')}}">
+                    <img alt="image"  class="img-responsive" src="{{asset('assets/img/inicio/slide3.jpeg')}}">
                 </div>
                 
                 <div class="item ">
