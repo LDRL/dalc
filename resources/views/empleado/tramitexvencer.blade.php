@@ -155,10 +155,10 @@
             },
         },
         columns: [
+            null, 
             null,
             null,
-            null,
-            null,
+            { "iDataSort": 1 }, 
             null,
         ],
         aLengthMenu:[
@@ -166,6 +166,7 @@
         buttons: [
         ]
     });
+
 
     var urlraiz=$("#url_raiz_proyecto").val();
 
