@@ -79,7 +79,7 @@ class UController extends Controller
     public function add()
     {
         $usuario = user::all();
-        $role=Role::all();
+        $role=Role::all()->where('id','<>',7);
         $persona = DB::table('persona as per')
         ->select('per.nombre','per.apellido','per.idpersona')
         ->where('per.idtipopersona','=',1)
@@ -94,7 +94,7 @@ class UController extends Controller
     public function addu($id)
     {
         $usuario = user::all();
-        $role=Role::all();
+        $role=Role::all()->where('id','<>',7);
         $persona = DB::table('persona as per')
         ->join('empleado as emp','per.idpersona','=','emp.idpersona')
         ->where('emp.idempleado','=',$id)
@@ -158,7 +158,7 @@ class UController extends Controller
     public function editar_usuario($id)
     {
         $usuario=User::find($id);
-        $roles=Role::all();
+        $roles=Role::all()->where('id','<>',7);
         return view("seguridad.usuario.edit")
             ->with("usuario",$usuario)
             ->with("roles",$roles);

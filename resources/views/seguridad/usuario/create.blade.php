@@ -138,12 +138,24 @@
 
         idrol =$("#idrol option:selected").val(); 
         rol =$("#idrol option:selected").text();
+        var roles = "'" + rol + "'";
 
-        var item  = '<tr class="even gradeA" id="rol'+cont+'">';
-            item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td>';
-            item += '<td><input type="hidden" name="idrol[]" value="'+idrol+'">'+rol+'</td>';
+        if(rol == "")
+        {
+            alert("No se ha podido agregar un permiso al usuario, revise que el campo no este vacio");
+        }
 
-        $('#rolUsuario').append(item);
+        else{
+            var combo = document.getElementById("idrol");
+            combo.remove(document.getElementById("idrol").selectedIndex);
+            $(combo).trigger('change');
+
+            var item  = '<tr class="even gradeA" id="rol'+cont+'">';
+                item +='<td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+','+idrol+','+roles+');">X</button></td>';
+                item += '<td><input type="hidden" name="idrol[]" value="'+idrol+'">'+rol+'</td>';
+                cont++;
+            $('#rolUsuario').append(item);
+        }
     }
 
     $(document).ready(function() {
@@ -152,9 +164,11 @@
         });
     });
 
-    function eliminar(index){
-       $("#rol" + index).remove();
-       cont--;
+
+    function eliminar(index,idrol,roles){
+        $("#idrol").append('<option selected value='+idrol+'>'+roles+'</option>');
+        $("#rol" + index).remove();
+        cont--;
    }
 </script>
 
